@@ -20,5 +20,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "src/services/Services.tsx", "src/services/StatCard.tsx", "src/services/ProjectResults.tsx", "src/services/AboutUs.tsx"]
 }
