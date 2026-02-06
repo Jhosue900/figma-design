@@ -2,33 +2,57 @@ import NetworkImage  from '../images/NetworkDiagram.png'
 
 function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-8 py-24 grid md:grid-cols-2 gap-16 items-center">
+    <section className="max-w-7xl mx-auto px-8 pt-16 pb-24 grid md:grid-cols-2 gap-4 items-center">
       <div>
-        <div className="flex items-center gap-3 mb-8">
-          <div className="flex items-center gap-2">
-            <div className="flex -space-x-2">
-              <div className="w-6 h-6 bg-gradient-to-br from-red-500 to-orange-500 rounded-full border border-black"></div>
-              <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full border border-black"></div>
-              <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-teal-500 rounded-full border border-black"></div>
-              <div className="w-6 h-6 bg-gray-700 rounded-full border border-black flex items-center justify-center text-xs">+</div>
+
+        <div className="inline-flex items-center w-fit bg-[#99A0AE1A] backdrop-blur-sm rounded-lg pt-2 pr-4 pb-2 pl-2 gap-4 mb-8 border border-white/5">
+          {/* Content: Icon + User Review */}
+          <div className="flex items-center gap-3">
+
+            {/* Icono (Aquí puedes poner un icono real de estrella o similar) */}
+            <div className="flex -space-x-3">
+              <div className="w-7 h-7 bg-gradient-to-br from-red-500 to-orange-500 rounded-full border-2 border-[#1a1a1a]"></div>
+              <div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full border-2 border-[#1a1a1a]"></div>
+              <div className="w-7 h-7 bg-gradient-to-br from-green-500 to-teal-500 rounded-full border-2 border-[#1a1a1a]"></div>
             </div>
-            <span className="text-xs text-gray-400 ml-2">User review based on <span className="font-medium text-white">Google</span></span>
+            
+            <span className="font-inter text-[14px] leading-[24px] tracking-[-0.02em] text-[#CACFD8]">
+              User review based on
+            </span>
           </div>
+        
+          {/* Link Button (Google) */}
+          <button className="flex items-center gap-1 text-white hover:opacity-80 transition-opacity">
+            <span className="font-inter text-[14px] font-medium">Google</span>
+            {/* Icono Chevron Right */}
+            <svg 
+              width="16" 
+              height="16" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
         </div>
 
-        <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+        <h1 className="font-aston text-[70px] font-normal mb-6 leading-[1.1] tracking-tight-custom text-white">
           Unleashing the Power of top Brands
         </h1>
 
-        <p className="text-gray-400 text-base mb-8 leading-relaxed max-w-md">
+        <p className="font-montserrat text-soft-gray text-[25px] font-medium mb-8 leading-[1.4] max-w-xl">
           We develop online and offline marketing strategies to elevate your brand, product, or service, helping you outshine the competition.
         </p>
 
         <div className="flex gap-4">
-          <button className="bg-gray-700 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-600 transition text-sm">
+          <button className="bg-gray-700 text-white px-8 py-3 rounded-full font-montserrat font-medium text-[16px] leading-[28px] hover:bg-gray-600 transition-colors">
             Get Started
           </button>
-          <button className="bg-transparent text-white px-8 py-3 rounded-full font-medium border border-gray-600 hover:border-gray-400 transition text-sm">
+          <button className="btn-gradient-border text-white px-8 py-3 rounded-full font-montserrat font-medium text-[16px] leading-[28px] hover:opacity-80 transition-opacity">
             Learn More
           </button>
         </div>

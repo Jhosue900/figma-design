@@ -2,48 +2,67 @@ import LogoWeProm from '../images/LOGOLISOBLANCO.png';
 
 function Navbar() {
   return (
-    <div className="relative px-8 py-6 overflow-visible">
-      <div className="relative max-w-6xl mx-auto">
-        {/* Luz blanca INTENSA - usando box-shadow en lugar de blur */}
+    <header className="relative w-full flex justify-center pt-8 overflow-visible z-50">
+      {/* --- GRUPO DE EFECTO LUZ (Polígonos del Figma) --- */}
+      <div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[600px] -z-10">
+        {/* Polygon 70 (Base ancha) */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[180px] -z-10 rounded-full"
+          className="absolute opacity-100 mix-blend-plus-lighter"
           style={{
-            background: 'radial-gradient(ellipse, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 40%, transparent 70%)',
-            filter: 'blur(60px)',
+            width: '935px', height: '795px', top: '-572px', left: '253px',
+            background: 'linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%)',
+            filter: 'blur(124px)'
           }}
-        ></div>
-        
-        {/* Navbar */}
-        <nav className="relative flex items-center justify-between px-10 py-4 backdrop-blur-sm border border-gray-700/40 rounded-2xl shadow-2xl z-10 bg-gradient-to-b from-black/30 to-black/50">
-          <div className="flex items-center gap-3">
-            <img
-              src={LogoWeProm}
-              alt="WeProm Logo"
-              className="h-10 w-auto"
-            />
-          </div>
-
-          <div className="hidden md:flex items-center gap-10">
-            <a href="#inicio" className="text-gray-300 hover:text-white transition text-sm font-medium">
-              Inicio
-            </a>
-            <a href="#nosotros" className="text-gray-300 hover:text-white transition text-sm font-medium">
-              Nosotros
-            </a>
-            <a href="#servicios" className="text-gray-300 hover:text-white transition text-sm font-medium">
-              Servicios
-            </a>
-            <a href="#blog" className="text-gray-300 hover:text-white transition text-sm font-medium">
-              Blog
-            </a>
-          </div>
-
-          <button className="bg-white text-black px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-gray-100 transition shadow-md">
-            Contáctanos
-          </button>
-        </nav>
+        />
+        {/* Polygon 69 */}
+        <div 
+          className="absolute opacity-100 mix-blend-plus-lighter"
+          style={{
+            width: '625px', height: '795px', top: '-572px', left: '408px',
+            background: 'linear-gradient(180.76deg, #FFFFFF 0.66%, rgba(255, 255, 255, 0) 79.63%)',
+            filter: 'blur(124px)'
+          }}
+        />
+        {/* Polygon 68 (Luz central intensa) */}
+        <div 
+          className="absolute opacity-100 mix-blend-plus-lighter"
+          style={{
+            width: '393px', height: '795px', top: '-572px', left: '524px',
+            background: 'linear-gradient(180deg, #FFFFFF -4.46%, rgba(255, 255, 255, 0.45) 32.54%, rgba(108, 82, 255, 0) 99.95%)',
+            filter: 'blur(88px)'
+          }}
+        />
       </div>
-    </div>
+
+      {/* --- NAVIGATION BAR --- */}
+      <nav 
+        className="flex items-center justify-between bg-[#FFFFFF1A] border border-[#99A0AE1A] backdrop-blur-[56px] rounded-[16px] px-8"
+        style={{ width: '962px', height: '56px' }}
+      >
+        {/* Logo */}
+        <div className="flex items-center">
+          <img src={LogoWeProm} alt="WeProm Logo" className="h-10 w-auto" />
+        </div>
+
+        {/* Menu Links */}
+        <div className="hidden md:flex items-center gap-[40px]">
+          {['Inicio', 'Nosotros', 'Servicios', 'Blog'].map((item) => (
+            <a 
+              key={item}
+              href={`#${item.toLowerCase()}`} 
+              className="font-montserrat text-[14px] font-medium leading-[24px] tracking-[-0.02em] text-[#CACFD8] hover:text-white transition-colors"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+
+        {/* Call to Action (Ajustado a estética del Figma) */}
+        <button className="bg-white text-black px-5 py-1.5 rounded-lg font-montserrat font-semibold text-[13px] hover:bg-gray-200 transition-all">
+          Contáctanos
+        </button>
+      </nav>
+    </header>
   );
 }
 

@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Astonpoliz';
+  src: url('./assets/fonts/Astonpoliz.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.btn-gradient-border {
+  border: 1px solid transparent;
+  /* El primer linear-gradient define el color de fondo del botón */
+  background: linear-gradient(#000, #000) padding-box, 
+              linear-gradient(90deg, #DA3731 -0.11%, #A84E59 9.92%, #56759C 19.94%, #3883B5 29.96%, #1096D6 39.98%, #069BDE 50%, #039DE1 60.02%, #9EB35D 80.06%, #E9B039 90.08%, #F7B033 100.11%) border-box;
+}
