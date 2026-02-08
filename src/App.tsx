@@ -1,21 +1,21 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import BackedBy from './components/BackedBy';
-import Services from './services/Services';
-import AboutUs from './services/AboutUs';
-import ProjectResults from './services/ProjectResults';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Blog from './pages/Blog'
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Navbar />
-      <Hero />
-      <BackedBy />
-      <Services />
-      <AboutUs />
-      <ProjectResults />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/nosotros" element={<About />} />
+      <Route path="/servicios" element={<Services />} />
+      <Route path="/blog" element={<Blog />} />
+    </Routes>
+
   );
 }
+
+
 
 export default App;

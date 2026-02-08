@@ -1,12 +1,21 @@
 import LogoWeProm from '../images/LOGOLISOBLANCO.png';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
+  const navLinks = [
+    { label: "Inicio", path: "/" },
+    { label: "Nosotros", path: "/nosotros" },
+    { label: "Servicios", path: "/servicios" },
+    { label: "Blog", path: "/blog" },
+  ];
+
+
   return (
     <header className="relative w-full flex justify-center pt-8 overflow-visible z-50">
       {/* --- GRUPO DE EFECTO LUZ (Polígonos del Figma) --- */}
       <div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[600px] -z-10">
         {/* Polygon 70 (Base ancha) */}
-        <div 
+        <div
           className="absolute opacity-100 mix-blend-plus-lighter"
           style={{
             width: '935px', height: '795px', top: '-572px', left: '253px',
@@ -15,7 +24,7 @@ function Navbar() {
           }}
         />
         {/* Polygon 69 */}
-        <div 
+        <div
           className="absolute opacity-100 mix-blend-plus-lighter"
           style={{
             width: '625px', height: '795px', top: '-572px', left: '408px',
@@ -24,7 +33,7 @@ function Navbar() {
           }}
         />
         {/* Polygon 68 (Luz central intensa) */}
-        <div 
+        <div
           className="absolute opacity-100 mix-blend-plus-lighter"
           style={{
             width: '393px', height: '795px', top: '-572px', left: '524px',
@@ -35,27 +44,29 @@ function Navbar() {
       </div>
 
       {/* --- NAVIGATION BAR --- */}
-      <nav 
+      <nav
         className="flex items-center justify-between bg-[#FFFFFF1A] border border-[#99A0AE1A] backdrop-blur-[56px] rounded-[16px] px-8"
         style={{ width: '962px', height: '56px' }}
       >
         {/* Logo */}
-        <div className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img src={LogoWeProm} alt="WeProm Logo" className="h-10 w-auto" />
-        </div>
+        </Link>
+
 
         {/* Menu Links */}
         <div className="hidden md:flex items-center gap-[40px]">
-          {['Inicio', 'Nosotros', 'Servicios', 'Blog'].map((item) => (
-            <a 
-              key={item}
-              href={`#${item.toLowerCase()}`} 
+          {navLinks.map(({ label, path }) => (
+            <Link
+              key={label}
+              to={path}
               className="font-montserrat text-[14px] font-medium leading-[24px] tracking-[-0.02em] text-[#CACFD8] hover:text-white transition-colors"
             >
-              {item}
-            </a>
+              {label}
+            </Link>
           ))}
         </div>
+
 
         {/* Call to Action (Ajustado a estética del Figma) */}
         <button className="bg-white text-black px-5 py-1.5 rounded-lg font-montserrat font-semibold text-[13px] hover:bg-gray-200 transition-all">
