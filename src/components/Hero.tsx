@@ -40,12 +40,12 @@ function Hero() {
           </button>
         </div>
 
-        <h1 className="font-aston text-[70px] font-normal mb-6 leading-[1.1] tracking-tight-custom text-white">
-          Unleashing the Power of top Brands
+        <h1 className="font-aston text-[70px] font-normal mb-2 leading-[1.1] tracking-tight-custom text-white">
+          El Poder de las Grandes Marcas
         </h1>
 
         <p className="font-montserrat text-soft-gray text-[25px] font-medium mb-8 leading-[1.4] max-w-xl">
-          We develop online and offline marketing strategies to elevate your brand, product, or service, helping you outshine the competition.
+          Desarrollamos estrategias de marketing online y offline para elevar tu marca, producto o servicio, ayudándote a destacar por encima de la competencia.
         </p>
 
         <div className="flex gap-4">

@@ -1,46 +1,46 @@
+import interceramic from '../images/logo interceramic.png';
+import driscolls from '../images/Logo Driscolls.png';
+import KIA from '../images/Logo KIA.jpg'
+import kenworth from '../images/Logo Kenworth.svg'
+// Nota: Importa los demás logos siguiendo el mismo patrón cuando los tengas en la carpeta
+
 function BackedBy() {
   const brands = [
-    { name: 'INTERCERAMIC', className: 'text-xl font-light tracking-widest' },
-    { name: 'MINISTERIAL', className: 'text-xl font-light' },
-    { name: "Driscoll's", className: 'text-xl italic font-light' },
-    { name: 'SWISSJUST', className: 'text-xl font-light' },
-    { name: 'KIA', className: 'text-xl font-bold' },
-    { name: 'IKENU', className: 'text-xl font-bold' },
-    { name: 'BRAND 7', className: 'text-xl font-medium' } // Agregué el 7mo según Figma
+    { name: 'INTERCERAMIC', src: interceramic, alt: 'Interceramic Logo' },
+    { name: 'MINISTERIAL', isText: true, className: 'text-xl font-light' },
+    { name: "Driscoll's", src: driscolls, alt: "Driscoll's Logo" },
+    
+    { name: 'SWISSJUST', isText: true, className: 'text-xl font-light' },
+    { name: 'KIA', src: KIA, alt: 'KIA Logo'},
+    { name: 'kenworth', src: kenworth, alt: 'kenworth Logo'},
+
   ];
 
   return (
-    <section className="relative w-full py-20 overflow-hidden bg-transparent">
+    <section className="relative w-full pt-12 pb-20 overflow-hidden bg-transparent">
       
-      {/* --- ECLIPSES LATERALES (Sombreado/Blur) --- */}
-      {/* Eclipse 37 (Izquierda) */}
+      {/* --- ECLIPSES LATERALES --- */}
       <div 
         className="absolute pointer-events-none z-10"
         style={{
           width: '378px', height: '429px', top: '50%', left: '-255px',
           transform: 'translateY(-50%) rotate(90deg)',
-          background: '#000000',
-          filter: 'blur(134px)',
-          opacity: 1
+          background: '#000000', filter: 'blur(134px)', opacity: 1
         }}
       />
       
-      {/* Eclipse 38 (Derecha) */}
       <div 
         className="absolute pointer-events-none z-10"
         style={{
           width: '284px', height: '321px', top: '50%', right: '-140px', 
           transform: 'translateY(-50%) rotate(90deg)',
-          background: '#000000',
-          filter: 'blur(134px)',
-          opacity: 1
+          background: '#000000', filter: 'blur(134px)', opacity: 1
         }}
       />
 
       {/* --- CONTENIDO --- */}
       <div className="relative w-full max-w-[1519px] mx-auto px-8 z-20">
         
-        {/* Texto Backed By */}
         <p className="font-montserrat font-light text-[36px] leading-[28px] tracking-[-0.02em] text-white/80 text-center mb-12">
           Backed by
         </p>
@@ -48,11 +48,19 @@ function BackedBy() {
         {/* Frame de Logos */}
         <div className="flex items-center justify-center gap-[48px] h-[80px] opacity-80">
           {brands.map((brand, index) => (
-            <div 
-              key={index} 
-              className={`${brand.className} text-white whitespace-nowrap`}
-            >
-              {brand.name}
+            <div key={index} className="flex items-center justify-center">
+              {brand.isText ? (
+                <span className={`${brand.className} text-white whitespace-nowrap`}>
+                  {brand.name}
+                </span>
+              ) : (
+                <img 
+                  src={brand.src} 
+                  alt={brand.alt} 
+                  /* grayscale convierte a B/N, brightness ajusta si el logo es oscuro */
+                  className="h-full max-h-[60px] w-auto object-contain filter grayscale invert brightness-100"
+                />
+              )}
             </div>
           ))}
         </div>

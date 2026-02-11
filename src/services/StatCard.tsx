@@ -10,7 +10,7 @@ interface StatCardProps {
 function StatCard({ icon: Icon, label, value, bgStyle }: StatCardProps) {
   return (
     <div 
-      className="flex flex-col items-center text-center w-full max-w-[290px] h-[396px] p-8 rounded-3xl border border-white/10 relative overflow-hidden"
+      className="flex flex-col items-center text-center w-full max-w-[290px] h-[396px] p-8 rounded-3xl border border-black relative overflow-hidden"
       style={{ background: bgStyle }}
     >
       {/* Icono sin fondo (Sin el círculo anterior) */}

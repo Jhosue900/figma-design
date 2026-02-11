@@ -32,11 +32,11 @@ function Services() {
   return (
     <section className="max-w-[1180px] mx-auto px-8 py-20">
 
-      <h2 className="font-aston text-[70px] leading-[1.1] text-white text-center mb-6">
+      <h2 className="font-aston text-[64px] leading-[1.1] text-white text-center mb-6">
         Digital Marketing Agency Guadalajara
       </h2>
       
-      <p className="font-montserrat font-light text-[36px] leading-[1.4] tracking-[-0.02em] text-white text-center mb-20 max-w-[1160px] mx-auto">
+      <p className="font-montserrat font-light antialiased text-[31px] leading-[1.4] tracking-[-0.02em] text-white/90 text-center mb-20 max-w-[1160px] mx-auto">
         Somos WeProm, tus próximos aliados en el posicionamiento de tu empresa, marca o producto.
       </p>
 
@@ -47,6 +47,7 @@ function Services() {
             icon={service.icon}
             title={service.title}
             description={service.description}
+            showGreenBlur={index === 2}
             gradient={service.gradient}
           />
         ))}
