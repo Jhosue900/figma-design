@@ -1,7 +1,7 @@
-import interceramic from '../../images/Logo Interceramic.png';
-import driscolls from '../../images/Logo Driscolls.png';
-import KIA from '../../images/Logo KIA.jpg'
-import kenworth from '../../images/Logo Kenworth.svg'
+import interceramic from '../../images/LogoInterceramic.png';
+import driscolls from '../../images/LogoDriscolls.png';
+import KIA from '../../images/LogoKIA.jpg'
+import kenworth from '../../images/LogoKenworth.svg'
 // Nota: Importa los demás logos siguiendo el mismo patrón cuando los tengas en la carpeta
 
 function BackedBy() {
