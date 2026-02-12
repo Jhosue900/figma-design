@@ -58,7 +58,7 @@ function BackedBy() {
                   src={brand.src} 
                   alt={brand.alt} 
                   /* grayscale convierte a B/N, brightness ajusta si el logo es oscuro */
-                  className="h-full max-h-[60px] w-auto object-contain "
+                  className="h-full max-h-[60px] w-auto object-contain filter grayscale invert brightness-100"
                 />
               )}
             </div>
