@@ -1,4 +1,4 @@
-import interceramic from '../../images/LogoInterceramic.png';
+import interceramic from '../../images/logoInterceramic.png';
 import driscolls from '../../images/LogoDriscolls.png';
 import KIA from '../../images/LogoKIA.jpg'
 import kenworth from '../../images/LogoKenworth.svg'
