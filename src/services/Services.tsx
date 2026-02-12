@@ -1,5 +1,5 @@
 import { Search, Megaphone, Fingerprint, BarChart3 } from 'lucide-react';
-import ServiceCard from '../components/ServiceCard';
+import ServiceCard from '../components/Home/ServiceCard';
 
 function Services() {
   const services = [

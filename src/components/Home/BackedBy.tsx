@@ -1,7 +1,7 @@
-import interceramic from '../images/logo interceramic.png';
-import driscolls from '../images/Logo Driscolls.png';
-import KIA from '../images/Logo KIA.jpg'
-import kenworth from '../images/Logo Kenworth.svg'
+import interceramic from '../../images/Logo Interceramic.png';
+import driscolls from '../../images/Logo Driscolls.png';
+import KIA from '../../images/Logo KIA.jpg'
+import kenworth from '../../images/Logo Kenworth.svg'
 // Nota: Importa los demás logos siguiendo el mismo patrón cuando los tengas en la carpeta
 
 function BackedBy() {
@@ -58,7 +58,7 @@ function BackedBy() {
                   src={brand.src} 
                   alt={brand.alt} 
                   /* grayscale convierte a B/N, brightness ajusta si el logo es oscuro */
-                  className="h-full max-h-[60px] w-auto object-contain filter grayscale invert brightness-100"
+                  className="h-full max-h-[60px] w-auto object-contain "
                 />
               )}
             </div>

@@ -1,4 +1,4 @@
-import LogoWeProm from '../images/LOGOLISOBLANCO.png';
+import LogoWeProm from '../../images/LOGOLISOBLANCO.png';
 import { Link } from 'react-router-dom';
 
 function Navbar() {

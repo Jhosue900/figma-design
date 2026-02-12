@@ -1,11 +1,12 @@
 import { LucideIcon } from 'lucide-react';
-import greenBlur from '../images/green.png'; // Importación de la mancha
+import greenBlur from '../../images/green.png'; // Importación de la mancha
 
 interface ServiceCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
   showGreenBlur?: boolean;
+  gradient: string;
 }
 
 function ServiceCard({ icon: Icon, title, description, showGreenBlur }: ServiceCardProps) {

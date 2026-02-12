@@ -1,4 +1,4 @@
-import NetworkImage  from '../images/NetworkDiagram.png'
+import NetworkImage  from '../../images/NetworkDiagram.png'
 
 function Hero() {
   return (
@@ -62,7 +62,7 @@ function Hero() {
         <img 
           src={NetworkImage}
           alt="Network of top brands" 
-          className="w-full h-auto max-w-md"
+          className="w-full h-auto max-w-md animate-spin-slow"
         />
       </div>
     </section>
