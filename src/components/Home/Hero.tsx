@@ -1,5 +1,5 @@
 import NetworkImage  from '../../images/NetworkDiagram.png'
-import iconHero from '../images/icon-hero.png'
+import iconHero from '../../images/icon-hero.png'
 
 function Hero() {
   return (
