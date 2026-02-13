@@ -1,4 +1,4 @@
-import NetworkImage  from '../images/NetworkDiagram.png'
+import NetworkImage  from '../../images/NetworkDiagram.png'
 import iconHero from '../images/icon-hero.png'
 
 function Hero() {
