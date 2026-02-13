@@ -1,28 +1,31 @@
-import { Search, Megaphone, Fingerprint, BarChart3 } from 'lucide-react';
 import ServiceCard from '../components/Home/ServiceCard';
+import SearchIcon from '../images/servicesImages/Search.png'
+import FingerprintIcon from '../images/servicesImages/FINGERPRINT.png'
+import MegaphoneIcon from '../images/servicesImages/Megaphone.png'
+import PeopleTableIcon from '../images/servicesImages/PeopleTable.png'
 
 function Services() {
   const services = [
   {
-    icon: Search,
+    icon: SearchIcon,
     title: 'Investigación de Mercados',
     description: 'Tomamos decisiones con base en datos, consumidores, competencia y el entorno para identificar oportunidades reales y ventajas competitivas.',
     gradient: 'from-pink-900/40 via-pink-800/20 to-transparent',
   },
   {
-    icon: Megaphone,
+    icon: MegaphoneIcon,
     title: 'Marketing digital',
     description: 'Diseñamos estrategias digitales enfocadas en resultados; integramos pauta, contenido y analítica para maximizar la inversión.',
     gradient: 'from-cyan-900/40 via-cyan-800/20 to-transparent',
   },
   {
-    icon: Fingerprint,
+    icon: FingerprintIcon,
     title: 'Professional Branding',
     description: 'Construimos marcas profesionales, coherentes y memorables, definiendo un posicionamiento, mensaje y presencia visual que conecte con el mercado meta',
     gradient: 'from-green-900/40 via-green-800/20 to-transparent',
   },
   {
-    icon: BarChart3,
+    icon: PeopleTableIcon,
     title: 'Consultoría en Marketing',
     description: 'Acompañamos a tu empresa con una visión estratégica integral; diagnosticamos, optimizamos y estructuramos planes alineados a tus objetivos comerciales.',
     gradient: 'from-amber-900/40 via-amber-800/20 to-transparent',
