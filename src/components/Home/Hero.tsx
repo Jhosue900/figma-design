@@ -6,29 +6,32 @@ function Hero() {
     <section className="max-w-7xl mx-auto px-8 pt-16 pb-24 grid md:grid-cols-2 gap-4 items-center">
       <div>
 
-        <div className="inline-flex items-center w-fit bg-[#99A0AE1A] backdrop-blur-sm rounded-lg pt-2 pr-4 pb-2 pl-2 gap-4 mb-8 border border-white/5">
-          <div className="flex items-center gap-3">
-            {/* Contenedor del Icono ajustado */}
+        {/* Badge Interactivo */}
+        <div className="group relative inline-flex items-center w-fit bg-[#99A0AE1A] backdrop-blur-sm rounded-lg pt-2 pr-4 pb-2 pl-2 gap-4 mb-[1rem] border border-white/5 cursor-default transition-all duration-300 hover:bg-[#99A0AE2A] hover:border-white/20 hover:scale-105 animate-float overflow-hidden">
+          
+          {/* Capa de Brillo (Shine Effect) */}
+          <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
 
-              {/* Contenedor con ancho fijo para que el icon-hero no se estire */}
-              <div className="flex items-center h-[24px] w-[102px]"> 
-                <img 
-                  src={iconHero} 
-                  alt="User Review Icon" 
-                  className="w-full h-auto object-contain"
-                />
-              </div>
+          <div className="flex items-center gap-3 relative z-10">
+            {/* Contenedor del Icono con un ligero pulso al hacer hover */}
+            <div className="flex items-center h-[24px] w-[102px] transition-transform duration-300 group-hover:scale-110"> 
+              <img 
+                src={iconHero} 
+                alt="User Review Icon" 
+                className="w-full h-auto object-contain"
+              />
+            </div>
             
             <span className="font-inter text-[14px] leading-[24px] tracking-[-0.02em] text-[#CACFD8]">
               User review based on
             </span>
           </div>
         
-          {/* Link Button (Google) */}
-          <button className="flex items-center gap-1 text-white hover:opacity-80 transition-opacity">
+          {/* Link Button (Google) con flecha animada */}
+          <button className="relative z-10 flex items-center gap-1 text-white hover:text-blue-400 transition-colors group/btn">
             <span className="font-inter text-[14px] font-medium">Google</span>
-            {/* Icono Chevron Right */}
             <svg 
+              className="transition-transform duration-300 group-hover/btn:translate-x-1"
               width="16" 
               height="16" 
               viewBox="0 0 24 24" 
