@@ -1,5 +1,5 @@
 import { LucideIcon } from 'lucide-react';
-import greenBlur from '../images/green.png';
+import greenBlur from '../../images/green.png';
 
 interface ServiceCardProps {
   icon: LucideIcon;
