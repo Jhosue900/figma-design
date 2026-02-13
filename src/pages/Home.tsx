@@ -6,6 +6,7 @@ import AboutUs from '../services/AboutUs';
 import ProjectResults from '../services/ProjectResults';
 import Footer from '../components/General/Footer';
 import CallToAction from '../components/Home/callToAction';
+import CompanySection from '../components/Home/CompanySection';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Services />
       <AboutUs />
       <ProjectResults />
+      <CompanySection />
       <CallToAction />
       <Footer />
     </div>
