@@ -2,13 +2,17 @@ import { LucideIcon } from 'lucide-react';
 import greenBlur from '../../images/green.png';
 
 interface ServiceCardProps {
-  icon: LucideIcon;
+  icon: LucideIcon | string; // Ahora acepta tanto LucideIcon como string (ruta de imagen)
   title: string;
   description: string;
-  blurColor?: 'red' | 'blue' | 'green' | 'yellow' | 'none'; // Nueva prop
+  blurColor?: 'red' | 'blue' | 'green' | 'yellow' | 'none';
 }
 
-function ServiceCard({ icon: Icon, title, description, blurColor = 'none' }: ServiceCardProps) {
+function ServiceCard({ icon, title, description, blurColor = 'none' }: ServiceCardProps) {
+  // Determinar si icon es una imagen (string) o un componente de Lucide
+  const isImageIcon = typeof icon === 'string';
+  const Icon = isImageIcon ? null : (icon as LucideIcon);
+
   // Configuración de colores para los halos
   const blurStyles: Record<string, string> = {
     red: 'rgba(220, 38, 38, 0.4)',    // Rojo
@@ -50,11 +54,21 @@ function ServiceCard({ icon: Icon, title, description, blurColor = 'none' }: Ser
       {/* Contenido (Icono y Texto) - Mantenemos el z-10 para que flote sobre la mancha */}
       <div className="relative z-10 h-full flex flex-col justify-between">
         <div>
-          <Icon 
-            style={{ width: '46px', height: '46px' }} 
-            className="text-white opacity-100" 
-            strokeWidth={1.5} 
-          />
+          {/* Renderizado condicional del icono */}
+          {isImageIcon ? (
+            <img 
+              src={icon as string}
+              alt={title}
+              style={{ width: '46px', height: '46px' }}
+              className="object-contain"
+            />
+          ) : Icon && (
+            <Icon 
+              style={{ width: '46px', height: '46px' }} 
+              className="text-white opacity-100" 
+              strokeWidth={1.5} 
+            />
+          )}
         </div>
 
         <div className="flex flex-col gap-4 mt-auto">
