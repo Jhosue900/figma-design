@@ -68,12 +68,12 @@ function CallToAction() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Introduce correo electrónico"
-          className="bg-transparent border border-white/30 text-white placeholder-white/50 font-montserrat text-sm focus:outline-none focus:border-white/60 transition-all duration-300 w-[320px] px-6 py-3 rounded-full"
+          className="btn-gradient-border text-white px-8 py-3 rounded-full font-montserrat font-medium text-[16px] leading-[28px] hover:opacity-80 transition-opacity bg-transparent border border-white/30 text-white placeholder-white/50 font-montserrat text-sm focus:outline-none focus:border-white/60 transition-all duration-300 w-[320px] px-6 py-3 rounded-full"
           required
         />
         <button
           type="submit"
-          className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-3 rounded-full font-montserrat text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95"
+          className="bg-gray-700 text-white px-8 py-3 rounded-full font-montserrat font-medium text-[16px] leading-[28px] hover:bg-gray-600 transition-colors bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-3 rounded-full font-montserrat text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95"
         >
           Suscribirme
         </button>
