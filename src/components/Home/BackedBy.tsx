@@ -1,68 +1,91 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation } from 'swiper/modules';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Estilos de Swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 import interceramic from '../../images/logoInterceramic.png';
 import driscolls from '../../images/LogoDriscolls.png';
-import KIA from '../../images/LogoKIA.jpg'
-import kenworth from '../../images/LogoKenworth.svg'
-// Nota: Importa los demás logos siguiendo el mismo patrón cuando los tengas en la carpeta
+import KIA from '../../images/LogoKIA.jpg';
+import kenworth from '../../images/LogoKenworth.svg';
 
 function BackedBy() {
   const brands = [
     { name: 'INTERCERAMIC', src: interceramic, alt: 'Interceramic Logo' },
-    { name: 'MINISTERIAL', isText: true, className: 'text-xl font-light' },
+    { name: 'MINISTERIAL', isText: true, className: 'text-2xl font-light tracking-widest' },
     { name: "Driscoll's", src: driscolls, alt: "Driscoll's Logo" },
-    
-    { name: 'SWISSJUST', isText: true, className: 'text-xl font-light' },
-    { name: 'KIA', src: KIA, alt: 'KIA Logo'},
-    { name: 'kenworth', src: kenworth, alt: 'kenworth Logo'},
-
+    { name: 'SWISSJUST', isText: true, className: 'text-2xl font-light tracking-widest' },
+    { name: 'KIA', src: KIA, alt: 'KIA Logo' },
+    { name: 'KENWORTH', src: kenworth, alt: 'Kenworth Logo' },
   ];
 
+  // Duplicamos marcas para que el scroll infinito se vea fluido
+  const allBrands = [...brands, ...brands];
+
   return (
-    <section className="relative w-full pt-12 pb-20 overflow-hidden bg-transparent">
+    <section className="relative w-full pt-12 pb-20 overflow-hidden bg-transparent group">
       
-      {/* --- ECLIPSES LATERALES --- */}
-      <div 
-        className="absolute pointer-events-none z-10"
-        style={{
-          width: '378px', height: '429px', top: '50%', left: '-255px',
-          transform: 'translateY(-50%) rotate(90deg)',
-          background: '#000000', filter: 'blur(134px)', opacity: 1
-        }}
-      />
-      
-      <div 
-        className="absolute pointer-events-none z-10"
-        style={{
-          width: '284px', height: '321px', top: '50%', right: '-140px', 
-          transform: 'translateY(-50%) rotate(90deg)',
-          background: '#000000', filter: 'blur(134px)', opacity: 1
-        }}
-      />
+      {/* --- ECLIPSES LATERALES (Sombra difuminada) --- */}
+      <div className="absolute top-0 left-0 w-32 md:w-64 h-full z-20 pointer-events-none bg-gradient-to-r from-black to-transparent opacity-90" />
+      <div className="absolute top-0 right-0 w-32 md:w-64 h-full z-20 pointer-events-none bg-gradient-to-l from-black to-transparent opacity-90" />
 
       {/* --- CONTENIDO --- */}
-      <div className="relative w-full max-w-[1519px] mx-auto px-8 z-20">
+      <div className="relative w-full max-w-[1519px] mx-auto px-8 z-10">
         
-        <p className="font-montserrat font-light text-[36px] leading-[28px] tracking-[-0.02em] text-white/80 text-center mb-12">
+        <p className="font-montserrat font-light text-[24px] md:text-[36px] tracking-[-0.02em] text-white/60 text-center mb-16 uppercase">
           Backed by
         </p>
 
-        {/* Frame de Logos */}
-        <div className="flex items-center justify-center gap-[48px] h-[80px] opacity-80">
-          {brands.map((brand, index) => (
-            <div key={index} className="flex items-center justify-center">
-              {brand.isText ? (
-                <span className={`${brand.className} text-white whitespace-nowrap`}>
-                  {brand.name}
-                </span>
-              ) : (
-                <img 
-                  src={brand.src} 
-                  alt={brand.alt} 
-                  /* grayscale convierte a B/N, brightness ajusta si el logo es oscuro */
-                  className="h-full max-h-[60px] w-auto object-contain filter grayscale invert brightness-100"
-                />
-              )}
-            </div>
-          ))}
+        <div className="relative flex items-center">
+          {/* Botones de Navegación Manual (Visibles en hover) */}
+          <button className="prev-btn absolute left-0 z-30 p-2 text-white/50 hover:text-white transition-opacity opacity-0 group-hover:opacity-100 hidden md:block">
+            <ChevronLeft size={40} strokeWidth={1} />
+          </button>
+          
+          <button className="next-btn absolute right-0 z-30 p-2 text-white/50 hover:text-white transition-opacity opacity-0 group-hover:opacity-100 hidden md:block">
+            <ChevronRight size={40} strokeWidth={1} />
+          </button>
+
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            spaceBetween={50}
+            slidesPerView={2}
+            loop={true}
+            speed={4000} // Velocidad de la transición
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+            }}
+            navigation={{
+              prevEl: '.prev-btn',
+              nextEl: '.next-btn',
+            }}
+            breakpoints={{
+              640: { slidesPerView: 3 },
+              1024: { slidesPerView: 5 },
+            }}
+            className="flex items-center"
+          >
+            {allBrands.map((brand, index) => (
+              <SwiperSlide key={index} className="flex items-center justify-center py-4">
+                <div className="flex items-center justify-center transition-all duration-500 hover:grayscale-0 grayscale opacity-40 hover:opacity-100 transform hover:scale-110">
+                  {brand.isText ? (
+                    <span className={`${brand.className} text-white whitespace-nowrap`}>
+                      {brand.name}
+                    </span>
+                  ) : (
+                    <img 
+                      src={brand.src} 
+                      alt={brand.alt} 
+                      className="h-12 md:h-16 w-auto object-contain invert brightness-200"
+                    />
+                  )}
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>

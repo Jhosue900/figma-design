@@ -76,7 +76,7 @@ function ProjectResults() {
       </p>
       
       {/* --- CONTROLES DE NAVEGACIÓN --- */}
-      <div className="flex gap-4 mb-12 mt-8">
+      <div className="flex gap-4 mb-2 mt-2">
         <button
           onClick={handlePrev}
           className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110"
@@ -95,7 +95,7 @@ function ProjectResults() {
 
       {/* --- SECCIÓN DE IMÁGENES APILADAS (STACKED GROUP) --- */}
       <div 
-        className="relative mt-8 mb-32"
+        className="relative mt-2 mb-2"
         style={{ width: '1200px', height: '500px' }}
       >
         {stackedImages.map((img, i) => (
