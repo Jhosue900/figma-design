@@ -1,10 +1,13 @@
-import { Target, TrendingUp } from 'lucide-react';
+import { Target } from 'lucide-react';
 import StatCard from './StatCard.tsx';
+import targetImg from '../images/target.png';
+import TrendingUp from '../images/trending.png';
+import Stars from '../images/stars.png';
 
 function AboutUs() {
   const stats = [
     {
-      icon: Target,
+      icon: targetImg,
       label: 'Empresas Desarrolladas',
       value: '+500',
       // Degradado Card 1 (Original o similar al anterior)
@@ -18,7 +21,7 @@ function AboutUs() {
       bg: 'linear-gradient(0deg, rgba(3, 157, 225, 0.15) 0.01%, rgba(29, 164, 196, 0.1) 10%, rgba(65, 173, 156, 0.1) 24.99%, rgba(0, 0, 0, 1) 99.94%)'
     },
     {
-      icon: 'stars', // Trigger para las 3 estrellas
+      icon: Stars, // Trigger para las 3 estrellas
       label: 'Proyectos Realizados',
       value: '+1,000',
       // Degradado Card 3 (El que me pasaste)

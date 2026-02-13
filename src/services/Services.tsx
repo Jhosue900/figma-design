@@ -40,17 +40,21 @@ function Services() {
         Somos WeProm, tus próximos aliados en el posicionamiento de tu empresa, marca o producto.
       </p>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((service, index) => (
-          <ServiceCard
-            key={index}
-            icon={service.icon}
-            title={service.title}
-            description={service.description}
-            showGreenBlur={index === 2}
-            gradient={service.gradient}
-          />
-        ))}
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16">
+        {services.map((service, index) => {
+          // Definimos qué color le toca a cada tarjeta
+          const colors: ('red' | 'blue' | 'green' | 'yellow')[] = ['red', 'blue', 'green', 'yellow'];
+          
+          return (
+            <ServiceCard
+              key={index}
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              blurColor={colors[index]} // Asigna: 0:red, 1:blue, 2:green, 3:yellow
+            />
+          );
+        })}
       </div>
     </section>
   );
