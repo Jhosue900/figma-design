@@ -9,7 +9,7 @@ function CompanySection() {
         </h1>
 
         <p className="font-montserrat text-soft-gray text-[20px] font-normal mb-4 leading-[1.4] max-w-7xl text-right">
-          We create plans based on your Creamos planes basados en tus objetivos, logrando resultados de crecimiento a corto, mediano y largo plazo., achieving shot, medium and long term growth results
+          Creamos planes basados en tus objetivos, logrando resultados de crecimiento a corto, mediano y largo plazo.
         </p>
       </div>
 
