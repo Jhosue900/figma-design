@@ -79,7 +79,7 @@ function BackedBy() {
                     <img 
                       src={brand.src} 
                       alt={brand.alt} 
-                      className="h-12 md:h-16 w-auto object-contain invert brightness-200"
+                      className="h-12 md:h-16 w-auto object-contain"
                     />
                   )}
                 </div>
