@@ -8,6 +8,7 @@ import Footer from '../components/General/Footer';
 import CallToAction from '../components/Home/callToAction';
 import CompanySection from '../components/Home/CompanySection';
 import BlogSection from '../components/Home/BlogSection';
+import Testimonials from '../components/Home/Testimonial'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <ProjectResults />
       <CompanySection />
       <BlogSection />
+      <Testimonials/>
       <CallToAction />
       <Footer />
     </div>
