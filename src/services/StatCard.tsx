@@ -1,8 +1,7 @@
 import { LucideIcon, Star } from 'lucide-react';
 
 interface StatCardProps {
-  // Ahora icon puede ser un componente de Lucide, el string 'stars', o la ruta de una imagen
-  icon: LucideIcon | 'stars' | string; 
+  icon: LucideIcon | 'stars' | string;
   label: string;
   value: string;
   bgStyle: string;
@@ -10,39 +9,41 @@ interface StatCardProps {
 
 function StatCard({ icon: Icon, label, value, bgStyle }: StatCardProps) {
   return (
-    <div 
-      className="flex flex-col items-center text-center w-full max-w-[290px] h-[430px] p-8 rounded-3xl border border-black relative overflow-hidden"
-      style={{ background: bgStyle }}
+    <div
+      className="flex flex-col items-center text-center w-full max-w-[290px] p-6 sm:p-8 rounded-3xl border border-black relative overflow-hidden"
+      style={{
+        background: bgStyle,
+        minHeight: '300px',
+        height: 'clamp(300px, 40vw, 430px)',
+      }}
     >
-      <div className="mb-0 mt-2 flex items-center justify-center shrink-0 min-h-[80px]">
-        {/* LÓGICA DE ICONOS: */}
+      {/* Icono */}
+      <div className="mb-0 mt-2 flex items-center justify-center shrink-0 min-h-[60px] sm:min-h-[80px]">
         {Icon === 'stars' ? (
           <div className="flex gap-1">
-            <Star className="w-8 h-8 text-white fill-white" />
-            <Star className="w-10 h-10 text-white fill-white -mt-2" />
-            <Star className="w-8 h-8 text-white fill-white" />
+            <Star className="w-6 h-6 sm:w-8 sm:h-8 text-white fill-white" />
+            <Star className="w-8 h-8 sm:w-10 sm:h-10 text-white fill-white -mt-2" />
+            <Star className="w-6 h-6 sm:w-8 sm:h-8 text-white fill-white" />
           </div>
         ) : typeof Icon === 'string' ? (
-          /* Renderizar imagen si el Icon es un string (la ruta del target.png) */
-          <img 
-            src={Icon} 
-            alt={label} 
-            className="w-[85%] h-[92%] object-contain" 
+          <img
+            src={Icon}
+            alt={label}
+            className="w-[80%] h-[85%] object-contain"
           />
         ) : (
-          /* Renderizar componente Lucide normal */
-          <Icon className="w-16 h-16 text-white" strokeWidth={1.2} />
+          <Icon className="w-12 h-12 sm:w-16 sm:h-16 text-white" strokeWidth={1.2} />
         )}
       </div>
 
-      <div className="flex-grow flex items-normal justify-center">
-        <p className="font-aston text-[30px] md:text-[32px] leading-[1.1] text-white">
+      <div className="flex-grow flex items-center justify-center px-2">
+        <p className="font-aston text-[22px] sm:text-[26px] md:text-[30px] leading-[1.1] text-white">
           {label}
         </p>
       </div>
 
-      <div className="mt-4 shrink-0">
-        <p className="font-montserrat font-bold text-[28px] text-white">
+      <div className="mt-3 sm:mt-4 shrink-0">
+        <p className="font-montserrat font-bold text-[22px] sm:text-[26px] lg:text-[28px] text-white">
           {value}
         </p>
       </div>

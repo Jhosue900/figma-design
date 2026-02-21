@@ -11,17 +11,12 @@ interface BlogCardProps {
 }
 
 function BlogCard({ image, title, date, category, glowColor = 'none' }: BlogCardProps) {
-  // Seleccionar el marco/borde según el color
   const getBorderFrame = () => {
     switch(glowColor) {
-      case 'blue':
-        return borderFrame1;
-      case 'green':
-        return borderFrame2;
-      case 'purple':
-        return borderFrame3;
-      default:
-        return null;
+      case 'blue':   return borderFrame1;
+      case 'green':  return borderFrame2;
+      case 'purple': return borderFrame3;
+      default:       return null;
     }
   };
 
@@ -29,14 +24,11 @@ function BlogCard({ image, title, date, category, glowColor = 'none' }: BlogCard
 
   return (
     <div 
-      className="relative flex flex-col overflow-hidden transition-all duration-500 hover:scale-[1.02] group cursor-pointer"
-      style={{
-        width: '340px',
-        height: '460px',
-      }}
+      className="relative flex flex-col overflow-hidden transition-all duration-500 hover:scale-[1.02] group cursor-pointer w-full max-w-[340px] mx-auto"
+      style={{ aspectRatio: '340 / 460' }}
     >
-      {/* Contenedor de la imagen del artículo - DEBAJO del marco */}
-      <div className="absolute top-[40px] left-[8px] right-[8px] h-[220px] overflow-hidden rounded-t-[28px] z-0">
+      {/* Imagen del artículo */}
+      <div className="absolute top-[8.7%] left-[2.4%] right-[2.4%] h-[47.8%] overflow-hidden rounded-t-[8%] z-0">
         <img 
           src={image}
           alt={title}
@@ -44,7 +36,7 @@ function BlogCard({ image, title, date, category, glowColor = 'none' }: BlogCard
         />
       </div>
 
-      {/* Marco/Borde de fondo (la imagen completa con el borde) - ENCIMA de la imagen */}
+      {/* Marco con borde */}
       {borderFrame && (
         <img 
           src={borderFrame} 
@@ -65,50 +57,35 @@ function BlogCard({ image, title, date, category, glowColor = 'none' }: BlogCard
         />
       )}
 
-      {/* Efecto de brillo al hover */}
+      {/* Hover glow */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20">
         <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent rounded-[36px]" />
       </div>
 
-      {/* Badge de categoría y texto - ENCIMA de todo */}
-      <div className="relative w-full h-[240px] z-30">
-        {/* Badge de categoría (opcional) */}
+      {/* Spacer para empujar el texto hacia abajo */}
+      <div className="relative w-full h-[52%] z-30">
         {category && (
-          <div className="absolute top-4 left-4 px-3 py-1.5 ">
-            
-          </div>
+          <div className="absolute top-4 left-4 px-3 py-1.5" />
         )}
       </div>
 
-      {/* Contenido de texto */}
-      <div className="relative z-30 flex flex-col justify-between flex-1 p-10">
+      {/* Texto */}
+      <div className="relative z-30 flex flex-col justify-between flex-1 p-6 sm:p-8 lg:p-10">
         <div className="flex-1">
           <h3 
-            className="font-montserrat font-semibold text-white mb-3 leading-tight transition-colors duration-300 group-hover:text-white/90"
-            style={{
-              fontSize: '22px',
-              lineHeight: '30px',
-              letterSpacing: '-0.02em',
-            }}
+            className="font-montserrat font-semibold text-white mb-3 leading-tight transition-colors duration-300 group-hover:text-white/90 text-[18px] sm:text-[20px] lg:text-[22px]"
+            style={{ lineHeight: '1.35', letterSpacing: '-0.02em' }}
           >
             {title}
           </h3>
         </div>
 
-        {/* Footer con fecha */}
-        <div className="flex items-center justify-between ">
+        <div className="flex items-center justify-between">
           <span 
-            className="font-montserrat font-normal text-soft-gray transition-colors duration-300 group-hover:text-white/80"
-            style={{
-              fontSize: '14px',
-              lineHeight: '20px',
-              letterSpacing: '0.01em',
-            }}
+            className="font-montserrat font-normal text-soft-gray transition-colors duration-300 group-hover:text-white/80 text-[12px] sm:text-[14px]"
           >
             {date}
           </span>
-
-      
         </div>
       </div>
     </div>
