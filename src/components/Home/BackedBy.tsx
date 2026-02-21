@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Estilos de Swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -14,32 +13,28 @@ import kenworth from '../../images/LogoKenworth.svg';
 function BackedBy() {
   const brands = [
     { name: 'INTERCERAMIC', src: interceramic, alt: 'Interceramic Logo' },
-    { name: 'MINISTERIAL', isText: true, className: 'text-2xl font-light tracking-widest' },
+    { name: 'MINISTERIAL', isText: true, className: 'text-lg sm:text-2xl font-light tracking-widest' },
     { name: "Driscoll's", src: driscolls, alt: "Driscoll's Logo" },
-    { name: 'SWISSJUST', isText: true, className: 'text-2xl font-light tracking-widest' },
+    { name: 'SWISSJUST', isText: true, className: 'text-lg sm:text-2xl font-light tracking-widest' },
     { name: 'KIA', src: KIA, alt: 'KIA Logo' },
     { name: 'KENWORTH', src: kenworth, alt: 'Kenworth Logo' },
   ];
 
-  // Duplicamos marcas para que el scroll infinito se vea fluido
   const allBrands = [...brands, ...brands];
 
   return (
-    <section className="relative w-full pt-12 pb-20 overflow-hidden bg-transparent group">
+    <section className="relative w-full pt-10 sm:pt-12 pb-14 sm:pb-20 overflow-hidden bg-transparent group">
       
-      {/* --- ECLIPSES LATERALES (Sombra difuminada) --- */}
-      <div className="absolute top-0 left-0 w-32 md:w-64 h-full z-20 pointer-events-none bg-gradient-to-r from-black to-transparent opacity-90" />
-      <div className="absolute top-0 right-0 w-32 md:w-64 h-full z-20 pointer-events-none bg-gradient-to-l from-black to-transparent opacity-90" />
+      <div className="absolute top-0 left-0 w-16 sm:w-32 md:w-64 h-full z-20 pointer-events-none bg-gradient-to-r from-black to-transparent opacity-90" />
+      <div className="absolute top-0 right-0 w-16 sm:w-32 md:w-64 h-full z-20 pointer-events-none bg-gradient-to-l from-black to-transparent opacity-90" />
 
-      {/* --- CONTENIDO --- */}
-      <div className="relative w-full max-w-[1519px] mx-auto px-8 z-10">
+      <div className="relative w-full max-w-[1519px] mx-auto px-4 sm:px-8 z-10">
         
-        <p className="font-montserrat font-light text-[24px] md:text-[36px] tracking-[-0.02em] text-white/60 text-center mb-16 uppercase">
+        <p className="font-montserrat font-light text-[18px] sm:text-[24px] md:text-[36px] tracking-[-0.02em] text-white/60 text-center mb-10 sm:mb-16 uppercase">
           Backed by
         </p>
 
         <div className="relative flex items-center">
-          {/* Botones de Navegación Manual (Visibles en hover) */}
           <button className="prev-btn absolute left-0 z-30 p-2 text-white/50 hover:text-white transition-opacity opacity-0 group-hover:opacity-100 hidden md:block">
             <ChevronLeft size={40} strokeWidth={1} />
           </button>
@@ -50,21 +45,16 @@ function BackedBy() {
 
           <Swiper
             modules={[Autoplay, Navigation]}
-            spaceBetween={50}
+            spaceBetween={30}
             slidesPerView={2}
             loop={true}
-            speed={4000} // Velocidad de la transición
-            autoplay={{
-              delay: 0,
-              disableOnInteraction: false,
-            }}
-            navigation={{
-              prevEl: '.prev-btn',
-              nextEl: '.next-btn',
-            }}
+            speed={4000}
+            autoplay={{ delay: 0, disableOnInteraction: false }}
+            navigation={{ prevEl: '.prev-btn', nextEl: '.next-btn' }}
             breakpoints={{
-              640: { slidesPerView: 3 },
-              1024: { slidesPerView: 5 },
+              480: { slidesPerView: 3, spaceBetween: 40 },
+              640: { slidesPerView: 3, spaceBetween: 50 },
+              1024: { slidesPerView: 5, spaceBetween: 50 },
             }}
             className="flex items-center"
           >
@@ -79,7 +69,7 @@ function BackedBy() {
                     <img 
                       src={brand.src} 
                       alt={brand.alt} 
-                      className="h-12 md:h-16 w-auto object-contain"
+                      className="h-8 sm:h-12 md:h-16 w-auto object-contain invert brightness-200"
                     />
                   )}
                 </div>

@@ -1,6 +1,5 @@
 import BlogCard from './BlogCard';
 
-// Datos de ejemplo para las cards
 const blogPosts = [
   {
     id: 1,
@@ -30,39 +29,30 @@ const blogPosts = [
 
 function BlogSection() {
   return (
-    <section className="w-full py-20 px-8 bg-black">
+    <section className="w-full py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-[1400px] mx-auto">
         
-        {/* Header Section */}
-        <div className="mb-16 flex items-center justify-between gap-8">
-          {/* Texto a la izquierda */}
+        {/* Header — apilado en móvil, horizontal en desktop */}
+        <div className="mb-10 sm:mb-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8">
           <div className="text-left flex-1">
             <h2 
-              className="font-aston text-white mb-4 leading-tight"
-              style={{
-                fontSize: '56px',
-                fontWeight: 400,
-                letterSpacing: '-0.02em',
-              }}
+              className="font-aston text-white mb-3 sm:mb-4 leading-tight text-[36px] sm:text-[44px] lg:text-[56px]"
+              style={{ fontWeight: 400, letterSpacing: '-0.02em' }}
             >
               Lo último en el mundo del Marketing.
             </h2>
             
             <p 
-              className="font-montserrat text-soft-gray max-w-2xl"
-              style={{
-                fontSize: '18px',
-                lineHeight: '28px',
-                letterSpacing: '0.01em',
-              }}
+              className="font-montserrat text-soft-gray max-w-2xl text-[15px] sm:text-[17px] lg:text-[18px]"
+              style={{ lineHeight: '28px', letterSpacing: '0.01em' }}
             >
               Escribimos para los amantes de la creatividad, la publicidad y los negocios.
             </p>
           </div>
 
-          {/* Botón a la derecha */}
-          <div className="flex-shrink-0">
-            <button className="group relative px-8 py-3 rounded-full bg-transparent border border-white/30 text-white font-montserrat font-medium text-[16px] transition-all duration-300 hover:border-white/60 hover:bg-white/5 flex items-center gap-2 whitespace-nowrap">
+          {/* Botón — alineado a la izquierda en móvil */}
+          <div className="flex-shrink-0 self-start sm:self-center">
+            <button className="group relative px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-transparent border border-white/30 text-white font-montserrat font-medium text-[14px] sm:text-[16px] transition-all duration-300 hover:border-white/60 hover:bg-white/5 flex items-center gap-2 whitespace-nowrap">
               <span>Ver Blog</span>
               <svg 
                 className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -77,8 +67,8 @@ function BlogSection() {
           </div>
         </div>
 
-        {/* Grid de Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        {/* Grid de Cards — 1 col móvil, 2 tablet, 3 desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-items-center">
           {blogPosts.map((post) => (
             <BlogCard
               key={post.id}

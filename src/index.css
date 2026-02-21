@@ -10,9 +10,30 @@
   font-display: swap;
 }
 
+/* =============================================
+   FIX: Previene el movimiento horizontal
+   causado por el scrollbar que aparece/desaparece
+   ============================================= */
+html {
+  overflow-y: scroll;          /* Fuerza scrollbar visible siempre → no hay layout shift */
+  overflow-x: hidden;          /* Elimina scroll horizontal */
+  scrollbar-gutter: stable;    /* Reserva el espacio del scrollbar aunque no haya scroll */
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+/* =============================================
+   Botón con borde degradado
+   ============================================= */
 .btn-gradient-border {
   border: 1px solid transparent;
-  /* El primer linear-gradient define el color de fondo del botón */
   background: linear-gradient(#000, #000) padding-box, 
               linear-gradient(90deg, #DA3731 -0.11%, #A84E59 9.92%, #56759C 19.94%, #3883B5 29.96%, #1096D6 39.98%, #069BDE 50%, #039DE1 60.02%, #9EB35D 80.06%, #E9B039 90.08%, #F7B033 100.11%) border-box;
 }
