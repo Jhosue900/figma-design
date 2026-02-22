@@ -17,7 +17,7 @@ function CompanySection() {
         <img
           src={CIRCLES}
           alt="Network of top brands"
-          className="w-full h-auto max-w-[300px] sm:max-w-[400px] md:max-w-none lg:max-w-3xl"
+          className="w-full h-auto max-w-[450px] sm:max-w-[451px] md:max-w-none lg:max-w-3xl"
         />
       </div>
     </section>
