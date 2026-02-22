@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import LogoWeProm from '../../images/LOGOLISOBLANCO.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
   const navLinks = [
     { label: "Inicio", path: "/" },
@@ -13,6 +14,9 @@ function Navbar() {
     { label: "Servicios", path: "/servicios" },
     { label: "Blog", path: "/blog" },
   ];
+
+  const isActive = (path: string) =>
+    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
 
   // Cerrar al click fuera
   useEffect(() => {
@@ -53,7 +57,15 @@ function Navbar() {
             {/* Links desktop */}
             <div className="hidden md:flex items-center gap-6 lg:gap-10">
               {navLinks.map(({ label, path }) => (
-                <Link key={label} to={path} className="font-montserrat text-[14px] font-medium leading-[24px] tracking-[-0.02em] text-[#CACFD8] hover:text-white transition-colors">
+                <Link
+                  key={label}
+                  to={path}
+                  className={`font-montserrat text-[14px] font-medium leading-[24px] tracking-[-0.02em] transition-colors ${
+                    isActive(path)
+                      ? 'text-white font-semibold'
+                      : 'text-[#CACFD8] hover:text-white'
+                  }`}
+                >
                   {label}
                 </Link>
               ))}
@@ -90,8 +102,12 @@ function Navbar() {
                   key={label}
                   to={path}
                   onClick={() => setIsOpen(false)}
-                  className={`font-montserrat text-[15px] font-medium text-[#CACFD8] hover:text-white transition-colors py-4 ${
+                  className={`font-montserrat text-[15px] font-medium transition-colors py-4 ${
                     i < navLinks.length - 1 ? 'border-b border-white/10' : ''
+                  } ${
+                    isActive(path)
+                      ? 'text-white font-semibold'
+                      : 'text-[#CACFD8] hover:text-white'
                   }`}
                 >
                   {label}
