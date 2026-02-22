@@ -82,7 +82,7 @@ function BlogCard({ image, title, date, category, glowColor = 'none' }: BlogCard
 
         <div className="flex items-center justify-between">
           <span 
-            className="font-montserrat font-normal text-soft-gray transition-colors duration-300 group-hover:text-white/80 text-[12px] sm:text-[14px]"
+            className="font-montserrat font-normal text-soft-gray transition-colors duration-300 group-hover:text-white/80 text-[12px] sm:text-[14px] mb-4"
           >
             {date}
           </span>

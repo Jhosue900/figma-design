@@ -113,7 +113,7 @@ function ProjectResults() {
 
       {/* Mobile / Tablet: single card slider */}
       <div className="lg:hidden w-full flex flex-col items-center gap-4 mt-4">
-        <div className="w-full max-w-[400px] sm:max-w-[500px] rounded-2xl overflow-hidden shadow-2xl">
+        <div className="w-full max-w-[490px] sm:max-w-[500px] rounded-2xl overflow-hidden shadow-2xl">
           <img
             src={visibleImages[4]}
             alt="Data Card"
