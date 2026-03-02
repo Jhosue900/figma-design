@@ -37,3 +37,70 @@ body {
   background: linear-gradient(#000, #000) padding-box, 
               linear-gradient(90deg, #DA3731 -0.11%, #A84E59 9.92%, #56759C 19.94%, #3883B5 29.96%, #1096D6 39.98%, #069BDE 50%, #039DE1 60.02%, #9EB35D 80.06%, #E9B039 90.08%, #F7B033 100.11%) border-box;
 }
+
+
+
+/* Swiper Customization */
+.projects-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.2) !important;
+  opacity: 1;
+}
+
+.projects-swiper .swiper-pagination-bullet-active {
+  background: white !important;
+  width: 20px !important;
+  border-radius: 4px !important;
+}
+
+.projects-swiper .swiper-button-next,
+.projects-swiper .swiper-button-prev {
+  color: white !important;
+  transform: scale(0.6);
+  background: rgba(255, 255, 255, 0.05);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.projects-swiper .swiper-button-next:hover,
+.projects-swiper .swiper-button-prev:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Glassmorphism Hover Effect */
+.glass-card:hover {
+  border-color: var(--brand-color) !important;
+  box-shadow: 0 0 40px var(--brand-glow);
+}
+
+
+
+
+/* Glassmorphism Dinámico */
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--hover-color) !important;
+  box-shadow: 0 0 30px var(--hover-glow), inset 0 0 15px var(--hover-glow);
+  transform: scale(1.005) !important;
+}
+
+/* Animación de rotación muy lenta para el contenedor */
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Aplicar a los orbes o al contenedor si quieres movimiento continuo */
+.animate-slow-spin-container {
+  animation: float-diagram 10s ease-in-out infinite;
+}
+
+@keyframes float-diagram {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-2px) scale(1); }
+}
+
+/* Asegurar que las tarjetas no hereden el giro si decides rotar el contenedor */
+/* Por ahora solo pusimos un efecto de "flotación" para que sea elegante pero legible */
