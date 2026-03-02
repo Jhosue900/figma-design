@@ -13,9 +13,9 @@ import kenworth from '../../images/LogoKenworth.svg';
 function BackedBy() {
   const brands = [
     { name: 'INTERCERAMIC', src: interceramic, alt: 'Interceramic Logo' },
-    { name: 'MINISTERIAL', isText: true, className: 'text-lg sm:text-2xl font-light tracking-widest' },
+    { name: 'MINISTERIAL', isText: true, className: 'text-base sm:text-xl md:text-2xl font-medium tracking-[0.2em] pt-1' },
     { name: "Driscoll's", src: driscolls, alt: "Driscoll's Logo" },
-    { name: 'SWISSJUST', isText: true, className: 'text-lg sm:text-2xl font-light tracking-widest' },
+    { name: 'SWISSJUST', isText: true, className: 'text-base sm:text-xl md:text-2xl font-medium tracking-[0.2em] pt-1' },
     { name: 'KIA', src: KIA, alt: 'KIA Logo' },
     { name: 'KENWORTH', src: kenworth, alt: 'Kenworth Logo' },
   ];
@@ -60,7 +60,8 @@ function BackedBy() {
           >
             {allBrands.map((brand, index) => (
               <SwiperSlide key={index} className="flex items-center justify-center py-4">
-                <div className="flex items-center justify-center transition-all duration-500 hover:grayscale-0 grayscale opacity-40 hover:opacity-100 transform hover:scale-110">
+                <div className="flex items-center justify-center h-16 sm:h-20 transition-all duration-500 opacity-90 hover:opacity-100 transform hover:scale-105">
+
                   {brand.isText ? (
                     <span className={`${brand.className} text-white whitespace-nowrap`}>
                       {brand.name}
@@ -69,7 +70,13 @@ function BackedBy() {
                     <img 
                       src={brand.src} 
                       alt={brand.alt} 
-                      className="h-8 sm:h-12 md:h-16 w-auto object-contain invert brightness-200"
+                      className={`w-auto object-contain transition-all ${
+                        brand.name === 'KIA' 
+                          ? 'h-10 sm:h-14 md:h-16 grayscale brightness-[10]' // Más grande para KIA
+                          : brand.name === 'KENWORTH'
+                          ? 'h-7 sm:h-9 md:h-11 grayscale brightness-[10]'   // Estándar para Kenworth
+                          : 'h-7 sm:h-9 md:h-11 brightness-0 invert'        // Estándar para el resto
+                      }`}
                     />
                   )}
                 </div>
