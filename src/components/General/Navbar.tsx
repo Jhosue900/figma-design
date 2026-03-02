@@ -37,7 +37,7 @@ function Navbar() {
 
   return (
     <>
-      <header className="relative w-full flex justify-center pt-6 sm:pt-8 z-50 px-4">
+      <header className="fixed top-0 left-0 w-full flex justify-center pt-6 overflow-visible z-50">
         {/* Efecto de luz */}
         <div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[600px] -z-10">
           <div className="absolute opacity-100 mix-blend-plus-lighter" style={{ width: 'min(935px, 90vw)', height: '795px', top: '-572px', left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0) 100%)', filter: 'blur(124px)' }} />
