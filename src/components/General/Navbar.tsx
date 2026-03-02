@@ -47,7 +47,9 @@ function Navbar() {
 
         <div ref={menuRef} className="w-full max-w-[962px]">
           {/* Barra principal */}
-          <nav className="flex items-center justify-between bg-[#FFFFFF1A] border border-[#99A0AE1A] backdrop-blur-[56px] rounded-[16px] px-5 sm:px-8 h-14">
+          <nav className="flex items-center justify-between bg-white/10 border border-white/20 backdrop-blur-xl shadow-lg rounded-[16px] px-8"
+              style={{ width: '962px', height: '56px' }}
+          >
             
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0">
