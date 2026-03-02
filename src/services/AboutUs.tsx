@@ -9,19 +9,22 @@ function AboutUs() {
       icon: targetImg,
       label: 'Empresas Desarrolladas',
       value: '+500',
-      bg: 'linear-gradient(180deg, rgba(227, 51, 42, 0.15) -0.2%, rgba(43, 138, 192, 0.1) 51.01%, rgba(0, 0, 0, 1) 100%)'
+      accentColor: '#ef4444',
+      bg: 'linear-gradient(180deg, rgba(227, 51, 42, 0.07) -0.2%, rgba(43, 138, 192, 0.05) 51.01%, rgba(0, 0, 0, 0.5) 100%)'
     },
     {
       icon: TrendingUp,
       label: 'Crecimiento promedio nuestros clientes',
       value: '+300%',
-      bg: 'linear-gradient(0deg, rgba(3, 157, 225, 0.15) 0.01%, rgba(29, 164, 196, 0.1) 10%, rgba(65, 173, 156, 0.1) 24.99%, rgba(0, 0, 0, 1) 99.94%)'
+      accentColor: '#3b82f6',
+      bg: 'linear-gradient(0deg, rgba(3, 157, 225, 0.07) 0.01%, rgba(29, 164, 196, 0.05) 10%, rgba(65, 173, 156, 0.05) 24.99%, rgba(0, 0, 0, 0.5) 99.94%)'
     },
     {
       icon: Stars,
       label: 'Proyectos Realizados',
       value: '+1,000',
-      bg: 'linear-gradient(0deg, rgba(96, 182, 123, 0.15) -0.07%, rgba(247, 176, 51, 0.1) 47.9%, rgba(0, 0, 0, 1) 99.86%)'
+      accentColor: '#eab308',
+      bg: 'linear-gradient(0deg, rgba(96, 182, 123, 0.07) -0.07%, rgba(247, 176, 51, 0.05) 47.9%, rgba(0, 0, 0, 0.5) 99.86%)'
     }
   ];
 
@@ -57,6 +60,7 @@ function AboutUs() {
                 label={stat.label}
                 value={stat.value}
                 bgStyle={stat.bg}
+                accentColor={stat.accentColor}
               />
             ))}
           </div>
