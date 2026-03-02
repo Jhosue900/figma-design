@@ -1,24 +1,153 @@
-import CIRCLES from '../../images/Company/CIRCLESECTION5.png'
+import { BarChart2, Target, Lightbulb, Handshake, ArrowUp, ArrowRight, ArrowDown, ArrowLeft, Search } from 'lucide-react';
+import { useState } from 'react';
+
+const STEPS = [
+  {
+    id: 'top',
+    title: 'Objetivos',
+    desc: 'Te ayudamos a alcanzar tus metas de marketing de forma clara y estratégica.',
+    color: '#f87171',
+    glow: 'rgba(248, 113, 113, 0.35)',
+    icon: <Target className="w-5 h-5 md:w-6 md:h-6" />,
+    arrow: <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />,
+    positionClass: 'top-[8%] left-1/2 -translate-x-1/2',
+    iconClass: 'top-[12.5%] right-[12.5%] translate-x-1/2 -translate-y-1/2',
+    arrowClass: 'top-0 left-1/2 -translate-x-1/2 -translate-y-1/2'
+  },
+  {
+    id: 'right',
+    title: 'Estrategia',
+    desc: 'Diseñamos la mejor ruta y definimos los pasos necesarios para alcanzar hitos.',
+    color: '#60a5fa',
+    glow: 'rgba(96, 165, 250, 0.35)',
+    icon: <Lightbulb className="w-5 h-5 md:w-6 md:h-6" />,
+    arrow: <ArrowDown className="w-4 h-4 md:w-5 md:h-5" />,
+    positionClass: 'right-[8%] top-1/2 -translate-y-1/2',
+    iconClass: 'bottom-[12.5%] right-[12.5%] translate-x-1/2 translate-y-1/2',
+    arrowClass: 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2'
+  },
+  {
+    id: 'bottom',
+    title: 'Ejecución',
+    desc: 'Implementamos la estrategia a través de nuestro equipo y procesos especializados.',
+    color: '#34d399',
+    glow: 'rgba(52, 211, 153, 0.35)',
+    icon: <Handshake className="w-5 h-5 md:w-6 md:h-6" />,
+    arrow: <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />,
+    positionClass: 'bottom-[8%] left-1/2 -translate-x-1/2',
+    iconClass: 'bottom-[12.5%] left-[12.5%] -translate-x-1/2 translate-y-1/2',
+    arrowClass: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2'
+  },
+  {
+    id: 'left',
+    title: 'Resultados',
+    desc: 'Medimos cada acción para lograr los mejores resultados y cumplir los objetivos.',
+    color: '#fbbf24',
+    glow: 'rgba(251, 191, 36, 0.35)',
+    icon: <BarChart2 className="w-5 h-5 md:w-6 md:h-6" />,
+    arrow: <ArrowUp className="w-4 h-4 md:w-5 md:h-5" />,
+    positionClass: 'left-[8%] top-1/2 -translate-y-1/2',
+    iconClass: 'top-[12.5%] left-[12.5%] -translate-x-1/2 -translate-y-1/2',
+    arrowClass: 'left-0 top-1/2 -translate-x-1/2 -translate-y-1/2'
+  }
+];
 
 function CompanySection() {
-  return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-18 pb-16 sm:pb-20 lg:pb-24 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-      <div className="flex flex-col items-start md:items-end order-last md:order-first">
-        <h1 className="font-aston text-[42px] sm:text-[60px] lg:text-[80px] font-normal mb-4 sm:mb-6 leading-[1.1] tracking-tight-custom text-white text-left md:text-right max-w-2xl">
-          Somos una empresa enfocada en Resultados
-        </h1>
+  const [activeId, setActiveId] = useState<string | null>(null);
 
-        <p className="font-montserrat text-soft-gray text-[16px] sm:text-[18px] lg:text-[20px] font-normal mb-4 leading-[1.4] max-w-2xl text-left md:text-right">
+  return (
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden">
+      
+      {/* Columna Izquierda: Textos */}
+      <div className="flex flex-col items-start lg:items-end order-last lg:order-first z-20">
+        <h2 className="font-aston text-[42px] sm:text-[60px] lg:text-[75px] font-normal mb-6 leading-[1.1] text-white text-left lg:text-right">
+          Somos una <span className="font-montserrat font-bold block">empresa</span>
+          <span className="font-montserrat font-bold block">enfocada en</span>
+          <span className="text-soft-gray block mt-2">Resultados</span>
+        </h2>
+
+        <p className="font-montserrat text-zinc-400 text-lg md:text-xl font-light max-w-xl text-left lg:text-right leading-relaxed">
           Creamos planes basados en tus objetivos, logrando resultados de crecimiento a corto, mediano y largo plazo.
         </p>
       </div>
 
-      <div className="relative flex items-center justify-center">
-        <img
-          src={CIRCLES}
-          alt="Network of top brands"
-          className="w-full h-auto max-w-[450px] sm:max-w-[451px] md:max-w-none lg:max-w-3xl"
-        />
+      {/* Columna Derecha: El Diagrama Circular */}
+      <div className="relative flex items-center justify-center min-h-[500px] md:min-h-[650px]">
+        
+        {/* Contenedor del Círculo */}
+        <div className="relative w-full max-w-[550px] aspect-square animate-slow-spin-container">
+          
+          {/* Orbes de fondo (Blobs) */}
+          <div className="absolute inset-0 opacity-20 blur-[100px] -z-10 animate-pulse">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-red-600 rounded-full" />
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-600 rounded-full" />
+          </div>
+
+          {/* Anillos Estructurales */}
+          <div className="absolute inset-0 rounded-full border-2 border-dashed border-white/10" />
+          <div className="absolute inset-[24%] rounded-full border border-dashed border-white/5" />
+
+          {/* Líneas Diagonales */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-45" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -rotate-45" />
+
+          {/* Isotipo Central */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 bg-[#0a0a0a] rounded-full flex items-center justify-center z-40 border border-white/10 shadow-2xl">
+            <img 
+              src="https://weprom.mx/wp-content/uploads/2024/10/ISOTIPODEGRADADO.png" 
+              alt="Logo" 
+              className="w-12 h-12 md:w-16 md:h-16 object-contain" 
+            />
+          </div>
+
+          {/* Mapeo de Tarjetas y Elementos */}
+          {STEPS.map((step) => (
+            <div key={step.id}>
+              {/* Tarjeta Glassmorphism */}
+              <div 
+                onMouseEnter={() => setActiveId(step.id)}
+                onMouseLeave={() => setActiveId(null)}
+                className={`absolute ${step.positionClass} w-[32%] aspect-square glass-card p-3 md:p-5 z-30 flex flex-col justify-center cursor-pointer transition-all duration-500 rounded-[1.5rem] border border-white/5 bg-white/[0.02] backdrop-blur-md`}
+                style={{ 
+                  //@ts-ignore
+                  '--hover-color': step.color,
+                  '--hover-glow': step.glow
+                }}
+              >
+                <h3 className="text-[12px] md:text-sm font-bold mb-1" style={{ color: step.color }}>{step.title}</h3>
+                <p className="text-[10px] md:text-[13px] text-zinc-400 leading-snug font-light">{step.desc}</p>
+              </div>
+
+              {/* Icono Diagonal */}
+              <div className={`absolute ${step.iconClass} z-40`}>
+                <div 
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0a0a0a] border-2 flex items-center justify-center shadow-lg transition-all duration-500"
+                  style={{ 
+                    borderColor: step.color, 
+                    color: step.color,
+                    boxShadow: activeId === step.id ? `0 0 20px ${step.glow}` : 'none'
+                  }}
+                >
+                  {step.icon}
+                </div>
+              </div>
+
+              {/* Flecha Indicadora */}
+              <div 
+                className={`absolute ${step.arrowClass} z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#111] border border-white/10 flex items-center justify-center transition-all duration-500`}
+                style={{ 
+                  borderColor: activeId === step.id ? step.color : 'rgba(255,255,255,0.1)',
+                  color: activeId === step.id ? step.color : 'rgba(255,255,255,0.3)',
+                  boxShadow: activeId === step.id ? `0 0 15px ${step.glow}` : 'none',
+                  transform: activeId === step.id ? `${step.arrowClass.includes('-translate-x-1/2') ? '-translate-x-1/2' : ''} ${step.arrowClass.includes('-translate-y-1/2') ? '-translate-y-1/2' : ''} scale(1.1)` : ''
+                }}
+              >
+                {step.arrow}
+              </div>
+            </div>
+          ))}
+
+        </div>
       </div>
     </section>
   );
