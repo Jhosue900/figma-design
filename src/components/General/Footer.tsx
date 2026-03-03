@@ -17,7 +17,7 @@ function Footer() {
               className="h-10 sm:h-12 mb-3 sm:mb-4"
             />
             <p className="text-gray-400 text-xs sm:text-sm max-w-[260px]">
-              Córdoba 2424-4, Providencia, 44630, Guadalajara, Jalisco.
+              C. Corrientes 3071, Colomos Providencia, 44630, Guadalaja, Jalisco.
             </p>
           </div>
 
