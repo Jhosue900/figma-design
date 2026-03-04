@@ -37,18 +37,16 @@ function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full flex justify-center pt-6 overflow-visible z-50">
-        {/* Efecto de luz */}
+      <header className="fixed top-0 left-0 w-full flex justify-center pt-6 px-4 sm:px-6 overflow-visible z-50">
+        {/* Efecto de luz - Ajustado para no causar desbordamiento */}
         <div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[600px] -z-10">
           <div className="absolute opacity-100 mix-blend-plus-lighter" style={{ width: 'min(935px, 90vw)', height: '795px', top: '-572px', left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0) 100%)', filter: 'blur(124px)' }} />
           <div className="absolute opacity-100 mix-blend-plus-lighter" style={{ width: 'min(625px, 70vw)', height: '795px', top: '-572px', left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(180.76deg, #FFFFFF 0.66%, rgba(255,255,255,0) 79.63%)', filter: 'blur(124px)' }} />
-          <div className="absolute opacity-100 mix-blend-plus-lighter" style={{ width: 'min(393px, 50vw)', height: '795px', top: '-572px', left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(180deg, #FFFFFF -4.46%, rgba(255,255,255,0.45) 32.54%, rgba(108,82,255,0) 99.95%)', filter: 'blur(88px)' }} />
         </div>
 
         <div ref={menuRef} className="w-full max-w-[962px]">
-          {/* Barra principal */}
-          <nav className="flex items-center justify-between bg-white/10 border border-white/20 backdrop-blur-xl shadow-lg rounded-[16px] px-8"
-              style={{ width: '962px', height: '56px' }}
+          {/* Barra principal - Eliminado width: '962px' fijo */}
+          <nav className="flex items-center justify-between bg-white/10 border border-white/20 backdrop-blur-xl shadow-lg rounded-[16px] px-6 sm:px-8 h-[56px] w-full"
           >
             
             {/* Logo */}
@@ -57,7 +55,7 @@ function Navbar() {
             </Link>
 
             {/* Links desktop */}
-            <div className="hidden md:flex items-center gap-6 lg:gap-10">
+            <div className="hidden md:flex items-center gap-4 lg:gap-10">
               {navLinks.map(({ label, path }) => (
                 <Link
                   key={label}
@@ -92,13 +90,13 @@ function Navbar() {
             </button>
           </nav>
 
-          {/* Menú desplegable móvil con transición suave */}
+          {/* Menú desplegable móvil */}
           <div
-            className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-              isOpen ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'
+            className={`md:hidden absolute left-4 right-4 transition-all duration-300 ease-in-out overflow-hidden ${
+              isOpen ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
             }`}
           >
-            <div className="bg-[#0d0d0d]/95 border border-white/10 backdrop-blur-xl rounded-2xl px-6 py-2 flex flex-col">
+            <div className="bg-[#0d0d0d]/95 border border-white/10 backdrop-blur-2xl rounded-2xl px-6 py-2 flex flex-col shadow-2xl">
               {navLinks.map(({ label, path }, i) => (
                 <Link
                   key={label}
@@ -117,7 +115,7 @@ function Navbar() {
               ))}
               <button
                 onClick={() => setIsOpen(false)}
-                className="my-4 bg-white text-black px-5 py-2.5 rounded-xl font-montserrat font-semibold text-[14px] hover:bg-gray-200 transition-all w-full"
+                className="my-4 bg-white text-black px-5 py-3 rounded-xl font-montserrat font-semibold text-[14px] active:scale-95 transition-all w-full"
               >
                 Contáctanos
               </button>

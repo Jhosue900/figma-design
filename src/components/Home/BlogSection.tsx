@@ -43,7 +43,7 @@ function BlogSection() {
             </h2>
             
             <p 
-              className="font-montserrat text-soft-gray max-w-2xl text-[15px] sm:text-[17px] lg:text-[18px]"
+              className="font-montserrat text-soft-gray max-w-3xl text-[20px] sm:text-[22px] lg:text-[23px]"
               style={{ lineHeight: '28px', letterSpacing: '0.01em' }}
             >
               Escribimos para los amantes de la creatividad, la publicidad y los negocios.
