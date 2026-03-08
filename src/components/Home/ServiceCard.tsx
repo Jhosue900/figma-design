@@ -51,7 +51,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none' }: ServiceCa
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative flex flex-col justify-between p-7 sm:p-8 overflow-hidden transition-all duration-200 ease-out group w-full max-w-[320px] mx-auto border border-white/10"
+      className="relative flex flex-col justify-between p-7 sm:p-8 overflow-hidden transition-all duration-500 ease-out group w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30"
       style={{
         minHeight: '420px',
         backgroundColor: '#121212', // Fondo oscuro para que luzca el efecto
@@ -59,11 +59,25 @@ function ServiceCard({ icon, title, description, blurColor = 'none' }: ServiceCa
       }}
     >
 
+      {/* Borde dinámico sutil (Hover Effect) */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.3), transparent 40%)`,
+          margin: '-1px', // Para que se alinee perfectamente con el borde
+          padding: '1px',
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
+          maskComposite: 'exclude',
+        }}
+      />
+
+
       {/* Nuevo Spotlight dinámico */}
       <div 
-        className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+        className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-35 transition-opacity duration-300"
         style={{
-          background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), ${blurStyles[blurColor] || 'white'} 0%, transparent 60%)`
+          background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), ${blurStyles[blurColor] || 'white'} 0%, transparent 40%)`
         }}
       />
 
@@ -73,13 +87,13 @@ function ServiceCard({ icon, title, description, blurColor = 'none' }: ServiceCa
         <img 
           src={greenBlur} 
           alt=""
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[400px] opacity-10 blur-[40px] pointer-events-none z-0 mix-blend-screen"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[400px] opacity-5 blur-[40px] pointer-events-none z-0 mix-blend-screen"
         />
       )}
 
       {blurColor !== 'green' && blurColor !== 'none' && (
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] blur-[10px] pointer-events-none z-0 opacity-10"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] blur-[10px] pointer-events-none z-0 opacity-5"
           style={{
             background: `radial-gradient(circle, ${blurStyles[blurColor]} 0%, transparent 70%)`
           }}
