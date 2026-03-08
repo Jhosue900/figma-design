@@ -42,7 +42,7 @@ function Services() {
       </p>
 
       {/* Grid: 1 col móvil, 2 tablet, 4 desktop — centrado */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-[1rem] justify-items-center">
         {services.map((service, index) => (
           <ServiceCard
             key={index}
