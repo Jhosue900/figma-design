@@ -22,7 +22,7 @@ function CallToAction() {
         <div className={`absolute -top-20 left-1/2 w-[2px] h-20 bg-gradient-to-b from-transparent to-white/20 -translate-x-1/2 transition-opacity duration-500 ${isOn ? 'opacity-100' : 'opacity-20'}`} />
 
         {isOn && (
-          <div className="absolute -top-10 left-1/2 w-48 sm:w-64 h-48 sm:h-64 bg-white/20 rounded-full blur-[80px] animate-light-pulse pointer-events-none" />
+          <div className="absolute -top-10 left-1/2 w-48 sm:w-64 h-48 sm:h-64 rounded-full blur-[10px] animate-light-pulse pointer-events-none" />
         )}
       
         <img 
@@ -30,7 +30,7 @@ function CallToAction() {
           alt="Logo" 
           className={`w-32 sm:w-44 h-auto object-contain relative z-10 transition-all duration-500 animate-lamp-swing origin-top rounded-full
             ${isOn 
-              ? 'brightness-125 drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]' 
+              ? 'brightness-125'
               : 'brightness-[0.2] grayscale'
             }
             group-hover:scale-105
