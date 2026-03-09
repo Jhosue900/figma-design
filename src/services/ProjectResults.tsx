@@ -149,21 +149,34 @@ function ProjectResults() {
         pagination={{ clickable: true }}
         navigation={true}
         modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
-        className="projects-swiper !pb-16"
+        className="projects-swiper !pb-16 pt-[1.6rem]"
       >
         {PROJECTS.map((project) => (
           <SwiperSlide key={project.id} className="max-w-[850px] w-[90%] opacity-30 transition-opacity duration-500 [&.swiper-slide-active]:opacity-100">
+
             <div 
               className="glass-card group relative overflow-hidden rounded-[2.5rem] p-6 md:p-8 flex flex-col md:row transition-all duration-500 border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/[0.07]"
               style={{ 
                 //@ts-ignore
                 '--brand-color': project.color,
-                '--brand-glow': project.glow 
+                '--brand-glow': project.glow,
+                // Esta línea es la que hace la magia del brillo exterior:
+                boxShadow: `0 0 0px transparent`,
+              }}
+              // Usamos onMouseEnter/Leave para manejar el brillo dinámicamente si Tailwind se resiste
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = `0 0 40px ${project.glow}`;
+                e.currentTarget.style.borderColor = project.color;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = `0 0 0px transparent`;
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
               }}
             >
+
               {/* Brillo dinámico en hover */}
               <div 
-                className="absolute -top-32 -right-32 w-72 h-72 rounded-full blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" 
+                className="absolute -top-32 -right-32 w-72 h-72 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"
                 style={{ backgroundColor: project.color }}
               />
               
