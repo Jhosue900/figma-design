@@ -1,5 +1,6 @@
+import React, { useEffect, useRef } from 'react';
 import NetworkImage from "../../images/atomoHD-2.webp";
-import iconHero     from "../../images/icon-hero.png";
+
 
 import LOGO1  from "../../images/Atomo/log1.png";
 import LOGO2  from "../../images/Atomo/log2.png";
@@ -34,47 +35,47 @@ interface LogoNode {
   size: number;
 }
 
+
+const CONFIG = {
+  velocidadGiro: 0.002,      // Ajustado para ser más elegante
+  areaGravedadCursor: 180,   // Radio de atracción del mouse
+  fuerzaAtraccion: 0.0004,
+  fuerzaRepulsion: 0.04,
+  colisionDist: 45,          // Distancia para que no se encimen
+};
+
+
 // ─── Node positions ───────────────────────────────────────────────────────────
 // Positions extracted programmatically from the actual PNG (485×482 px).
 // top/left = centre of each black circle node.
 
 const NODES: LogoNode[] = [
   { id:  1, src: LOGO1,  top:  18.3, left:  59.3, size: 9.5 }, //OK
-  { id:  2, src: LOGO2,  top:  91.5, left:  53.3, size: 11 }, //OK
+  { id:  2, src: LOGO2,  top:  90.8, left:  58.2, size: 11 }, //OK
   { id:  3, src: LOGO3,  top:  88.9, left:  40, size: 9 }, //OK
-  { id:  4, src: LOGO4,  top:  67.4, left:  41.9, size: 9.5 }, //OK
+  { id:  4, src: LOGO4,  top:  68.4, left:  42.9, size: 9.5 }, //OK
   { id:  5, src: LOGO5,  top:  65.2, left:  82.9, size: 9.5 },
-  { id:  6, src: LOGO6,  top: 83.9, left:  16.3, size: 10.5 }, //OK
-  { id:  7, src: LOGO7,  top:  59.0, left:   9.6, size: 10 }, //OK
+  { id:  6, src: LOGO6,  top: 85.0, left:  16.0, size: 10.5 }, //OK
+  { id:  7, src: LOGO7,  top:  59.0, left:   8.2, size: 10 }, //OK
   { id:  8, src: LOGO8,  top:  15.5, left:  74.0, size: 8 }, //OK
   { id:  9, src: LOGO9,  top:  56, left:  29.3, size: 9.7 }, //OK
   { id: 10, src: LOGO10, top:  42.3, left:  6.29, size: 8 }, //OK
   { id: 11, src: LOGO11, top:  18.2, left:  34.8, size: 9 }, //OK
-  { id: 12, src: LOGO12, top:  47.6, left:  68, size: 9 }, //OK
+  { id: 12, src: LOGO12, top:  49.0, left:  67, size: 9 }, //OK
   { id: 13, src: LOGO13, top:  50.2, left:  93.2, size: 9.5 }, //OK
   { id: 14, src: LOGO14, top:  30.0, left:  83, size: 10 }, //OK
-  { id: 15, src: LOGO15, top:  64.1, left:  62.9, size: 8.5 }, //OK
+  { id: 15, src: LOGO15, top:  63.0, left:  63.2, size: 8.5 }, //OK
   { id: 16, src: LOGO16, top:  42, left:  20.5, size: 9 }, //OK
   { id: 17, src: LOGO17, top:   6, left:  48, size: 9.5 }, //OK
   { id: 18, src: LOGO18, top:  37, left:  35.9, size: 9 }, //OK
   { id: 19, src: LOGO19, top:  33.2, left:  55.9, size: 10 }, //OK
-  { id: 20, src: LOGO20, top:  85.2, left:  77.0, size: 9.5 }, //OK
+  { id: 20, src: LOGO20, top:  85.0, left:  77.0, size: 9.5 }, //OK
   { id: 21, src: LOGO20, top:  18.7, left:  15.0, size: 9.5 }, //OK
 ];
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
-// ─── Styles ───────────────────────────────────────────────────────────────────
-
 const css = `
-  /* Micro-movimiento para simular un electrón vibrando/orbitando en su lugar */
-  @keyframes floatMicro {
-    0%, 100% { transform: translate(-50%, -50%) translateY(0) translateX(0); }
-    25% { transform: translate(-50%, -50%) translateY(-3px) translateX(2px); }
-    50% { transform: translate(-50%, -50%) translateY(2px) translateX(-2px); }
-    75% { transform: translate(-50%, -50%) translateY(3px) translateX(3px); }
-  }
-
   .atom-container {
     position: relative;
     width: 100%;
@@ -85,20 +86,16 @@ const css = `
     position: absolute;
     border-radius: 50%;
     overflow: hidden;
-    background: #111; /* Fondo del logo dentro del hueco */
+    background: #111;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* IMPORTANTE: Permitir interactividad para el hover */
     pointer-events: auto;
     cursor: pointer;
-    /* Transición súper suave tipo "bouncing" para el hover */
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                box-shadow 0.4s ease, 
-                border 0.4s ease,
-                background-color 0.4s ease;
+    /* Las transiciones visuales se mantienen, pero el movimiento (transform) lo delega a JS para 60fps */
+    transition: box-shadow 0.4s ease, border 0.4s ease, background-color 0.4s ease;
     border: 1px solid transparent;
-    animation: floatMicro 6s ease-in-out infinite;
+    will-change: transform; /* Optimización GPU */
   }
 
   .logo-chip img {
@@ -106,14 +103,13 @@ const css = `
     height: 70%;
     object-fit: contain;
     display: block;
-    transition: transform 0.4s ease;
+    /* Transición tipo resorte para el hover de la imagen interna */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   /* Efecto Hover Premium */
   .logo-chip:hover {
-    /* Escala el chip y detiene su posición para que el hover sea estable */
-    transform: translate(-50%, -50%) scale(1.35) !important;
-    z-index: 50; /* Lo trae al frente */
+    z-index: 50;
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15), 
                 0 0 15px rgba(255, 255, 255, 0.3) inset;
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -121,13 +117,106 @@ const css = `
   }
 
   .logo-chip:hover img {
-    transform: scale(1.15); /* Crece un poco más la imagen internamente */
+    /* Escalamos la imagen interna para no pelear con las físicas de JS del contenedor padre */
+    transform: scale(1.4); 
   }
 `;
 
 // ─── Component ────────────────────────────────────────────────────────────────
-
 export default function Hero() {
+  const containerRef = useRef(null);
+  const nodesRef = useRef([]);
+  const mouseRef = useRef({ x: -1000, y: -1000, active: false });
+  const physicsRef = useRef([]);
+
+  // Inicializar estado de físicas (velocidad y desfase de órbita)
+  if (physicsRef.current.length === 0) {
+    physicsRef.current = NODES.map((_, i) => ({
+      vx: 0,
+      vy: 0,
+      timeOffset: i * ((Math.PI * 2) / NODES.length) // Desfase para que no se muevan igual
+    }));
+  }
+
+  useEffect(() => {
+    let animationFrameId;
+    let time = 0;
+
+    const animate = () => {
+      time += 0.02; // Velocidad de la micro-órbita
+
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+
+        NODES.forEach((node, i) => {
+          const el = nodesRef.current[i];
+          const physics = physicsRef.current[i];
+          if (!el) return;
+
+          // 1. Posición base relativa al contenedor
+          const baseX = (node.left / 100) * rect.width;
+          const baseY = (node.top / 100) * rect.height;
+
+          // 2. Órbita local (gira suavemente dentro de su agujero)
+          const localRadius = 6; // px de radio de movimiento
+          const targetX = baseX + Math.cos(time + physics.timeOffset) * localRadius;
+          const targetY = baseY + Math.sin(time + physics.timeOffset) * localRadius;
+
+          // 3. Interacción magnética con el mouse
+          let mouseDx = 0;
+          let mouseDy = 0;
+          if (mouseRef.current.active) {
+            const dx = mouseRef.current.x - baseX;
+            const dy = mouseRef.current.y - baseY;
+            const dist = Math.hypot(dx, dy);
+            const interactionArea = 120; // Radio magnético del cursor
+
+            if (dist < interactionArea) {
+              // Atracción suave
+              const force = (interactionArea - dist) * 0.003;
+              mouseDx = dx * force;
+              mouseDy = dy * force;
+            }
+          }
+
+          // 4. Ecuación de resorte (Spring Physics)
+          physics.vx += (targetX + mouseDx - (baseX + physics.vx * 10)) * 0.02;
+          physics.vy += (targetY + mouseDy - (baseY + physics.vy * 10)) * 0.02;
+
+          // Fricción
+          physics.vx *= 0.88;
+          physics.vy *= 0.88;
+
+          // 5. Renderizado a 60fps
+          // Se mantiene el translate(-50%, -50%) para centrar, más el offset dinámico
+          el.style.transform = `translate(-50%, -50%) translate3d(${physics.vx * 10}px, ${physics.vy * 10}px, 0)`;
+        });
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleMouseMove = (e) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    mouseRef.current = {
+      x: clientX - rect.left,
+      y: clientY - rect.top,
+      active: true
+    };
+  };
+
+  const handleMouseLeave = () => {
+    mouseRef.current.active = false;
+  };
+
+
   return (
     <>
       <style>{css}</style>
@@ -157,7 +246,14 @@ export default function Hero() {
             aspectRatio: "1 / 1",
           }}>
 
-            <div className="atom-container">
+            <div 
+              className="atom-container"
+              ref={containerRef}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              onTouchMove={handleMouseMove}
+              onTouchEnd={handleMouseLeave}
+            >
               {/* Átomo PNG estático */}
               <img
                 src={NetworkImage}
@@ -167,32 +263,26 @@ export default function Hero() {
                   height:    "100%",
                   objectFit: "contain",
                   display:   "block",
+                  pointerEvents: "none" // Clave para que el PNG no bloquee la lectura del mouse
                 }}
               />
 
               {/* Logos de clientes dinámicos */}
-              {NODES.map((node, index) => {
-                // Cálculo de delay y duración para que parezca movimiento orgánico
-                const delay = (index * -0.5) + "s";
-                const duration = (5 + (index % 3)) + "s"; 
-
-                return (
-                  <div
-                    key={node.id}
-                    className="logo-chip"
-                    style={{
-                      top: `${node.top}%`,
-                      left: `${node.left}%`,
-                      width: `${node.size}%`,
-                      height: `${node.size}%`,
-                      animationDelay: delay,
-                      animationDuration: duration
-                    }}
-                  >
-                    <img src={node.src} alt={`Logo de cliente ${node.id}`} />
-                  </div>
-                );
-              })}
+              {NODES.map((node, index) => (
+                <div
+                  key={node.id}
+                  ref={(el) => (nodesRef.current[index] = el)}
+                  className="logo-chip"
+                  style={{
+                    top: `${node.top}%`,
+                    left: `${node.left}%`,
+                    width: `${node.size}%`,
+                    height: `${node.size}%`,
+                  }}
+                >
+                  <img src={node.src} alt={`Logo de cliente ${node.id}`} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
