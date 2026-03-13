@@ -224,16 +224,21 @@ export default function Hero() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[7rem] sm:pt-[8rem] lg:pt-[9rem] pb-2 sm:pb-2 lg:pb-24 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-4 items-center">
         
         {/* ── Text (Se mantiene igual) ── */}
-        <div>
+        <div className="flex flex-col items-center justify-center text-center md:block md:text-left">
           <h1 className="font-aston text-[48px] sm:text-[56px] lg:text-[70px] font-normal mb-2 leading-[1.1] tracking-tight-custom text-white">
             El Poder de las Grandes Marcas
           </h1>
           <p className="font-montserrat text-soft-gray text-[18px] sm:text-[20px] lg:text-[25px] font-medium mb-6 sm:mb-8 leading-[1.4] max-w-xl">
             Desarrollamos estrategias de marketing online y offline para elevar tu marca, producto o servicio, ayudándote a destacar por encima de la competencia.
           </p>
-          <div className="flex flex-wrap gap-3 sm:gap-4">
-             <button className="bg-gray-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:bg-gray-600 transition-colors">Get Started</button>
-             <button className="btn-gradient-border text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:opacity-80 transition-opacity">Learn More</button>
+          {/* Añadimos justify-center para que los botones también se centren en móvil */}
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
+            <button className="bg-gray-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:bg-gray-600 transition-colors">
+              Get Started
+            </button>
+            <button className="btn-gradient-border text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:opacity-80 transition-opacity">
+              Learn More
+            </button>
           </div>
         </div>
 
