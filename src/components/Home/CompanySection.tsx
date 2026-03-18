@@ -1,4 +1,4 @@
-import { BarChart2, Target, Lightbulb, Handshake, ArrowUp, ArrowRight, ArrowDown, ArrowLeft, Search } from 'lucide-react';
+import { BarChart2, Target, Lightbulb, Handshake, ArrowUp, ArrowRight, ArrowDown, ArrowLeft } from 'lucide-react';
 import { useState } from 'react';
 
 const STEPS = [
@@ -10,7 +10,7 @@ const STEPS = [
     glow: 'rgba(248, 113, 113, 0.35)',
     icon: <Target className="w-5 h-5 md:w-6 md:h-6" />,
     arrow: <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />,
-    positionClass: 'top-[8%] left-1/2 -translate-x-1/2',
+    positionClass: 'top-[5%] left-1/2 -translate-x-1/2',
     iconClass: 'top-[12.5%] right-[12.5%] translate-x-1/2 -translate-y-1/2',
     arrowClass: 'top-0 left-1/2 -translate-x-1/2 -translate-y-1/2'
   },
@@ -22,7 +22,7 @@ const STEPS = [
     glow: 'rgba(96, 165, 250, 0.35)',
     icon: <Lightbulb className="w-5 h-5 md:w-6 md:h-6" />,
     arrow: <ArrowDown className="w-4 h-4 md:w-5 md:h-5" />,
-    positionClass: 'right-[8%] top-1/2 -translate-y-1/2',
+    positionClass: 'right-[5%] top-1/2 -translate-y-1/2',
     iconClass: 'bottom-[12.5%] right-[12.5%] translate-x-1/2 translate-y-1/2',
     arrowClass: 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2'
   },
@@ -34,7 +34,7 @@ const STEPS = [
     glow: 'rgba(52, 211, 153, 0.35)',
     icon: <Handshake className="w-5 h-5 md:w-6 md:h-6" />,
     arrow: <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />,
-    positionClass: 'bottom-[8%] left-1/2 -translate-x-1/2',
+    positionClass: 'bottom-[5%] left-1/2 -translate-x-1/2',
     iconClass: 'bottom-[12.5%] left-[12.5%] -translate-x-1/2 translate-y-1/2',
     arrowClass: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2'
   },
@@ -46,7 +46,7 @@ const STEPS = [
     glow: 'rgba(251, 191, 36, 0.35)',
     icon: <BarChart2 className="w-5 h-5 md:w-6 md:h-6" />,
     arrow: <ArrowUp className="w-4 h-4 md:w-5 md:h-5" />,
-    positionClass: 'left-[8%] top-1/2 -translate-y-1/2',
+    positionClass: 'left-[5%] top-1/2 -translate-y-1/2',
     iconClass: 'top-[12.5%] left-[12.5%] -translate-x-1/2 -translate-y-1/2',
     arrowClass: 'left-0 top-1/2 -translate-x-1/2 -translate-y-1/2'
   }
@@ -65,7 +65,6 @@ function CompanySection() {
           <span className="font-montserrat font-bold block">enfocada en</span>
           <span className="text-soft-gray block mt-2">Resultados</span>
         </h2>
-
         <p className="font-montserrat text-zinc-400 text-lg md:text-xl font-light max-w-xl text-left lg:text-right leading-relaxed">
           Creamos planes basados en tus objetivos, logrando resultados de crecimiento a corto, mediano y largo plazo.
         </p>
@@ -74,12 +73,11 @@ function CompanySection() {
       {/* Columna Derecha: El Diagrama Circular */}
       <div className="relative flex items-center justify-center min-h-[500px] md:min-h-[650px]">
         
-        {/* Contenedor del Círculo */}
-        <div className="relative w-full max-w-[550px] aspect-square animate-slow-spin-container">
+        <div className="relative w-full max-w-[550px] aspect-square">
           
-          {/* Orbes de fondo (Blobs) */}
+          {/* Orbes de fondo */}
           <div className="absolute inset-0 opacity-20 blur-[100px] -z-10 animate-pulse">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-red-600 rounded-full" />
+            <div className="absolute top-0 right-0 w-greenfield h-40 bg-red-600 rounded-full" />
             <div className="absolute bottom-0 left-0 w-40 h-40 bg-amber-600 rounded-full" />
           </div>
 
@@ -101,51 +99,73 @@ function CompanySection() {
           </div>
 
           {/* Mapeo de Tarjetas y Elementos */}
-          {STEPS.map((step) => (
-            <div key={step.id}>
-              {/* Tarjeta Glassmorphism */}
-              <div 
-                onMouseEnter={() => setActiveId(step.id)}
-                onMouseLeave={() => setActiveId(null)}
-                className={`absolute ${step.positionClass} w-[32%] aspect-square glass-card p-3 md:p-5 z-30 flex flex-col justify-center cursor-pointer transition-all duration-500 rounded-[1.5rem] border border-white/5 bg-white/[0.02] backdrop-blur-md`}
-                style={{ 
-                  //@ts-ignore
-                  '--hover-color': step.color,
-                  '--hover-glow': step.glow
-                }}
-              >
-                <h3 className="text-[12px] md:text-sm font-bold mb-1" style={{ color: step.color }}>{step.title}</h3>
-                <p className="text-[10px] md:text-[13px] text-zinc-400 leading-snug font-light">{step.desc}</p>
-              </div>
+          {STEPS.map((step) => {
+            const isActive = activeId === step.id;
 
-              {/* Icono Diagonal */}
-              <div className={`absolute ${step.iconClass} z-40`}>
+            return (
+              <div key={step.id}>
+
+                {/* Tarjeta Glassmorphism */}
                 <div 
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0a0a0a] border-2 flex items-center justify-center shadow-lg transition-all duration-500"
-                  style={{ 
-                    borderColor: step.color, 
-                    color: step.color,
-                    boxShadow: activeId === step.id ? `0 0 20px ${step.glow}` : 'none'
+                  onMouseEnter={() => setActiveId(step.id)}
+                  onMouseLeave={() => setActiveId(null)}
+                  className={`absolute ${step.positionClass} w-[26%] aspect-square p-3 md:p-4 z-30 flex flex-col justify-center cursor-pointer rounded-[1.5rem] backdrop-blur-md`}
+                  style={{
+                    // Solo cambian propiedades visuales, NUNCA transform
+                    background: isActive ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.02)',
+                    border: `1px solid ${isActive ? step.color + '99' : 'rgba(255,255,255,0.05)'}`,
+                    boxShadow: isActive
+                      ? `0 0 40px 5px ${step.glow}, inset 0 0 20px ${step.glow}, 0 10px 30px -10px rgba(0,0,0,0.8)`
+                      : '0 10px 30px -10px rgba(0,0,0,0.5)',
+                    transition: 'background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease',
                   }}
                 >
-                  {step.icon}
+                  <h3 className="text-[12px] md:text-sm font-bold mb-1" style={{ color: step.color }}>
+                    {step.title}
+                  </h3>
+                  <p className="text-[10px] md:text-[13px] text-zinc-400 leading-snug font-light">
+                    {step.desc}
+                  </p>
                 </div>
-              </div>
 
-              {/* Flecha Indicadora */}
-              <div 
-                className={`absolute ${step.arrowClass} z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#111] border border-white/10 flex items-center justify-center transition-all duration-500`}
-                style={{ 
-                  borderColor: activeId === step.id ? step.color : 'rgba(255,255,255,0.1)',
-                  color: activeId === step.id ? step.color : 'rgba(255,255,255,0.3)',
-                  boxShadow: activeId === step.id ? `0 0 15px ${step.glow}` : 'none',
-                  transform: activeId === step.id ? `${step.arrowClass.includes('-translate-x-1/2') ? '-translate-x-1/2' : ''} ${step.arrowClass.includes('-translate-y-1/2') ? '-translate-y-1/2' : ''} scale(1.1)` : ''
-                }}
-              >
-                {step.arrow}
+                {/* Icono Diagonal */}
+                <div className={`absolute ${step.iconClass} z-40`}>
+                  <div 
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0a0a0a] border-2 flex items-center justify-center"
+                    style={{ 
+                      borderColor: step.color, 
+                      color: step.color,
+                      boxShadow: isActive ? `0 0 20px ${step.glow}` : 'none',
+                      transition: 'box-shadow 0.4s ease',
+                    }}
+                  >
+                    {step.icon}
+                  </div>
+                </div>
+
+                {/* Flecha Indicadora
+                    FIX CLAVE: Se elimina el `transform` inline en hover.
+                    El posicionado (translate) lo maneja Tailwind via arrowClass.
+                    Aquí solo se cambian propiedades visuales: borderColor, color, boxShadow.
+                */}
+                <div 
+                  className={`absolute ${step.arrowClass} z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#111] flex items-center justify-center`}
+                  style={{ 
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: isActive ? step.color : 'rgba(255,255,255,0.1)',
+                    color: isActive ? step.color : 'rgba(255,255,255,0.3)',
+                    boxShadow: isActive ? `0 0 15px ${step.glow}` : 'none',
+                    transition: 'border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease',
+                    // ❌ SIN transform aquí — Tailwind ya pone el translate correcto vía arrowClass
+                  }}
+                >
+                  {step.arrow}
+                </div>
+
               </div>
-            </div>
-          ))}
+            );
+          })}
 
         </div>
       </div>

@@ -1,4 +1,5 @@
 import BlogCard from './BlogCard';
+import CallToAction from './callToAction';
 
 const blogPosts = [
   {

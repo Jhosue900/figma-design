@@ -16,17 +16,17 @@ function Footer() {
               alt="Weprom"
               className="h-10 sm:h-12 mb-3 sm:mb-4"
             />
-            <p className="text-gray-400 text-xs sm:text-sm max-w-[260px]">
-              C. Corrientes 3071, Colomos Providencia, 44630, Guadalaja, Jalisco.
+            <p className="text-gray-400 text-xs sm:text-sm max-w-[380px]">
+              Un equipo multigeneracional, multidisciplinario y multicultural, experto en desarrollar estrategias de Marketing, Comunicación y Publicidad  Estratégica.
             </p>
           </div>
 
           {/* Social Media Icons */}
           <div className="flex gap-3 sm:gap-4">
-            <a href="https://twitter.com/weprom" target="_blank" rel="noopener noreferrer"
-              className="text-white hover:text-gray-300 transition-colors" aria-label="Twitter">
+            <a href="https://www.tiktok.com/@weprom" target="_blank" rel="noopener noreferrer"
+              className="text-white hover:text-gray-300 transition-colors" aria-label="TikTok">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
               </svg>
             </a>
             <a href="https://instagram.com/weprom" target="_blank" rel="noopener noreferrer"
@@ -123,15 +123,15 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@weprommexico.com" className="flex items-start gap-2 text-white hover:text-gray-300 transition-colors text-sm break-all">
+                <a href="mailto:contacto@weprommarketing.mx" className="flex items-start gap-2 text-white hover:text-gray-300 transition-colors text-sm break-all">
                   <Mail size={14} className="flex-shrink-0 mt-0.5" />
-                  <span>info@weprommexico.com</span>
+                  <span>contacto@weprommarketing.mx</span>
                 </a>
               </li>
               <li>
                 <div className="flex items-start gap-2 text-white text-sm">
                   <MapPin size={14} className="flex-shrink-0 mt-0.5" />
-                  <span>Córdoba 2424-4, Providencia, 44630, Guadalajara, Jalisco.</span>
+                  <span>C. Corrientes 3071, Colomos Providencia, 44630, Guadalajara, Jalisco.</span>
                 </div>
               </li>
             </ul>

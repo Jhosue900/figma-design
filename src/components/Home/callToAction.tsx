@@ -13,7 +13,7 @@ function CallToAction() {
   return (
     <section className={`w-full py-16 sm:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[400px] transition-colors duration-700 ${isOn ? 'bg-black' : 'bg-[#050505]'}`}>
       
-      {/* Lámpara interactiva */}
+      {/* Lámpara interactiva 
       <div 
         className="relative mb-8 sm:mb-10 cursor-pointer group"
         onClick={() => setIsOn(!isOn)}
@@ -40,15 +40,10 @@ function CallToAction() {
         <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] text-white/40 uppercase tracking-widest whitespace-nowrap">
           Click para {isOn ? 'Apagar' : 'Encender'}
         </div>
-      </div>
+      </div>*/}
 
       {/* Texto */}
-      <h2 
-        className={`font-aston text-center mb-3 sm:mb-4 antialiased max-w-[800px] transition-all duration-500 ${isOn ? 'text-white' : 'text-white/20'} text-[32px] sm:text-[40px] lg:text-[48px]`}
-        style={{ fontWeight: 400, lineHeight: '120%' }}
-      >
-        Construyamos algo increíble hoy
-      </h2>
+     
 
       <p 
         className={`font-montserrat text-center mb-6 sm:mb-8 antialiased max-w-[600px] transition-all duration-500 ${isOn ? 'text-white/80' : 'text-white/10'} text-[14px] sm:text-[16px]`}

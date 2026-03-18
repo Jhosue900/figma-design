@@ -17,12 +17,11 @@ function App() {
       <Hero />
       <BackedBy />
       <Services />
-      <AboutUs />
       <ProjectResults />
       <CompanySection />
-      <BlogSection />
-      <Testimonials/>
       <CallToAction />
+      <Testimonials/>
+      <BlogSection />
       <Footer />
     </div>
   );
