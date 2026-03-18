@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import NetworkImage from "../../images/atomoHD-2.webp";
-
+import { useEffect, useRef } from 'react';
 
 import LOGO1  from "../../images/Atomo/log1.png";
 import LOGO2  from "../../images/Atomo/log2.png";
@@ -25,63 +23,37 @@ import LOGO20 from "../../images/Atomo/log20.png";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-interface LogoNode {
-  id:   number;
-  src:  string;
-  /** % from top-left, pointing to the CENTER of each circle */
-  top:  number;
-  left: number;
-  /** diameter as % of container width */
-  size: number;
+interface FisicaNodo {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
 }
 
+interface MouseState {
+  x: number;
+  y: number;
+  activo: boolean;
+}
+
+// ─── Config ───────────────────────────────────────────────────────────────────
 
 const CONFIG = {
-  velocidadGiro: 0.002,      // Ajustado para ser más elegante
-  areaGravedadCursor: 180,   // Radio de atracción del mouse
-  fuerzaAtraccion: 0.0004,
-  fuerzaRepulsion: 0.04,
-  colisionDist: 45,          // Distancia para que no se encimen
+  escalaGlobal: 1.0,
+  grosorOrbita: 12,
+  tamañoLogoCentral: 140,
+  tamañoMinimoLogoCentral: 60,
+  tamañoLogoMarca: 120,
+  tamañoMinimoLogoMarca: 30,
+  radioAncho: 450,
+  radioAlto: 142,
+  velocidadGiro: 0.003,
+  areaGravedadCursor: 220,
 };
-
-
-// ─── Node positions ───────────────────────────────────────────────────────────
-// Positions extracted programmatically from the actual PNG (485×482 px).
-// top/left = centre of each black circle node.
-
-const NODES: LogoNode[] = [
-  { id:  1, src: LOGO1,  top:  18.3, left:  59.3, size: 9.5 }, //OK
-  { id:  2, src: LOGO2,  top:  90.8, left:  58.2, size: 11 }, //OK
-  { id:  3, src: LOGO3,  top:  88.9, left:  40, size: 9 }, //OK
-  { id:  4, src: LOGO4,  top:  68.4, left:  42.9, size: 9.5 }, //OK
-  { id:  5, src: LOGO5,  top:  65.2, left:  82.9, size: 9.5 },
-  { id:  6, src: LOGO6,  top: 85.0, left:  16.0, size: 10.5 }, //OK
-  { id:  7, src: LOGO7,  top:  59.0, left:   8.2, size: 10 }, //OK
-  { id:  8, src: LOGO8,  top:  15.5, left:  74.0, size: 8 }, //OK
-  { id:  9, src: LOGO9,  top:  56, left:  29.3, size: 9.7 }, //OK
-  { id: 10, src: LOGO10, top:  42.3, left:  6.29, size: 8 }, //OK
-  { id: 11, src: LOGO11, top:  18.2, left:  34.8, size: 9 }, //OK
-  { id: 12, src: LOGO12, top:  49.0, left:  67, size: 9 }, //OK
-  { id: 13, src: LOGO13, top:  50.2, left:  93.2, size: 9.5 }, //OK
-  { id: 14, src: LOGO14, top:  30.0, left:  83, size: 10 }, //OK
-  { id: 15, src: LOGO15, top:  63.0, left:  63.2, size: 8.5 }, //OK
-  { id: 16, src: LOGO16, top:  42, left:  20.5, size: 9 }, //OK
-  { id: 17, src: LOGO17, top:   6, left:  48, size: 9.5 }, //OK
-  { id: 18, src: LOGO18, top:  37, left:  35.9, size: 9 }, //OK
-  { id: 19, src: LOGO19, top:  33.2, left:  55.9, size: 10 }, //OK
-  { id: 20, src: LOGO20, top:  85.0, left:  77.0, size: 9.5 }, //OK
-  { id: 21, src: LOGO20, top:  18.7, left:  15.0, size: 9.5 }, //OK
-];
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const css = `
-  .atom-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
   .logo-chip {
     position: absolute;
     border-radius: 50%;
@@ -92,10 +64,10 @@ const css = `
     justify-content: center;
     pointer-events: auto;
     cursor: pointer;
-    /* Las transiciones visuales se mantienen, pero el movimiento (transform) lo delega a JS para 60fps */
-    transition: box-shadow 0.4s ease, border 0.4s ease, background-color 0.4s ease;
-    border: 1px solid transparent;
-    will-change: transform; /* Optimización GPU */
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    transition: box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+    will-change: left, top;
   }
 
   .logo-chip img {
@@ -103,127 +75,155 @@ const css = `
     height: 70%;
     object-fit: contain;
     display: block;
-    /* Transición tipo resorte para el hover de la imagen interna */
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  /* Efecto Hover Premium */
   .logo-chip:hover {
-    z-index: 50;
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15), 
-                0 0 15px rgba(255, 255, 255, 0.3) inset;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background: #1a1a1a;
+    z-index: 50 !important;
+    box-shadow: 0 8px 30px rgba(255,255,255,0.2), 0 0 18px rgba(255,255,255,0.12) inset;
+    border-color: rgba(255,255,255,0.45);
+    background: #1c1c1c;
   }
 
   .logo-chip:hover img {
-    /* Escalamos la imagen interna para no pelear con las físicas de JS del contenedor padre */
-    transform: scale(1.4); 
+    transform: scale(1.35);
   }
 `;
 
 // ─── Component ────────────────────────────────────────────────────────────────
-export default function Hero() {
-  const containerRef = useRef(null);
-  const nodesRef = useRef([]);
-  const mouseRef = useRef({ x: -1000, y: -1000, active: false });
-  const physicsRef = useRef([]);
 
-  // Inicializar estado de físicas (velocidad y desfase de órbita)
-  if (physicsRef.current.length === 0) {
-    physicsRef.current = NODES.map((_, i) => ({
-      vx: 0,
-      vy: 0,
-      timeOffset: i * ((Math.PI * 2) / NODES.length) // Desfase para que no se muevan igual
+export default function Hero() {
+  const contenedorRef = useRef<HTMLDivElement>(null);
+  const marcasRefs    = useRef<HTMLDivElement[]>([]);
+  const mouseRef      = useRef<MouseState>({ x: -1000, y: -1000, activo: false });
+  const fisicasRef    = useRef<FisicaNodo[]>([]);
+
+  const vbSize       = 1000 * CONFIG.escalaGlobal;
+  const centroX      = vbSize / 2;
+  const centroY      = vbSize / 2;
+  const radioX       = CONFIG.radioAncho * CONFIG.escalaGlobal;
+  const radioY       = CONFIG.radioAlto  * CONFIG.escalaGlobal;
+  const colisionDist = 95 * CONFIG.escalaGlobal;
+
+  const logosMarcas = [
+    LOGO1, LOGO2, LOGO3, LOGO4, LOGO5,
+    LOGO6, LOGO7, LOGO8, LOGO9, LOGO10,
+    LOGO11, LOGO12, LOGO13, LOGO14, LOGO15,
+    LOGO16, LOGO17, LOGO18, LOGO19, LOGO20,
+  ];
+
+  const t5      = (2 * Math.PI) / 5;
+  const orbitas = [
+    { angulo: 0,   nodos: [0, t5, t5*2, t5*3, t5*4] },
+    { angulo: 45,  nodos: [0, t5, t5*2, t5*3, t5*4] },
+    { angulo: 90,  nodos: [0, t5, t5*2, t5*3, t5*4] },
+    { angulo: 135, nodos: [0, t5, t5*2, t5*3, t5*4] },
+  ];
+
+  const nodosPlanos = orbitas.flatMap((orbita) => {
+    const theta = (orbita.angulo * Math.PI) / 180;
+    return orbita.nodos.map((desfase) => ({
+      desfase,
+      cosTheta: Math.cos(theta),
+      sinTheta: Math.sin(theta),
+    }));
+  });
+
+  if (fisicasRef.current.length === 0) {
+    fisicasRef.current = nodosPlanos.map(() => ({
+      x: centroX, y: centroY, vx: 0, vy: 0,
     }));
   }
 
   useEffect(() => {
-    let animationFrameId;
-    let time = 0;
+    let rafId: number;
+    let tiempoBase = 0;
 
-    const animate = () => {
-      time += 0.02; // Velocidad de la micro-órbita
+    const animar = () => {
+      tiempoBase += CONFIG.velocidadGiro;
 
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
+      nodosPlanos.forEach((nodo, i) => {
+        const f    = fisicasRef.current[i];
+        const tObj = tiempoBase + nodo.desfase;
 
-        NODES.forEach((node, i) => {
-          const el = nodesRef.current[i];
-          const physics = physicsRef.current[i];
-          if (!el) return;
+        const xOrb = radioX * Math.cos(tObj);
+        const yOrb = radioY * Math.sin(tObj);
+        const tx   = centroX + xOrb * nodo.cosTheta - yOrb * nodo.sinTheta;
+        const ty   = centroY + xOrb * nodo.sinTheta + yOrb * nodo.cosTheta;
 
-          // 1. Posición base relativa al contenedor
-          const baseX = (node.left / 100) * rect.width;
-          const baseY = (node.top / 100) * rect.height;
+        f.vx += (tx - f.x) * 0.03;
+        f.vy += (ty - f.y) * 0.03;
 
-          // 2. Órbita local (gira suavemente dentro de su agujero)
-          const localRadius = 6; // px de radio de movimiento
-          const targetX = baseX + Math.cos(time + physics.timeOffset) * localRadius;
-          const targetY = baseY + Math.sin(time + physics.timeOffset) * localRadius;
+        if (mouseRef.current.activo) {
+          const dx   = mouseRef.current.x - f.x;
+          const dy   = mouseRef.current.y - f.y;
+          const dist = Math.hypot(dx, dy);
+          const area = CONFIG.areaGravedadCursor * CONFIG.escalaGlobal;
+          if (dist < area) {
+            const fuerza = (area - dist) * 0.0003;
+            f.vx += dx * fuerza;
+            f.vy += dy * fuerza;
+          }
+        }
 
-          // 3. Interacción magnética con el mouse
-          let mouseDx = 0;
-          let mouseDy = 0;
-          if (mouseRef.current.active) {
-            const dx = mouseRef.current.x - baseX;
-            const dy = mouseRef.current.y - baseY;
-            const dist = Math.hypot(dx, dy);
-            const interactionArea = 120; // Radio magnético del cursor
-
-            if (dist < interactionArea) {
-              // Atracción suave
-              const force = (interactionArea - dist) * 0.003;
-              mouseDx = dx * force;
-              mouseDy = dy * force;
+        fisicasRef.current.forEach((o, j) => {
+          if (i !== j) {
+            const rx = f.x - o.x;
+            const ry = f.y - o.y;
+            const d  = Math.hypot(rx, ry);
+            if (d > 0 && d < colisionDist) {
+              const rep = (colisionDist - d) * 0.05;
+              f.vx += (rx / d) * rep;
+              f.vy += (ry / d) * rep;
             }
           }
-
-          // 4. Ecuación de resorte (Spring Physics)
-          physics.vx += (targetX + mouseDx - (baseX + physics.vx * 10)) * 0.02;
-          physics.vy += (targetY + mouseDy - (baseY + physics.vy * 10)) * 0.02;
-
-          // Fricción
-          physics.vx *= 0.88;
-          physics.vy *= 0.88;
-
-          // 5. Renderizado a 60fps
-          // Se mantiene el translate(-50%, -50%) para centrar, más el offset dinámico
-          el.style.transform = `translate(-50%, -50%) translate3d(${physics.vx * 10}px, ${physics.vy * 10}px, 0)`;
         });
-      }
-      animationFrameId = requestAnimationFrame(animate);
+
+        f.vx *= 0.85;
+        f.vy *= 0.85;
+        f.x  += f.vx;
+        f.y  += f.vy;
+
+        const el = marcasRefs.current[i];
+        if (el) {
+          el.style.left = `${(f.x / vbSize) * 100}%`;
+          el.style.top  = `${(f.y / vbSize) * 100}%`;
+        }
+      });
+
+      rafId = requestAnimationFrame(animar);
     };
 
-    animate();
-    return () => cancelAnimationFrame(animationFrameId);
+    animar();
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    if (!contenedorRef.current) return;
+    const rect = contenedorRef.current.getBoundingClientRect();
+    const escX = vbSize / rect.width;
+    const escY = vbSize / rect.height;
+    const cX   = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const cY   = 'touches' in e ? e.touches[0].clientY : e.clientY;
     mouseRef.current = {
-      x: clientX - rect.left,
-      y: clientY - rect.top,
-      active: true
+      x: (cX - rect.left) * escX,
+      y: (cY - rect.top)  * escY,
+      activo: true,
     };
   };
 
   const handleMouseLeave = () => {
-    mouseRef.current.active = false;
+    mouseRef.current.activo = false;
   };
-
 
   return (
     <>
       <style>{css}</style>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[7rem] sm:pt-[8rem] lg:pt-[9rem] pb-2 sm:pb-2 lg:pb-24 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-4 items-center">
-        
-        {/* ── Text (Se mantiene igual) ── */}
+
+        {/* ── Texto (sin cambios) ── */}
         <div className="flex flex-col items-center justify-center text-center md:block md:text-left">
           <h1 className="font-aston text-[48px] sm:text-[56px] lg:text-[70px] font-normal mb-2 leading-[1.1] tracking-tight-custom text-white">
             El Poder de las Grandes Marcas
@@ -231,63 +231,98 @@ export default function Hero() {
           <p className="font-montserrat text-soft-gray text-[18px] sm:text-[20px] lg:text-[25px] font-medium mb-6 sm:mb-8 leading-[1.4] max-w-xl">
             Desarrollamos estrategias de marketing online y offline para elevar tu marca, producto o servicio, ayudándote a destacar por encima de la competencia.
           </p>
-          {/* Añadimos justify-center para que los botones también se centren en móvil */}
           <div className="flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
             <button className="bg-gray-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:bg-gray-600 transition-colors">
               Get Started
             </button>
-            <button className="btn-gradient-border text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:opacity-80 transition-opacity">
+            <button className="btn-gradient-border text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:opacity-80 pointer-events-none transition-opacity">
               Learn More
             </button>
           </div>
         </div>
 
-        {/* ── Atom ── */}
+        {/* ── Átomo orbital ── */}
         <div className="relative flex items-center justify-center order-first md:order-last">
-          <div style={{
-            position:    "relative",
-            width:       "100%",
-            maxWidth:    "420px",
-            aspectRatio: "1 / 1",
-          }}>
+          <div style={{ position: "relative", width: "100%", maxWidth: "420px", aspectRatio: "1 / 1" }}>
 
-            <div 
-              className="atom-container"
-              ref={containerRef}
+            <div
+              ref={contenedorRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               onTouchMove={handleMouseMove}
               onTouchEnd={handleMouseLeave}
+              style={{ position: "relative", width: "100%", height: "100%" }}
             >
-              {/* Átomo PNG estático */}
-              <img
-                src={NetworkImage}
-                alt="Network of top brands"
-                style={{
-                  width:     "100%",
-                  height:    "100%",
-                  objectFit: "contain",
-                  display:   "block",
-                  pointerEvents: "none" // Clave para que el PNG no bloquee la lectura del mouse
-                }}
-              />
 
-              {/* Logos de clientes dinámicos */}
-              {NODES.map((node, index) => (
+              {/* ── Órbitas SVG ── */}
+              <svg
+                viewBox={`0 0 ${vbSize} ${vbSize}`}
+                style={{
+                  position: "absolute", inset: 0,
+                  width: "100%", height: "100%",
+                  pointerEvents: "none",
+                }}
+              >
+                {orbitas.map((orbita, i) => (
+                  <g
+                    key={i}
+                    transform={`translate(${centroX} ${centroY}) rotate(${orbita.angulo}) scale(1, ${radioY / radioX})`}
+                  >
+                    <circle cx={0} cy={0} r={radioX}
+                      fill="none"
+                      stroke="rgba(255,255,255,0.06)"
+                      strokeWidth={CONFIG.grosorOrbita * CONFIG.escalaGlobal * 2.8}
+                    />
+                    <circle cx={0} cy={0} r={radioX}
+                      fill="none"
+                      stroke="rgba(255,255,255,0.72)"
+                      strokeWidth={CONFIG.grosorOrbita * CONFIG.escalaGlobal * 0.28}
+                    />
+                  </g>
+                ))}
+              </svg>
+
+              {/* ── Logo central ── */}
+              <div style={{
+                position: "absolute",
+                left: "50%", top: "50%",
+                transform: "translate(-50%, -50%)",
+                width:  `max(${CONFIG.tamañoMinimoLogoCentral}px, ${(CONFIG.tamañoLogoCentral / 1000) * 100}%)`,
+                height: `max(${CONFIG.tamañoMinimoLogoCentral}px, ${(CONFIG.tamañoLogoCentral / 1000) * 100}%)`,
+                background: "radial-gradient(circle, #1a1a1a 55%, #000)",
+                borderRadius: "50%",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                zIndex: 10,
+                border: "1px solid rgba(255,255,255,0.15)",
+                boxShadow: "0 0 40px rgba(255,255,255,0.1)",
+              }}>
+                <img
+                  src="https://weprom.mx/wp-content/uploads/2024/10/ISOTIPODEGRADADO.png"
+                  alt="Weprom"
+                  style={{ width: "75%", height: "75%", objectFit: "contain" }}
+                />
+              </div>
+
+              {/* ── Nodos de marcas ── */}
+              {nodosPlanos.map((_, i) => (
                 <div
-                  key={node.id}
-                  ref={(el) => (nodesRef.current[index] = el)}
+                  key={i}
+                  ref={(el) => { if (el) marcasRefs.current[i] = el; }}
                   className="logo-chip"
                   style={{
-                    top: `${node.top}%`,
-                    left: `${node.left}%`,
-                    width: `${node.size}%`,
-                    height: `${node.size}%`,
+                    zIndex: 20,
+                    transform: "translate(-50%, -50%)",
+                    width:  `max(${CONFIG.tamañoMinimoLogoMarca}px, ${(CONFIG.tamañoLogoMarca / 1000) * 100}%)`,
+                    height: `max(${CONFIG.tamañoMinimoLogoMarca}px, ${(CONFIG.tamañoLogoMarca / 1000) * 100}%)`,
                   }}
                 >
-                  <img src={node.src} alt={`Logo de cliente ${node.id}`} />
+                  <img
+                    src={logosMarcas[i % logosMarcas.length]}
+                    alt={`Marca ${i + 1}`}
+                  />
                 </div>
               ))}
+
             </div>
           </div>
         </div>

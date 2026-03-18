@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import LogoWeProm from '../../images/LOGOLISOBLANCO.png';
+import LogoWeProm from '../../images/OFICIALLOGO.png';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
@@ -137,3 +137,10 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
+
+
+
+
+
