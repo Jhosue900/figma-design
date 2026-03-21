@@ -1,3 +1,6 @@
+import LogoIcon from "../../images/ISOTIPODEGRADADO.png";
+
+
 import { BarChart2, Target, Lightbulb, Handshake, ArrowUp, ArrowRight, ArrowDown, ArrowLeft } from 'lucide-react';
 import { useState } from 'react';
 
@@ -56,7 +59,7 @@ function CompanySection() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden">
       
       {/* Columna Izquierda: Textos */}
       <div className="flex flex-col items-start lg:items-end order-last lg:order-first z-20">
@@ -92,7 +95,7 @@ function CompanySection() {
           {/* Isotipo Central */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 bg-[#0a0a0a] rounded-full flex items-center justify-center z-40 border border-white/10 shadow-2xl">
             <img 
-              src="https://weprom.mx/wp-content/uploads/2024/10/ISOTIPODEGRADADO.png" 
+              src={LogoIcon} 
               alt="Logo" 
               className="w-12 h-12 md:w-16 md:h-16 object-contain" 
             />

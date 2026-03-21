@@ -4,12 +4,18 @@ export default {
   theme: {
     extend: {
 
+      backgroundImage: {
+        'border-grad': "linear-gradient(90deg, #DA3731 0%, #A84E59 10%, #56759C 20%, #3883B5 30%, #1096D6 40%, #069BDE 50%, #039DE1 60%, #9EB35D 80%, #E9B039 90%, #F7B033 100%)",
+      },
+
       animation: {
         'spin-slow': 'spin 20s linear infinite',
         'shine': 'shine 3s infinite',
         'float': 'float 3s ease-in-out infinite',
         'lamp-swing': 'lamp-swing 3s ease-in-out infinite',
         'light-pulse': 'light-pulse 2s infinite',
+
+        'blob': 'blob 10s infinite',
       },
 
       keyframes: {
@@ -30,10 +36,16 @@ export default {
         'light-pulse': {
           '0%, 100%': { opacity: 0.6, transform: 'scale(1) translateX(-50%)' },
           '50%': { opacity: 0.9, transform: 'scale(1.1) translateX(-50%)' },
-        }
+        },
+
+        blob: {
+          '0%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+          '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        },
 
       },
-
 
       fontFamily: {
         aston: ['Astonpoliz', 'sans-serif'],
@@ -44,6 +56,11 @@ export default {
       colors: {
         'event-bg': 'rgba(153, 160, 174, 0.1)',
         'soft-gray': '#CACFD8',
+
+        'agency-red': '#DA3731',
+        'agency-blue': '#1096D6',
+        'agency-green': '#9EB35D',
+        'agency-yellow': '#F7B033',
       },
 
       borderRadius: {

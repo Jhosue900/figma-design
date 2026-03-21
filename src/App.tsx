@@ -6,6 +6,8 @@ import Blog from './pages/Blog'
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+import InteractiveBackground from './components/General/InteractiveBackground';
+
 function App() {
 
   const [loading, setLoading] = useState(true);
@@ -20,18 +22,22 @@ function App() {
     return <Loader />;
   }
 
-
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/nosotros" element={<About />} />
-      <Route path="/servicios" element={<Services />} />
-      <Route path="/blog" element={<Blog />} />
-    </Routes>
+    <>
+      <InteractiveBackground />
 
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/nosotros" element={<About />} />
+        <Route path="/servicios" element={<Services />} />
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
+    </>
   );
 }
 
 
 
 export default App;
+
+

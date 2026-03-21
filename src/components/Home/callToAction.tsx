@@ -11,7 +11,7 @@ function CallToAction() {
   };
 
   return (
-    <section className={`w-full py-16 sm:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[400px] transition-colors duration-700 ${isOn ? 'bg-black' : 'bg-[#050505]'}`}>
+    <section className={`w-full py-2 sm:py-4 px-4 sm:px-6 lg:px-2 flex flex-col items-center justify-center min-h-[300px] transition-colors duration-700 ${isOn ? 'bg-transparent' : 'bg-[#050505]'}`}>
       
       {/* Lámpara interactiva 
       <div 

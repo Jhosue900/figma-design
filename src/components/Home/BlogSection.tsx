@@ -30,7 +30,7 @@ const blogPosts = [
 
 function BlogSection() {
   return (
-    <section className="w-full py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-black">
+    <section className="w-full pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Header — apilado en móvil, horizontal en desktop */}

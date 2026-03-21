@@ -21,6 +21,9 @@ import LOGO18 from "../../images/Atomo/log18.png";
 import LOGO19 from "../../images/Atomo/log19.png";
 import LOGO20 from "../../images/Atomo/log20.png";
 
+import LogoIcon from "../../images/ISOTIPODEGRADADO.png";
+
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface FisicaNodo {
@@ -231,14 +234,25 @@ export default function Hero() {
           <p className="font-montserrat text-soft-gray text-[18px] sm:text-[20px] lg:text-[25px] font-medium mb-6 sm:mb-8 leading-[1.4] max-w-xl">
             Desarrollamos estrategias de marketing online y offline para elevar tu marca, producto o servicio, ayudándote a destacar por encima de la competencia.
           </p>
+
           <div className="flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
-            <button className="bg-gray-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:bg-gray-600 transition-colors">
+            <button className="bg-white text-black hover:bg-gray-200 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-semibold text-[14px] sm:text-[16px] transition-all active:scale-95">
               Get Started
             </button>
-            <button className="btn-gradient-border text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-medium text-[14px] sm:text-[16px] hover:opacity-80 pointer-events-none transition-opacity">
-              Learn More
+            
+            <button className="relative p-[1.5px] inline-flex items-center justify-center overflow-hidden rounded-full group active:scale-95 transition-transform">
+              {/* Capa del Gradiente (Fondo que actúa como borde) */}
+              <span className="absolute inset-0 bg-border-grad"></span>
+              
+              {/* Cuerpo del botón (Negro) */}
+              <span className="relative px-6 sm:px-8 py-2.5 sm:py-3 transition-all duration-200 bg-black rounded-full group-hover:bg-opacity-80">
+                <span className="relative text-white font-montserrat font-medium text-[14px] sm:text-[16px]">
+                  Learn More
+                </span>
+              </span>
             </button>
           </div>
+
         </div>
 
         {/* ── Átomo orbital ── */}
@@ -297,7 +311,7 @@ export default function Hero() {
                 boxShadow: "0 0 40px rgba(255,255,255,0.1)",
               }}>
                 <img
-                  src="https://weprom.mx/wp-content/uploads/2024/10/ISOTIPODEGRADADO.png"
+                  src={LogoIcon}
                   alt="Weprom"
                   style={{ width: "75%", height: "75%", objectFit: "contain" }}
                 />

@@ -12,16 +12,17 @@ import Testimonials from '../components/Home/Testimonial'
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-transparent text-white">
       <Navbar />
       <Hero />
       <BackedBy />
       <Services />
       <ProjectResults />
       <CompanySection />
-      <CallToAction />
+      
       <Testimonials/>
       <BlogSection />
+      <CallToAction />
       <Footer />
     </div>
   );
