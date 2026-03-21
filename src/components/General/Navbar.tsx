@@ -51,7 +51,7 @@ function Navbar() {
             
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0">
-              <img src={LogoWeProm} alt="WeProm Logo" className="h-8 sm:h-10 w-auto" />
+              <img src={LogoWeProm} alt="WeProm Logo" className="h-[2.3rem] sm:h-[2.2rem] w-auto" />
             </Link>
 
             {/* Links desktop */}

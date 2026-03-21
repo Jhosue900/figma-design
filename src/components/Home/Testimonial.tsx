@@ -186,7 +186,7 @@ function TestimonialsSection() {
   );
 
   return (
-    <section className="w-full py-14 sm:py-24 bg-black overflow-hidden">
+    <section className="w-full py-14 sm:py-24 bg-transparent overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-12">
         
         {/* Header - Texto que ya tenías */}

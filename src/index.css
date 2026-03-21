@@ -27,18 +27,12 @@ body {
 
 #root {
   overflow-x: hidden;
+  
 }
 
 /* =============================================
    Botón con borde degradado
    ============================================= */
-.btn-gradient-border {
-  border: 1px solid transparent;
-  background: linear-gradient(#000, #000) padding-box, 
-              linear-gradient(90deg, #DA3731 -0.11%, #A84E59 9.92%, #56759C 19.94%, #3883B5 29.96%, #1096D6 39.98%, #069BDE 50%, #039DE1 60.02%, #9EB35D 80.06%, #E9B039 90.08%, #F7B033 100.11%) border-box;
-}
-
-
 
 /* Swiper Customization */
 .projects-swiper .swiper-pagination-bullet {
@@ -54,9 +48,9 @@ body {
 
 .projects-swiper .swiper-button-next,
 .projects-swiper .swiper-button-prev {
-  color: white !important;
+  color: #ffffff !important;
   transform: scale(0.6);
-  background: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05) !important;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -107,3 +101,33 @@ body {
 
 
 
+/* src/index.css */
+
+.bg-grain {
+  position: relative;
+}
+
+.bg-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50; /* Por encima de todo pero sin bloquear clicks */
+  opacity: 0.04; /* Muy sutil */
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(150%) brightness(100%);
+}
+
+
+/* src/index.css */
+.glass-card:hover {
+  border-color: var(--brand-color) !important;
+  box-shadow: 0 0 50px -10px var(--brand-glow) !important;
+}
+
+/* Efecto suave para las imágenes de las tarjetas */
+.glass-card img {
+  pointer-events: none;
+}
