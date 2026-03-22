@@ -1,5 +1,7 @@
 import BlogCard from './BlogCard';
-import CallToAction from './callToAction';
+import { useState } from 'react';
+import logoImage from '../../images/ISOTIPE.png';
+
 
 const blogPosts = [
   {
@@ -29,22 +31,54 @@ const blogPosts = [
 ];
 
 function BlogSection() {
+
+  const [isOn, setIsOn] = useState(true);
+
   return (
-    <section className="w-full pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 bg-transparent">
+    <section className={`w-full pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 transition-colors duration-700 ${isOn ? 'bg-transparent' : 'bg-[#050505]'}`}>
       <div className="max-w-[1400px] mx-auto">
+
+        {/* 2. Bloque de la Lámpara - Ahora encima del H2 */}
+            <div 
+              className="relative mb-8 sm:mb-12 cursor-pointer group flex flex-col items-center justify-center w-full"
+              onClick={() => setIsOn(!isOn)}
+              title={isOn ? "Apagar luz" : "Encender luz"}
+            >
+              <div className={`absolute -top-20 left-1/2 w-[2px] h-20 bg-gradient-to-b from-transparent to-white/20 -translate-x-1/2 transition-opacity duration-500 ${isOn ? 'opacity-100' : 'opacity-20'}`} />
+
+              {isOn && (
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 sm:w-64 h-48 sm:h-64 rounded-full blur-[80px] bg-white/10 animate-light-pulse pointer-events-none" />
+              )}
+            
+              <img 
+                src={logoImage} 
+                alt="Logo" 
+                className={`w-24 sm:w-[10rem] h-auto object-contain relative z-10 transition-all duration-500 animate-lamp-swing origin-top rounded-full
+                  ${isOn ? 'brightness-125' : 'brightness-[0.2] grayscale'}
+                  group-hover:scale-105
+                `}
+              />
+
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] text-white/40 uppercase tracking-widest whitespace-nowrap">
+                Click para {isOn ? 'Apagar' : 'Encender'}
+              </div>
+            </div>
+
         
-        {/* Header — apilado en móvil, horizontal en desktop */}
         <div className="mb-10 sm:mb-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8">
           <div className="text-left flex-1">
+
+            
+
             <h2 
-              className="font-aston text-white mb-3 sm:mb-4 leading-tight text-[36px] sm:text-[44px] lg:text-[56px]"
+              className={`font-aston mb-3 sm:mb-4 transition-colors duration-500 leading-tight text-[36px] sm:text-[44px] lg:text-[56px] ${isOn ? 'text-white' : 'text-white/20'}`}
               style={{ fontWeight: 400, letterSpacing: '-0.02em' }}
             >
               Lo último en el mundo del Marketing.
             </h2>
             
             <p 
-              className="font-montserrat text-soft-gray max-w-3xl text-[20px] sm:text-[22px] lg:text-[23px]"
+              className={`font-montserrat max-w-3xl transition-colors duration-500 text-[20px] sm:text-[22px] lg:text-[23px] ${isOn ? 'text-soft-gray' : 'text-white/10'}`}
               style={{ lineHeight: '28px', letterSpacing: '0.01em' }}
             >
               Escribimos para los amantes de la creatividad, la publicidad y los negocios.
