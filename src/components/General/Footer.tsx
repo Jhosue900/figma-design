@@ -4,7 +4,7 @@ import WepromLogo from '../../images/LOGOLISOBLANCO.png';
 
 function Footer() {
   return (
-    <footer className="bg-black text-white pt-12 sm:pt-16 pb-8">
+    <footer className="bg-transparent text-white pt-12 sm:pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Top Section */}

@@ -10,24 +10,35 @@ import InteractiveBackground from './components/General/InteractiveBackground';
 
 function App() {
 
+  const [showLoader, setShowLoader] = useState(true);
+
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // 1. Cuando la barra llega al final, marcamos que ya no está "cargando"
+    const timerLoading = setTimeout(() => {
       setLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
+    }, 1500); // Tiempo aproximado en que la barra llega al 100%
+
+    // 2. Tiempo para eliminar el Loader del DOM después de su animación de subida
+    const timerShow = setTimeout(() => {
+      setShowLoader(false); 
+    }, 2800); 
+
+    return () => {
+      clearTimeout(timerLoading);
+      clearTimeout(timerShow);
+    };
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
 
   return (
     <>
+      {showLoader && <Loader />}
       <InteractiveBackground />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isLoading={loading} />} />
         <Route path="/nosotros" element={<About />} />
         <Route path="/servicios" element={<Services />} />
         <Route path="/blog" element={<Blog />} />

@@ -97,6 +97,7 @@ const css = `
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Hero() {
+  
   const contenedorRef = useRef<HTMLDivElement>(null);
   const marcasRefs    = useRef<HTMLDivElement[]>([]);
   const mouseRef      = useRef<MouseState>({ x: -1000, y: -1000, activo: false });
