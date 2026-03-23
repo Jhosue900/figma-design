@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logoImage from "../../images/LOGOLISOBLANCO.png";
+import logoImage from "../../images/OFICIALLOGO.png";
 
 export default function Loader() {
   const [progress, setProgress] = useState(0);
@@ -7,223 +7,121 @@ export default function Loader() {
 
   useEffect(() => {
     let value = 0;
-
     const interval = setInterval(() => {
-      value += Math.random() * 12;
-
+      // Simulación de carga fluida
+      value += Math.random() * 15;
       if (value >= 100) {
         value = 100;
         clearInterval(interval);
-
-        setTimeout(() => {
-          setIsExiting(true);
-        }, 500);
+        setTimeout(() => setIsExiting(true), 200);
       }
-
       setProgress(value);
-    }, 180);
-
+    }, 80);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black transition-transform duration-[1200ms] ease-[cubic-bezier(.22,1,.36,1)]
-      ${isExiting ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+
+      className={`fixed inset-0 z-[10000] flex items-center justify-center bg-[#030303] overflow-hidden transition-transform duration-[1100ms] ease-[cubic-bezier(0.85,0,0.15,1)] ${isExiting ? "-translate-y-full" : "translate-y-0"}`}
+
     >
-      {/* GRID BACKGROUND */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
+      {/* AURAS DE MARCA (Creatividad moderna) */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-600/10 blur-[140px] animate-pulse-slow" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-red-600/10 blur-[140px] animate-pulse-slow" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-[30%] left-[40%] w-[30%] h-[30%] bg-emerald-500/5 blur-[120px]" />
+      </div>
 
-      {/* RADIAL GLOW */}
-      <div className="absolute w-[600px] h-[600px] rounded-full bg-white/5 blur-[140px] animate-pulse-glow" />
+      {/* RUIDO TEXTURIZADO (Efecto papel/premium) */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-      <div className="relative flex flex-col items-center gap-12">
-
-        {/* LOGO */}
-        <div className="relative flex items-center justify-center">
-
-          <div className="absolute w-72 h-72 bg-white/10 rounded-full blur-3xl animate-logo-glow" />
-
-          <img
-            src={logoImage}
-            alt="weprom marketing"
-            className="w-56 md:w-64 object-contain opacity-0 animate-logo-in relative"
-          />
-
-          {/* SIDE LINES */}
-          <div className="absolute top-1/2 -left-40 w-32 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent animate-line-left"></div>
-          <div className="absolute top-1/2 -right-40 w-32 h-[1px] bg-gradient-to-l from-transparent via-white/30 to-transparent animate-line-right"></div>
-        </div>
-
-        {/* TEXT + PROGRESS */}
-        <div className="flex flex-col items-center gap-6 opacity-0 animate-text-in">
-
-          <div className="flex flex-col items-center gap-1">
-            <h2 className="font-aston text-white text-3xl tracking-tight">
-              weprom
-            </h2>
-
-            <p className="font-montserrat text-white/50 text-xs tracking-[0.35em] uppercase">
-              Marketing
-            </p>
+      <div className="relative flex flex-col items-center">
+        
+        {/* CONTENEDOR DE LOGO */}
+        <div className="relative mb-16">
+          <div className="relative overflow-hidden group">
+            <img
+              src={logoImage}
+              alt="We Prom Marketing"
+              className={`w-64 md:w-80 object-contain transition-all duration-1000 ease-out
+              ${progress > 10 ? 'opacity-100 translate-y-0 filter-none' : 'opacity-0 translate-y-8 blur-lg'}`}
+            />
+            
+            {/* Barrido de luz diagonal (Interactive look) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full animate-light-sweep" />
           </div>
 
-          {/* PROGRESS BAR */}
-          <div className="flex flex-col items-center gap-3 w-72">
+          {/* Destello central sutil */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-white/5 blur-3xl rounded-full animate-logo-glow" />
+        </div>
 
-            <div className="w-full h-[3px] bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
-              <div
-                className="h-full transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]"
-                style={{
-                  width: `${progress}%`,
-                  background:
-                    "linear-gradient(90deg,#EF4444,#3B82F6,#10B981,#F59E0B)",
-                  boxShadow:
-                    "0 0 20px rgba(59,130,246,0.45),0 0 30px rgba(16,185,129,0.25)",
-                }}
-              />
+        {/* BARRA DE PROGRESO "ARTÍSTICA" */}
+        <div className="w-72 md:w-96 flex flex-col gap-4">
+          <div className="relative">
+            {/* Línea de fondo */}
+            <div className="h-[1px] w-full bg-white/10" />
+            
+            {/* Línea de progreso cromática */}
+            <div 
+              className="absolute top-0 left-0 h-[1px] transition-all duration-500 ease-out flex shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+              style={{ width: `${progress}%` }}
+            >
+              {/* Degradado de los 4 colores de la marca */}
+              <div className="w-1/4 h-full bg-red-500" />
+              <div className="w-1/4 h-full bg-blue-500" />
+              <div className="w-1/4 h-full bg-emerald-500" />
+              <div className="w-1/4 h-full bg-yellow-500" />
             </div>
+          </div>
 
-            <p className="font-montserrat text-white/40 text-[11px] tracking-widest uppercase">
-              Preparando experiencia
-            </p>
+          <div className="flex justify-between items-baseline">
+            <div className="flex flex-col">
+              <span className="text-[10px] text-white/30 uppercase tracking-[0.4em] font-montserrat">
+                We Prom Marketing
+              </span>
+              <span className="text-[8px] text-white/10 uppercase tracking-[0.2em]">
+                Creative Studio &copy; 2026
+              </span>
+            </div>
+            <div className="flex items-end gap-1">
+              <span className="text-xl font-aston text-white leading-none">
+                {Math.round(progress)}
+              </span>
+              <span className="text-[10px] text-white/40 font-mono mb-[2px]">%</span>
+            </div>
           </div>
         </div>
       </div>
 
       <style>{`
-
-      /* LOGO ENTRANCE */
-
-      @keyframes logo-in {
-        0%{
-          opacity:0;
-          transform:translateY(-30px) scale(.92);
+        @keyframes light-sweep {
+          0% { transform: translateX(-150%) skewX(-12deg); }
+          50% { transform: translateX(200%) skewX(-12deg); }
+          100% { transform: translateX(200%) skewX(-12deg); }
         }
 
-        60%{
-          opacity:1;
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.6; transform: scale(1.1); }
         }
 
-        100%{
-          opacity:1;
-          transform:translateY(0) scale(1);
-        }
-      }
-
-      .animate-logo-in{
-        animation:logo-in 1.2s cubic-bezier(.22,1,.36,1) forwards;
-      }
-
-
-      /* TEXT */
-
-      @keyframes text-in {
-        0%,40%{
-          opacity:0;
-          transform:translateY(20px);
+        @keyframes logo-glow {
+          0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(0.8); }
+          50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
         }
 
-        100%{
-          opacity:1;
-          transform:translateY(0);
-        }
-      }
-
-      .animate-text-in{
-        animation:text-in 1.6s cubic-bezier(.22,1,.36,1) forwards;
-      }
-
-
-      /* SIDE LINES */
-
-      @keyframes line-left{
-        0%{
-          opacity:0;
-          transform:translateX(-40px);
+        .animate-light-sweep {
+          animation: light-sweep 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        100%{
-          opacity:1;
-          transform:translateX(0);
-        }
-      }
-
-      @keyframes line-right{
-        0%{
-          opacity:0;
-          transform:translateX(40px);
+        .animate-pulse-slow {
+          animation: pulse-slow 8s infinite ease-in-out;
         }
 
-        100%{
-          opacity:1;
-          transform:translateX(0);
+        .animate-logo-glow {
+          animation: logo-glow 5s infinite ease-in-out;
         }
-      }
-
-      .animate-line-left{
-        animation:line-left 1.4s ease forwards;
-      }
-
-      .animate-line-right{
-        animation:line-right 1.4s ease forwards;
-      }
-
-
-      /* GLOW */
-
-      @keyframes logo-glow{
-        0%{
-          opacity:.2;
-          transform:scale(.9);
-        }
-
-        50%{
-          opacity:.45;
-          transform:scale(1.05);
-        }
-
-        100%{
-          opacity:.2;
-          transform:scale(.9);
-        }
-      }
-
-      .animate-logo-glow{
-        animation:logo-glow 4s ease-in-out infinite;
-      }
-
-
-      /* BACKGROUND GLOW */
-
-      @keyframes pulse-glow{
-        0%{
-          opacity:.25;
-          transform:scale(1);
-        }
-
-        50%{
-          opacity:.4;
-          transform:scale(1.1);
-        }
-
-        100%{
-          opacity:.25;
-          transform:scale(1);
-        }
-      }
-
-      .animate-pulse-glow{
-        animation:pulse-glow 6s ease-in-out infinite;
-      }
-
       `}</style>
     </div>
   );

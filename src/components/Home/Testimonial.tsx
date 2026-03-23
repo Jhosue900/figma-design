@@ -15,6 +15,9 @@ function TestimonialsSection() {
 
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const [isMuted, setIsMuted] = useState(true);
+
   const videoContainerRef = useRef<HTMLDivElement>(null);
 
   // Efecto para rotar videos automáticamente cada 5 segundos si no hay modal abierto
@@ -26,19 +29,6 @@ function TestimonialsSection() {
     return () => clearInterval(interval);
   }, [activeVideo]);
 
-  
-  // Función para convertir links de Drive en links de reproducción directa (Preview)
-  const getDriveEmbedUrl = (url: string) => {
-    const videoId = url.split('/d/')[1]?.split('/')[0];
-    return `https://drive.google.com/file/d/${videoId}/preview`;
-  };
-
-  // Función para obtener la miniatura real del video desde Google Drive
-  const getDriveThumbnail = (url: string) => {
-    const videoId = url.split('/d/')[1]?.split('/')[0];
-    // Usamos el endpoint de thumbnail oficial de Drive que es más estable
-    return `https://lh3.googleusercontent.com/u/0/d/${videoId}=w800-h1200-iv1`;
-  };
 
   const testimonials: Testimonial[] = [
     {
@@ -105,11 +95,11 @@ function TestimonialsSection() {
 
 
   const VIDEO_TESTIMONIALS = [
-    { id: 1, url: 'https://drive.google.com/file/d/1eZe0NET8yxWl4b-qtl0hUH7mlyhG1iro/view?usp=drive_link' },
-    { id: 2, url: 'https://drive.google.com/file/d/1DIJXTbIX-0mQrrBICLJQraSGwTT3Tcnj/view?usp=drive_link' },
-    { id: 3, url: 'https://drive.google.com/file/d/1SJNIgz7q8Rhy2VOKiplRDWNPNYnagvKH/view?usp=drive_link' },
-    { id: 4, url: 'https://drive.google.com/file/d/1x-bNR6eu6sDxsM9UsoLzvluVB9HGuRKv/view?usp=drive_link' },
-    { id: 5, url: 'https://drive.google.com/file/d/103ExR6CxY7557pcmmA_87fQ_SQEZkjnE/view?usp=drive_link' },
+    { id: 1, url: 'https://res.cloudinary.com/dodxaehv3/video/upload/f_auto,q_auto/v1774196364/video1_vcadzb.mp4' },
+    { id: 2, url: 'https://res.cloudinary.com/dodxaehv3/video/upload/f_auto,q_auto/v1774278806/video2_sbik0h.mp4' },
+    { id: 3, url: 'https://res.cloudinary.com/dodxaehv3/video/upload/f_auto,q_auto/v1774278872/video3_gjvblb.mp4' },
+    { id: 4, url: 'https://res.cloudinary.com/dodxaehv3/video/upload/f_auto,q_auto/v1774282181/video4_en08t2.mp4' },
+    { id: 5, url: 'https://res.cloudinary.com/dodxaehv3/video/upload/f_auto,q_auto/v1774284093/video5_ssw8th.mp4' },
   ];
 
   const getIconComponent = (icon?: string) => {
@@ -203,41 +193,62 @@ function TestimonialsSection() {
         {/* Contenedor Principal Split (Video | Reviews) */}
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
-          {/* LADO IZQUIERDO: Video Reel Dinámico con Miniaturas Reales */}
+          {/* LADO IZQUIERDO: Video Reel Dinámico */}
           <div className="w-full lg:w-[42%] lg:sticky lg:top-24 z-30 group/reel">
             <div className="relative rounded-[32px] overflow-hidden border border-white/10 bg-[#0a0a0a] aspect-[9/16] max-h-[700px] mx-auto lg:mx-0 shadow-2xl transition-all duration-700">
               
-              {/* Capa de video con transición de opacidad */}
               {VIDEO_TESTIMONIALS.map((video, index) => (
-
-                <div
+                <video
                   key={video.id}
-                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                    index === currentVideoIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-110 pointer-events-none'
+                  src={video.url}
+                  autoPlay
+                  muted={index === currentVideoIndex ? isMuted : true}
+                  loop
+                  playsInline
+                  preload="auto" // Forzar precarga
+                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+                    index === currentVideoIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                   }`}
-                >
-                  <img 
-                    src={getDriveThumbnail(video.url)} 
-                    className="w-full h-full object-cover opacity-80"
-                    alt={`Testimonial ${index}`}
-                    onError={(e) => {
-                      // Fallback por si Drive bloquea la imagen temporalmente
-                      e.currentTarget.src = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80";
-                    }}
-                  />
-                </div>
-
+                  style={{ filter: 'brightness(0.8)'}}
+                  
+                />
               ))}
 
-              {/* Overlay de Vidrio Esmerilado en la base para legibilidad */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
+              {/* Overlay de Gradiente */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
 
-              {/* Indicadores de progreso (Reset dinámico con KEY) */}
+              {/* Botón Mute/Unmute Pro */}
+              <div className="absolute top-6 right-6 z-30">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMuted(!isMuted);
+                  }}
+
+                  className="w-10 h-10 bg-black/20 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/30 hover:scale-110 active:scale-95 mt-4"
+                >
+                  {isMuted ? (
+                    /* Icono Mute */
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                    </svg>
+                  ) : (
+                    /* Icono Sonido */
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+
+
+              {/* Indicadores de progreso */}
               <div className="absolute top-6 left-6 right-6 z-20 flex gap-2">
                 {VIDEO_TESTIMONIALS.map((_, index) => (
                   <div key={`track-${index}`} className="h-1 flex-1 bg-white/10 rounded-full overflow-hidden backdrop-blur-md">
                     <div 
-                      key={`progress-${index}-${index === currentVideoIndex}`} // Key dinámica para forzar re-render de la animación
+                      key={`progress-${index}-${index === currentVideoIndex}`}
                       className={`h-full bg-gradient-to-r from-blue-500 to-white ${
                         index === currentVideoIndex ? 'animate-progress-fill' : index < currentVideoIndex ? 'w-full' : 'w-0'
                       }`}
@@ -246,26 +257,26 @@ function TestimonialsSection() {
                 ))}
               </div>
 
-              {/* Botón Central Play */}
+              {/* Botón Central Play (Ahora abre el modal con Cloudinary) */}
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <button 
                   onClick={() => setActiveVideo(VIDEO_TESTIMONIALS[currentVideoIndex].url)}
-                  className="w-24 h-24 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 hover:bg-white group"
+                  className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 hover:bg-white group"
                 >
-                  <svg className="w-10 h-10 text-white group-hover:text-black transition-colors ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-8 h-8 text-white group-hover:text-black transition-colors ml-1" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </button>
               </div>
 
               {/* Texto Informativo */}
-              <div className="absolute bottom-10 left-8 right-8 z-20 transform transition-all duration-500 group-hover/reel:-translate-y-2">
+              <div className="absolute bottom-10 left-8 right-8 z-20">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-                  <span className="text-white/70 text-xs uppercase tracking-[0.2em]">En Directo: Testimonios</span>
+                  <span className="text-white/70 text-[10px] uppercase tracking-[0.2em] font-montserrat">EN DIRECTO: TESTIMONIOS</span>
                 </div>
-                <h3 className="text-white font-montserrat font-bold text-3xl leading-tight drop-shadow-lg">
-                  Nuestros clientes <br/> <span className="text-soft-gray font-light">hablan por nosotros.</span>
+                <h3 className="text-white font-montserrat font-bold text-2xl leading-tight">
+                  Nuestros clientes <br/> <span className="text-soft-gray font-light italic">hablan por nosotros.</span>
                 </h3>
               </div>
             </div>
@@ -348,13 +359,14 @@ function TestimonialsSection() {
 
 
       {/* MODAL DE VIDEO DINÁMICO */}
+        {/* MODAL DE VIDEO DINÁMICO */}
         {activeVideo && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-10">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <div 
               className="absolute inset-0 bg-black/95 backdrop-blur-xl transition-opacity"
               onClick={() => setActiveVideo(null)}
             />
-            <div className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <div className="relative w-full max-w-[400px] aspect-[9/16] bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/10">
               <button 
                 onClick={() => setActiveVideo(null)}
                 className="absolute top-4 right-4 z-[110] bg-white/10 hover:bg-white/20 p-2 rounded-full text-white transition-colors"
@@ -363,11 +375,11 @@ function TestimonialsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              <iframe
-                src={getDriveEmbedUrl(activeVideo)}
-                className="w-full h-full"
-                allow="autoplay"
-                allowFullScreen
+              <video
+                src={activeVideo}
+                autoPlay
+                controls
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
