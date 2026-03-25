@@ -141,3 +141,76 @@ body {
 .animate-rotate-slow {
   animation: rotate-gradient 4s linear infinite;
 }
+
+
+
+
+/* =============================================
+   CUSTOM SCROLLBAR PREMIUM (Multi-color FIXED)
+   ============================================= */
+/* =============================================
+   CUSTOM SCROLLBAR PREMIUM (REFINED & MODERN)
+   ============================================= */
+
+/* 1. Contenedor de la barra: Un poco más grueso para UI moderna */
+::-webkit-scrollbar {
+  width: 17px !important;
+}
+
+/* 2. El canal (Track): Casi negro puro para que los colores floten */
+::-webkit-scrollbar-track {
+  background: #050505 !important; 
+}
+
+/* 3. El manejador (Thumb): Colores premium y diseño "Pill" */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #ff5f5f 0%,    /* Coral Suave (Rojo Profundo) */
+    #5f8cff 33%,   /* Azul Eléctrico Muted */
+    #63ff9b 66%,   /* Verde Menta */
+    #f8ff80 100%   /* Amarillo Champagne */
+  ) !important;
+  
+  /* Bordes redondeados perfectos */
+  border-radius: 20px !important; 
+  
+  /* El secreto del look Premium: 
+     Aumentamos el borde transparente para que la barra se vea delgada y elegante,
+     pero el área de click siga siendo cómoda. */
+  border: 4px solid #050505 !important;
+  background-clip: padding-box !important;
+  
+  /* Transición suave para el hover */
+  transition: all 0.3s ease-in-out;
+}
+
+/* 4. Efecto Hover: Aumento de brillo sutil */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #ff3d3d 0%, 
+    #3d71ff 33%, 
+    #3df383 66%, 
+    #f2ff4d 100%
+  ) !important;
+  /* Reducimos el borde en hover para que la barra se "engrose" visualmente al tocarla */
+  border: 3px solid #050505 !important;
+}
+
+/* 5. Fix para Firefox con color sólido elegante */
+@supports (-moz-appearance: none) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #5f8cff #050505;
+  }
+}
+
+/* Limpieza de conflictos */
+html, body {
+  scrollbar-color: auto !important;
+  /* Suavizado de scroll nativo */
+  scroll-behavior: smooth;
+}
+
+
