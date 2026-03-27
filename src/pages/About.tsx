@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import Navbar from '../components/General/Navbar';
 import Footer from '../components/General/Footer';
 import SectionOne from '../components/About/sectionOne';
@@ -9,15 +10,22 @@ import GroupSection from '../components/About/groupSection';
 
 function About() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Navbar/>
-      <SectionOne/>
-      <SectionTwo/>
-      <GroupSection/>
-      <TeamSection/>
-      <AboutBackedBy/>
-      <CallToAction/> 
-      <Footer/>
+    // Usamos un div normal con un sub-wrapper de motion para evitar conflictos de altura
+    <div className="bg-black text-white w-full overflow-x-hidden">
+      <Navbar />
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <SectionOne />
+        <SectionTwo />
+        <GroupSection />
+        <TeamSection />
+        <AboutBackedBy />
+        <CallToAction />
+      </motion.main>
+      <Footer />
     </div>
   );
 }
