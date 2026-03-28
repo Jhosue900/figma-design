@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import WepromLogo from '../../images/LOGOLISOBLANCO.png';
+import LogoWeProm from '../../images/OFICIALLOGO.png';
 
 function Footer() {
   return (
@@ -12,7 +12,7 @@ function Footer() {
           {/* Logo and Address */}
           <div>
             <img
-              src={WepromLogo}
+              src={LogoWeProm}
               alt="Weprom"
               className="h-10 sm:h-12 mb-3 sm:mb-4"
             />

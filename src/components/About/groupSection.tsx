@@ -121,10 +121,8 @@ function GroupSection() {
                 </motion.div>
 
                 {/* Carrusel (Sin cambios en lógica, solo visualmente integrado) */}
-                <div className="relative w-full overflow-hidden mb-24 py-10 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-black before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:after:from-black after:to-transparent">
+                <div className="relative w-full overflow-hidden mb-24 py-10 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:from-black before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:after:from-black after:to-transparent">
                     <motion.div 
-                        animate={{ x: ["0%", "-50%"] }}
-                        transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
                         className="flex w-[200%] items-center gap-16 sm:gap-32 whitespace-nowrap"
                     >
                         {[1, 2].map((loop) => (
