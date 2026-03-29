@@ -96,6 +96,13 @@ body {
   50% { transform: translateY(-2px) scale(1); }
 }
 
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Asegurar que las tarjetas no hereden el giro si decides rotar el contenedor */
 /* Por ahora solo pusimos un efecto de "flotación" para que sea elegante pero legible */
 
