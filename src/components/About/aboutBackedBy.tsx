@@ -31,7 +31,7 @@ function AboutBackedBy() {
       <div className="relative w-full max-w-[1519px] mx-auto px-4 sm:px-8 z-10">
         
         <p className="font-aston text-[24px] sm:text-[30px] md:text-[42px] tracking-[-0.01em] text-white/100 text-center mb-10 sm:mb-16">
-          Nuestra clienta
+          Nuestros clientes
         </p>
 
         <div className="relative flex items-center">

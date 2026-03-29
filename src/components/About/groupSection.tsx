@@ -121,28 +121,49 @@ function GroupSection() {
                 </motion.div>
 
                 {/* Carrusel (Sin cambios en lógica, solo visualmente integrado) */}
-                <div className="relative w-full overflow-hidden mb-24 py-10 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:from-black before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:after:from-black after:to-transparent">
-                    <motion.div 
-                        className="flex w-[200%] items-center gap-16 sm:gap-32 whitespace-nowrap"
-                    >
-                        {[1, 2].map((loop) => (
-                            <div key={loop} className="flex items-center gap-16 sm:gap-32">
-                                <span className="font-montserrat text-white text-[24px] sm:text-[32px] font-light tracking-wide opacity-40 hover:opacity-100 transition-opacity cursor-default">+keting <small className="text-[10px] block opacity-50 uppercase tracking-widest">for business</small></span>
-                                <span className="font-montserrat text-white text-[24px] sm:text-[32px] font-light italic opacity-40 hover:opacity-100 transition-opacity cursor-default">Cypron <small className="text-[10px] block not-italic opacity-50 uppercase tracking-widest">Production & Media</small></span>
-                                <span className="font-montserrat text-white text-[24px] sm:text-[32px] font-light tracking-tighter opacity-40 hover:opacity-100 transition-opacity cursor-default">XER<span className="inline-block w-4 h-4 rounded-full border border-white mx-1" />Y <small className="text-[10px] block opacity-50 uppercase tracking-widest">Investigación</small></span>
-                            </div>
-                        ))}
-                    </motion.div>
+                {/* Sección de Marcas Estática (Sin movimiento) */}
+                <div className="w-full mb-24 py-10 border-y border-white/5">
+                    <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-24">
+
+                        <div className="flex flex-col items-center">
+                            <span className="font-montserrat text-white text-[20px] sm:text-[28px] font-light tracking-tighter opacity-40 hover:opacity-100 transition-opacity cursor-default">XER<span className="inline-block w-3 h-3 rounded-full border border-white mx-1" />Y</span>
+                            <small className="text-[10px] opacity-20 uppercase tracking-[0.2em] mt-2">Investigación</small>
+                        </div>
+
+                        <div className="flex flex-col items-center">
+                            <span className="font-montserrat text-white text-[20px] sm:text-[28px] font-light tracking-wide opacity-40 hover:opacity-100 transition-opacity cursor-default">Smar+keting</span>
+                            <small className="text-[10px] opacity-20 uppercase tracking-[0.2em] mt-2">for business</small>
+                        </div>
+                        
+                        <div className="flex flex-col items-center">
+                            <span className="font-montserrat text-white text-[20px] sm:text-[28px] font-light italic opacity-40 hover:opacity-100 transition-opacity cursor-default">Cypron</span>
+                            <small className="text-[10px] opacity-20 uppercase tracking-[0.2em] mt-2">Production & Media</small>
+                        </div>
+                
+                        <div className="flex flex-col items-center">
+                            <span className="font-montserrat text-white text-[20px] sm:text-[28px] font-light tracking-tighter opacity-40 hover:opacity-100 transition-opacity cursor-default">XER<span className="inline-block w-3 h-3 rounded-full border border-white mx-1" />Y</span>
+                            <small className="text-[10px] opacity-20 uppercase tracking-[0.2em] mt-2">Investigación</small>
+                        </div>
+                    </div>
                 </div>
 
                 <motion.h2 
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="font-aston text-[24px] sm:text-[48px] lg:text-[70px] text-white leading-[1.0] tracking-tight mb-16 text-center max-w-full"
+                    className="font-aston text-[24px] sm:text-[48px] lg:text-[70px] text-white leading-[1.0] tracking-tight mb-6 text-center max-w-full"
                 >
-                    Nuestro Principal Objetivo
+                    Nuestro Propósito
                 </motion.h2>
+
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 1 }}
+                  className="font-montserrat text-white/70 text-[16px] sm:text-[23px] lg:text-[25px] leading-relaxed max-w-4xl mx-auto mb-10 text-center"
+                >
+                  Existimos para impulsar el crecimiento de cualquier marca y de las personas detrás de ella, porque sabemos que un negocio que prospera hace prosperar a su gente y al mundo.
+                </motion.p>
 
                 {/* Cards con el componente interactivo */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
