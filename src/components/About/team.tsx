@@ -1,154 +1,435 @@
-// Importa tus imágenes aquí:
-// import juan from '../../images/About/juan.jpg'
-// import jose from '../../images/About/jose.jpg'
-// etc...
+import { useState, useRef, useEffect } from 'react';
 
+// ─────────────────────────────────────────────
+// Importaciones de imágenes del equipo
+// ─────────────────────────────────────────────
+import ale            from '../../images/About/team/Ale.png';
+import alejandroV     from '../../images/About/team/Alejandro Villamar.png';
+import alexLarios     from '../../images/About/team/Alex Larios.png';
+import alexia         from '../../images/About/team/alexia.png';
+import andres         from '../../images/About/team/andres.png';
+import angelica       from '../../images/About/team/angelica.png';
+import aranzaGonzalez from '../../images/About/team/Aranza Gonzalez.png';
+import axelMartinez   from '../../images/About/team/Axel Martinez.png';
+import cantu          from '../../images/About/team/cantu.png';
+import cecilia        from '../../images/About/team/cecilia.png';
+import diego          from '../../images/About/team/diego.png';
+import emiliaLopez    from '../../images/About/team/Emilia López.png';
+import guadalupe      from '../../images/About/team/guadalupemonroy.png';
+import hansValencia   from '../../images/About/team/Hans Valencia.png';
+import jean           from '../../images/About/team/jean.png';
+import jessicaZamora  from '../../images/About/team/Jessica Zamora.png';
+import jesusAlmanza   from '../../images/About/team/jesusalmanza.png';
+import jorgeVelazco   from '../../images/About/team/jorgevelazco.png';
+import joseCarlos     from '../../images/About/team/josecarlos.png';
+import joseEduardo    from '../../images/About/team/joseeduardo.png';
+import juanCarlos     from '../../images/About/team/JUANCARLOS.png';
+import juanCarlosVsr  from '../../images/About/team/juancarlosvsr.png';
+import juanJose       from '../../images/About/team/juanjose.png';
+import kamiDir        from '../../images/About/team/Kami Directorio Ejecutivo_.png';
+import karen          from '../../images/About/team/karen.png';
+import karlaPaola     from '../../images/About/team/karlapaola.png';
+import luisEnrique1   from '../../images/About/team/Luis Enrique.png';
+import luisNava       from '../../images/About/team/Luis Nava.png';
+import luisEnrique2   from '../../images/About/team/luisenrique.png';
+import luisGerardo    from '../../images/About/team/Luisgerardo.png';
+import luisRojas      from '../../images/About/team/luisrojas.png';
+import mario          from '../../images/About/team/mario.png';
+import melissaPerez   from '../../images/About/team/Melissa Pérez.png';
+import mike           from '../../images/About/team/mike.png';
+import missael        from '../../images/About/team/missael.png';
+import natalia        from '../../images/About/team/natalia.png';
+import paola          from '../../images/About/team/paola.png';
+import ricardoSainz   from '../../images/About/team/ricardosainz.png';
+import santiago       from '../../images/About/team/santiago.png';
+import stefania       from '../../images/About/team/stefania.png';
+import veronica       from '../../images/About/team/veronica.png';
+import vicenteMeza    from '../../images/About/team/Vicente Meza.png';
+
+// ─────────────────────────────────────────────
+// Array del equipo
+// ─────────────────────────────────────────────
 const team = [
-  {
-    id: 1,
-    name: 'Juan Carlos Ventura Michel',
-    role: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80', // reemplaza con tu import
-    glowColor: 'rgba(180, 30, 20, 0.6)',
-  },
-  {
-    id: 2,
-    name: 'Jose Miguel Ventura Michel',
-    role: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80',
-    glowColor: 'rgba(180, 30, 20, 0.5)',
-  },
-  {
-    id: 3,
-    name: 'Karen Ventura Michel',
-    role: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80',
-    glowColor: 'rgba(20, 100, 180, 0.5)',
-  },
-  {
-    id: 4,
-    name: 'Jesus Almanza',
-    role: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80',
-    glowColor: 'rgba(180, 100, 10, 0.5)',
-  },
-  {
-    id: 5,
-    name: 'Axel Umg',
-    role: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&q=80',
-    glowColor: 'rgba(150, 80, 10, 0.5)',
-  },
-  {
-    id: 6,
-    name: 'Mariana Martínez',
-    role: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80',
-    glowColor: 'rgba(120, 60, 10, 0.5)',
-  },
-  {
-    id: 7,
-    name: 'Alejandra Ortiz',
-    role: 'Managing Director',
-    image: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&q=80',
-    glowColor: 'rgba(180, 30, 20, 0.5)',
-  },
+  { id: 1,  name: 'Juan Carlos Ventura Michel',    role: 'Director General',                        image: juanCarlos },
+  { id: 2,  name: 'José Miguel Ventura Michel',    role: 'Director Asociado de Operaciones',        image: juanCarlosVsr },
+  { id: 3,  name: 'Axel Martínez',                 role: 'Asociado Jr.',                            image: axelMartinez },
+  { id: 4,  name: 'Kamila Gutiérrez',              role: 'Project Manager',                         image: kamiDir },
+  { id: 5,  name: 'Paola Rodríguez Sotomayor',     role: 'Coordinadora de Mercadotecnia',           image: paola },
+  { id: 6,  name: 'Aranza González',               role: 'Asistente de Marketing',                  image: aranzaGonzalez },
+  { id: 7,  name: 'Alex Larios',                   role: 'Asistente de Dirección',                  image: alexLarios },
+  { id: 8,  name: 'Jessica Zamora',                role: 'Asistente Administrativa',                image: jessicaZamora },
+  { id: 9,  name: 'Emilia López',                  role: 'Relaciones Públicas y Alianzas',          image: emiliaLopez },
+  { id: 10, name: 'Juan Carlos Ventura',           role: 'Consultor y Asesor General del Despacho', image: ale },
+  { id: 11, name: 'Karen Michelle Ventura-Michel', role: 'Directora del Área de Liderazgo',         image: karen },
+  { id: 12, name: 'Luis Enrique Ortiz-Monasterio', role: 'Desarrollador Web Asociado',              image: luisEnrique1 },
+  { id: 13, name: 'Mariana Martínez',              role: 'Directora Asociada de Branding',          image: andres },
+  { id: 14, name: 'Luis Rojas Guerrero',           role: 'Consultor Creativo Sr.',                  image: luisRojas },
+  { id: 15, name: 'Santiago Mendoza López',        role: 'Creador de Contenido Sr.',                image: santiago },
+  { id: 16, name: 'Natalia Ayala España',          role: 'Coordinadora de Campañas Digitales',      image: natalia },
+  { id: 17, name: 'Missael Mireles Silva',         role: 'Copywriter',                              image: missael },
+  { id: 18, name: 'Mario Arvizu',                  role: 'Productor Audiovisual',                   image: mario },
+  { id: 19, name: 'José Eduardo Gómez',            role: 'Productor Audiovisual',                   image: joseEduardo },
+  { id: 20, name: 'Diego Arghe Barranco Mora',     role: 'Analista de Mercados',                    image: diego },
+  { id: 21, name: 'Juan Pablo Cantú',              role: 'Especialista en Campañas Digitales',      image: cantu },
+  { id: 22, name: 'Melissa',                       role: 'Diseñadora',                              image: melissaPerez },
+  { id: 23, name: 'Stefanía Díaz Chávez',          role: 'Project Manager',                         image: stefania },
+  { id: 24, name: 'Cecilia Hernández',             role: 'Creativa Publicitaria Jr.',               image: cecilia },
+  { id: 25, name: 'Karla Paola Martínez',          role: 'Copywriter',                              image: karlaPaola },
+  { id: 26, name: 'Vicente Meza Gutiérrez',        role: 'Analista Gerontológico',                  image: vicenteMeza },
+  { id: 27, name: 'Hans Valencia',                 role: 'Perito Arquitecto',                       image: hansValencia },
+  { id: 28, name: 'Jean Lachapelle',               role: 'Relaciones Públicas y Alianzas',          image: jean },
+  { id: 29, name: 'Juan José Barrios',             role: 'Creador de Contenido Sr.',                image: juanJose },
+  { id: 30, name: 'Ricardo Sainz Venegas',         role: 'Analista de Mercados',                    image: ricardoSainz },
+  { id: 31, name: 'Verónica Gómez Castañeda',      role: 'Directora de Investigación de Mercados',  image: veronica },
+  { id: 32, name: 'Luis Nava Villaseñor',          role: 'Creativo Publicitario Sr.',               image: luisNava },
+  { id: 33, name: 'Diego Hernández',               role: 'Consultor Sr. en Marketing Digital',      image: jorgeVelazco },
+  { id: 34, name: 'Federico Alejandro Villamar',   role: 'Analista',                                image: alejandroV },
+  { id: 35, name: 'Alexia',                        role: 'Encuestadora',                            image: alexia },
+  { id: 36, name: 'Andrés',                        role: 'Encuestador',                             image: luisEnrique2 },
+  { id: 37, name: 'Angélica',                      role: 'Encuestadora',                            image: angelica },
+  { id: 38, name: 'Guadalupe Monroy',              role: 'Gerente de Ventas',                       image: guadalupe },
+  { id: 39, name: 'Luis Gerardo',                  role: 'Encuestador',                             image: luisGerardo },
+  { id: 40, name: 'Mike',                          role: 'Encuestador',                             image: mike },
+  { id: 41, name: 'Jesús Almanza',                 role: 'Encuestador',                             image: jesusAlmanza },
+  { id: 42, name: 'José Carlos',                   role: 'Encuestador',                             image: joseCarlos },
 ];
 
-function TeamCard({ name, role, image, glowColor }: {
+// ─────────────────────────────────────────────
+// CSS keyframes — arcos siempre girando,
+// separados 180° entre sí, nunca se tocan
+// ─────────────────────────────────────────────
+const STYLES = `
+  @keyframes arc-spin-cw {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes arc-spin-ccw {
+    from { transform: rotate(180deg); }
+    to   { transform: rotate(540deg); }
+  }
+  @keyframes ring-draw {
+    from { stroke-dashoffset: 553; }
+    to   { stroke-dashoffset: 0; }
+  }
+
+  .arc-cw {
+    transform-origin: 96px 96px;
+    animation: arc-spin-cw 5s linear infinite;
+  }
+  .arc-ccw {
+    transform-origin: 96px 96px;
+    animation: arc-spin-ccw 5s linear infinite;
+  }
+  .ring-draw-anim {
+    animation: ring-draw 0.45s ease forwards;
+  }
+`;
+
+let stylesInjected = false;
+function injectStyles() {
+  if (stylesInjected) return;
+  const tag = document.createElement('style');
+  tag.textContent = STYLES;
+  document.head.appendChild(tag);
+  stylesInjected = true;
+}
+
+// ─────────────────────────────────────────────
+// Arcos SVG
+// ─────────────────────────────────────────────
+function AnimatedRings({ active }: { active: boolean }) {
+  useEffect(() => { injectStyles(); }, []);
+
+  const r    = 88;
+  const cx   = 96;
+  const cy   = 96;
+  const circ = 2 * Math.PI * r; // ≈ 552.9
+
+  // Cada arco ocupa ~30% de la circunferencia
+  // Los dos arcos están siempre separados 180° → nunca se encuentran
+  const arcLen = circ * 0.30;
+  const gap    = circ - arcLen;
+
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      viewBox="0 0 192 192"
+      fill="none"
+    >
+      {/* Arco 1 — gira en sentido horario */}
+      <circle
+        cx={cx} cy={cy} r={r}
+        stroke="#3B82F6"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeDasharray={`${arcLen} ${gap}`}
+        className="arc-cw"
+        style={{
+          opacity: active ? 0 : 1,
+          transition: 'opacity 0.15s ease',
+        }}
+      />
+
+      {/* Arco 2 — gira en sentido horario también pero parte desde 180°
+          → ambos se mueven juntos pero siempre opuestos */}
+      <circle
+        cx={cx} cy={cy} r={r}
+        stroke="#3B82F6"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeDasharray={`${arcLen} ${gap}`}
+        className="arc-ccw"
+        style={{
+          opacity: active ? 0 : 1,
+          transition: 'opacity 0.15s ease',
+        }}
+      />
+
+      {/* Círculo completo — se dibuja al hacer click */}
+      {active && (
+        <circle
+          key="ring-active"
+          cx={cx} cy={cy} r={r}
+          stroke="#3B82F6"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeDasharray={`${circ}`}
+          strokeDashoffset={circ}
+          className="ring-draw-anim"
+          style={{
+            filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.8))',
+          }}
+        />
+      )}
+    </svg>
+  );
+}
+
+// ─────────────────────────────────────────────
+// Tarjeta individual
+// ─────────────────────────────────────────────
+function TeamCard({
+  name,
+  role,
+  image,
+  isActive,
+  onClick,
+}: {
   name: string;
   role: string;
   image: string;
-  glowColor: string;
+  isActive: boolean;
+  onClick: () => void;
 }) {
   return (
-    <div className="flex flex-col items-start gap-3">
+    <div
+      className="flex-shrink-0 flex flex-col items-center cursor-pointer select-none"
+      style={{ width: 192 }}
+      onClick={onClick}
+    >
+      <div className="relative" style={{ width: 192, height: 192 }}>
+        <AnimatedRings active={isActive} />
 
-      {/* Nombre y rol arriba */}
-      <div>
-        <p className="font-montserrat font-semibold text-white text-[13px] sm:text-[15px] leading-tight">
-          {name}
-        </p>
-        <p className="font-montserrat text-white/50 text-[12px] sm:text-[13px] mt-0.5">
-          {role}
-        </p>
-      </div>
-
-      {/* Imagen con forma redondeada y glow */}
-      <div
-        className="relative w-full overflow-hidden"
-        style={{
-          borderRadius: '120px 120px 100px 100px', // forma ovalada tipo huevo
-          aspectRatio: '3/4',
-        }}
-      >
-        {/* Glow de color en la parte inferior */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-2/3 z-10 pointer-events-none"
+          className="absolute overflow-hidden"
           style={{
-            background: `radial-gradient(ellipse at center bottom, ${glowColor} 0%, transparent 70%)`,
+            top: 16,
+            left: 16,
+            width: 160,
+            height: 160,
+            borderRadius: '50%',
           }}
-        />
+        >
+          {/* Foto */}
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover object-top"
+            style={{
+              filter: isActive
+                ? 'grayscale(100%) brightness(0.22)'
+                : 'grayscale(100%)',
+              transition: 'filter 0.4s ease',
+            }}
+          />
 
-        {/* Imagen */}
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover object-top grayscale"
-        />
+          {/* Overlay oscuro */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'rgba(0,5,20,0.6)',
+              opacity: isActive ? 1 : 0,
+              transition: 'opacity 0.4s ease',
+            }}
+          />
+
+          {/* Nombre y cargo sobre la imagen */}
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
+            style={{
+              padding: '0 14px',
+              opacity: isActive ? 1 : 0,
+              transform: isActive ? 'translateY(0)' : 'translateY(10px)',
+              transition: 'opacity 0.35s ease 0.12s, transform 0.35s ease 0.12s',
+            }}
+          >
+            <p
+              style={{
+                color: '#60A5FA',
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: 12,
+                fontWeight: 700,
+                textAlign: 'center',
+                lineHeight: 1.35,
+              }}
+            >
+              {name}
+            </p>
+            <div
+              style={{
+                width: 28,
+                height: 1.5,
+                background: '#3B82F6',
+                margin: '7px auto',
+                borderRadius: 99,
+                opacity: 0.8,
+              }}
+            />
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.85)',
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: 10.5,
+                textAlign: 'center',
+                lineHeight: 1.4,
+              }}
+            >
+              {role}
+            </p>
+          </div>
+        </div>
       </div>
-
     </div>
   );
 }
 
-function TeamSection() {
-  const firstRow = team.slice(0, 4);
-  const secondRow = team.slice(4, 8);
+// ─────────────────────────────────────────────
+// Sección principal
+// ─────────────────────────────────────────────
+export default function TeamSection() {
+  const [activeId, setActiveId] = useState<number | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const rafRef   = useRef<number | null>(null);
+
+  // ── Auto-scroll continuo ──
+  useEffect(() => {
+    let lastTime = 0;
+    const SPEED  = 0.8;
+
+    const step = (now: number) => {
+      const dt = now - lastTime;
+      lastTime  = now;
+      const el  = trackRef.current;
+      if (el) {
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        if (el.scrollLeft >= maxScroll) {
+          el.scrollLeft = 0;
+        } else {
+          el.scrollLeft += SPEED * (dt / 16.67);
+        }
+      }
+      rafRef.current = requestAnimationFrame(step);
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, []);
+
+  // ── Drag to scroll ──
+  const isDragging  = useRef(false);
+  const startX      = useRef(0);
+  const scrollStart = useRef(0);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    isDragging.current = true;
+    startX.current     = e.pageX - (trackRef.current?.offsetLeft ?? 0);
+    scrollStart.current = trackRef.current?.scrollLeft ?? 0;
+  };
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !trackRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - trackRef.current.offsetLeft;
+    trackRef.current.scrollLeft = scrollStart.current - (x - startX.current);
+  };
+  const onMouseUp = () => { isDragging.current = false; };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    startX.current      = e.touches[0].pageX - (trackRef.current?.offsetLeft ?? 0);
+    scrollStart.current = trackRef.current?.scrollLeft ?? 0;
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!trackRef.current) return;
+    const x = e.touches[0].pageX - trackRef.current.offsetLeft;
+    trackRef.current.scrollLeft = scrollStart.current - (x - startX.current);
+  };
 
   return (
-    <section className="w-full bg-black py-16 sm:py-24 px-4 sm:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="w-full py-20 sm:py-28 overflow-hidden" style={{ background: '#000' }}>
+      <div className="max-w-6xl mx-auto px-4">
 
-        {/* Header — dos columnas */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12 sm:mb-16 items-start">
-          <h2 className="font-aston text-[36px] sm:text-[52px] lg:text-[62px] text-white leading-tight">
-            Las Personas detrás de WeProm
+        {/* Header */}
+        <div className="text-center mb-14">
+          <h2
+            className="text-[38px] sm:text-[54px] font-bold leading-tight"
+            style={{ fontFamily: 'Montserrat, sans-serif', color: '#fff' }}
+          >
+            Nuestro <span style={{ color: '#3B82F6' }}>Equipo</span>
           </h2>
-          <p className="font-montserrat text-white/60 text-[15px] sm:text-[17px] leading-relaxed self-center text-right">
-            Nuestro equipo de expertos está unido por una misma misión: Lograr que todos nuestros clientes logren sus objetivos comerciales y de posicionamiento de marca.
+          <p
+            className="mt-4 text-[15px] sm:text-[16px] max-w-xl mx-auto"
+            style={{
+              color: 'rgba(255,255,255,0.55)',
+              fontFamily: 'Montserrat, sans-serif',
+              lineHeight: 1.7,
+            }}
+          >
+            Diferentes talentos, un mismo ADN:<br />
+            Colaborar en proyectos que generen impacto real.
           </p>
         </div>
 
-        {/* Fila 1 — 4 personas */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-          {firstRow.map((person) => (
+        {/* Carrusel — sin barra indicadora */}
+        <div
+          ref={trackRef}
+          className="flex gap-6 pb-2"
+          style={{
+            overflowX: 'auto',
+            cursor: isDragging.current ? 'grabbing' : 'grab',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+          }}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeave={onMouseUp}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+        >
+          <div className="flex-shrink-0" style={{ width: 24 }} />
+          {team.map((member) => (
             <TeamCard
-              key={person.id}
-              name={person.name}
-              role={person.role}
-              image={person.image}
-              glowColor={person.glowColor}
+              key={member.id}
+              name={member.name}
+              role={member.role}
+              image={member.image}
+              isActive={activeId === member.id}
+              onClick={() => setActiveId((prev) => prev === member.id ? null : member.id)}
             />
           ))}
-        </div>
-
-        {/* Fila 2 — 4 personas */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-          {secondRow.map((person) => (
-            <TeamCard
-              key={person.id}
-              name={person.name}
-              role={person.role}
-              image={person.image}
-              glowColor={person.glowColor}
-            />
-          ))}
+          <div className="flex-shrink-0" style={{ width: 24 }} />
         </div>
 
       </div>
     </section>
   );
 }
-
-export default TeamSection;
