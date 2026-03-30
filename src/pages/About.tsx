@@ -47,15 +47,9 @@ function About() {
         <CallToAction />
 
         {/* SECCIÓN DE SEDES + BOTÓN MODAL */}
-        <section className="w-full bg-black py-24 px-4 border-t border-white/5">
+        <section className="w-full bg-black py-14 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
-            <h3 className="font-montserrat text-white/30 uppercase tracking-[0.4em] text-[10px] mb-6">Nuestras Sedes</h3>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-montserrat text-sm sm:text-lg text-white/80">
-              <span>CDMX</span> <span className="text-white/20">•</span>
-              <span>BOGOTÁ</span> <span className="text-white/20">•</span>
-              <span>MADRID</span> <span className="text-white/20">•</span>
-              <span>MIAMI</span>
-            </div>
+            
         
             <button 
               onClick={() => setIsModalOpen(true)}
