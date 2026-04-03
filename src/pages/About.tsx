@@ -14,6 +14,8 @@ import ScrollReveal from '../components/General/ScrollReveal';
 
 
 // Los componentes auxiliares se quedan fuera de la función principal
+
+{/*
 const PressLogos = () => (
   <ScrollReveal delay={0.2}>
     <div className="w-full bg-black py-10 border-y border-white/5">
@@ -26,8 +28,8 @@ const PressLogos = () => (
       </div>
     </div>
   </ScrollReveal>
-);
-
+);  
+*/}
 function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -43,7 +45,7 @@ function About() {
         {/* El Hero suele ir sin ScrollReveal o con uno muy rápido para feedback inmediato */}
         <SectionOne />
         
-        <PressLogos />
+       
 
         <ScrollReveal delay={0.1}>
           <SectionTwo />
@@ -65,9 +67,7 @@ function About() {
           <AboutBackedBy />
         </ScrollReveal>
 
-        <ScrollReveal>
-          <CallToAction />
-        </ScrollReveal>
+        
 
         {/* SECCIÓN DE SEDES + BOTÓN MODAL */}
         {/* Sección final con el botón de contacto */}

@@ -1,112 +1,16 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import grupoLogo from '../../images/About/LOGOGWP.png';
-
-// --- Sub-componente para la Card Interactiva ---
-function InteractiveCard({ card, index }: { card: any; index: number }) {
-    const cardRef = useRef<HTMLDivElement>(null);
-    
-    // Valores para el efecto de inclinación (Tilt)
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [10, -10]), { stiffness: 150, damping: 20 });
-    const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-10, 10]), { stiffness: 150, damping: 20 });
-
-    function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        
-        // Calcular posición para el Tilt
-        const relativeX = (event.clientX - rect.left) / rect.width - 0.5;
-        const relativeY = (event.clientY - rect.top) / rect.height - 0.5;
-        x.set(relativeX);
-        y.set(relativeY);
-
-        // Calcular posición para el Spotlight (Glow)
-        mouseX.set(event.clientX - rect.left);
-        mouseY.set(event.clientY - rect.top);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-    }
-
-    return (
-        <motion.div
-            ref={cardRef}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.8 }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d", background: card.gradient }}
-            className={`group relative overflow-hidden rounded-3xl p-8 flex flex-col gap-6 min-h-[360px] bg-gradient-to-br ${card.gradient} border border-white/10 cursor-default`}
-        >
-            {/* Spotlight Glow Effect: Sigue al mouse */}
-            <motion.div 
-                className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                    background: useTransform(
-                        [mouseX, mouseY],
-                        ([cx, cy]) => `radial-gradient(600px circle at ${cx}px ${cy}px, rgba(255,255,255,0.1), transparent 40%)`
-                    )
-                }}
-            />
-
-            <div style={{ transform: "translateZ(30px)" }} className="flex flex-col gap-6 h-full">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-white/50 font-bold">{card.tag}</span>
-                
-                <h3 className={`font-montserrat font-bold text-white leading-snug ${card.titleSize} ${card.titleStyle === 'italic' ? 'italic font-medium' : ''}`}>
-                    {card.title}
-                </h3>
-
-                <p className="font-montserrat text-white/70 text-[14px] leading-relaxed mt-auto border-t border-white/10 pt-6">
-                    {card.description}
-                </p>
-            </div>
-        </motion.div>
-    );
-}
+import XERYUS from '../../images/About/groupSection/XERYUS_Blanco.png';
+import SmarKeting from '../../images/About/groupSection/SMARTKETING_BCO.png';
+import WePromBlanco from '../../images/About/groupSection/LOGOBLANCO.png';
+import Cypron from '../../images/About/groupSection/CYPRON_BCO.png';
 
 function GroupSection() {
-    const cards = [
-        {
-            id: 1,
-            title: '"Lograr que la gente conserve sus empleos y logre sus sueños"',
-            description: 'Esto significa ayudar a los empresarios a consolidar y crecer sus negocios. ¡Y realmente nos encanta trabajar con personas que comparten esta misma filosofía!',
-            gradient: 'linear-gradient(90deg, #531715 0%, #312731 35%, #202f42 70%, #12364c 100%)',
-            titleSize: 'text-[17px] sm:text-[19px]',
-            titleStyle: 'italic',
-        },
-        {
-            id: 2,
-            title: 'Nuestra Visión',
-            description: 'Convertirnos en la agencia de marketing más confiable y rentable, donde cada empresa, grande o pequeña, tenga las herramientas para prosperar al nivel que lo desee.',
-            gradient: 'linear-gradient(90deg, #12364c 0%, #104247 35%, #1c463c 70%, #264732 100%)',
-            titleSize: 'text-[20px] sm:text-[22px]',
-            titleStyle: 'normal',
-        },
-        {
-            id: 3,
-            title: 'Nuestra Misión',
-            description: 'Crear estrategias que conecten negocio y propósito, ayudando a las empresas a crecer de forma consciente, generando estabilidad y oportunidades para que más personas puedan construir el futuro que desean.',
-            gradient: 'linear-gradient(90deg, #264732 0%, #2e482d 35%, #3e4826 70%, #4b481f 100%)',
-            titleSize: 'text-[20px] sm:text-[22px]',
-            titleStyle: 'normal',
-        },
-    ];
-
     return (
         <section className="w-full bg-black py-18 sm:py-20 px-4 sm:px-8 overflow-hidden">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto pl-0 sm:pl-16 lg:pl-24">
                 
-                {/* Header (se mantiene tu estructura pero con entrada más suave) */}
+                {/* Header */}
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -120,57 +24,59 @@ function GroupSection() {
                     <p className="font-montserrat text-white/60 tracking-[0.2em] uppercase text-xs sm:text-sm">Unidad Especializada</p>
                 </motion.div>
 
-                {/* Carrusel (Sin cambios en lógica, solo visualmente integrado) */}
-                {/* Sección de Marcas Estática (Sin movimiento) */}
+                {/* Sección de Marcas Estática */}
                 <div className="w-full mb-24 py-10 border-y border-white/5">
-                    <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-24">
-
-                        <div className="flex flex-col items-center">
-                            <span className="font-montserrat text-white text-[20px] sm:text-[28px] font-light tracking-tighter opacity-40 hover:opacity-100 transition-opacity cursor-default">XER<span className="inline-block w-3 h-3 rounded-full border border-white mx-1" />Y</span>
-                            <small className="text-[10px] opacity-20 uppercase tracking-[0.2em] mt-2">Investigación</small>
+                    <div className="flex flex-nowrap justify-center items-center gap-8 sm:gap-16">
+                        <div className="flex items-center justify-center w-[180px] sm:w-[220px]">
+                            <img src={XERYUS} alt="Xeryus" className="h-10 sm:h-12 w-auto object-contain" />
                         </div>
-
-                        <div className="flex flex-col items-center">
-                            <span className="font-montserrat text-white text-[20px] sm:text-[28px] font-light tracking-wide opacity-40 hover:opacity-100 transition-opacity cursor-default">Smar+keting</span>
-                            <small className="text-[10px] opacity-20 uppercase tracking-[0.2em] mt-2">for business</small>
+                        <div className="flex items-center justify-center w-[180px] sm:w-[220px]">
+                            <img src={SmarKeting} alt="Smar+keting" className="h-10 sm:h-12 w-auto object-contain" />
                         </div>
-                        
-                        <div className="flex flex-col items-center">
-                            <span className="font-montserrat text-white text-[20px] sm:text-[28px] font-light italic opacity-40 hover:opacity-100 transition-opacity cursor-default">Cypron</span>
-                            <small className="text-[10px] opacity-20 uppercase tracking-[0.2em] mt-2">Production & Media</small>
+                        <div className="flex items-center justify-center w-[220px] sm:w-[260px]">
+                            <img src={WePromBlanco} alt="WeProm" className="h-10 sm:h-12 w-auto object-contain" />
                         </div>
-                
-                        <div className="flex flex-col items-center">
-                            <span className="font-montserrat text-white text-[20px] sm:text-[28px] font-light tracking-tighter opacity-40 hover:opacity-100 transition-opacity cursor-default">XER<span className="inline-block w-3 h-3 rounded-full border border-white mx-1" />Y</span>
-                            <small className="text-[10px] opacity-20 uppercase tracking-[0.2em] mt-2">Investigación</small>
+                        <div className="flex items-center justify-center w-[180px] sm:w-[220px]">
+                            <img src={Cypron} alt="Cypron" className="h-10 sm:h-12 w-auto object-contain" />
                         </div>
                     </div>
                 </div>
 
-                <motion.h2 
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                {/* Nuestro Propósito — layout horizontal */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="font-aston text-[24px] sm:text-[48px] lg:text-[70px] text-white leading-[1.0] tracking-tight mb-6 text-center max-w-full"
+                    transition={{ duration: 0.8 }}
+                    className="flex flex-col sm:flex-row items-center sm:items-stretch gap-8 sm:gap-12"
                 >
-                    Nuestro Propósito
-                </motion.h2>
+                    {/* Título izquierda */}
+                    <div className="flex-shrink-0 text-center sm:text-left">
+                        <h2 className="font-aston text-[40px] sm:text-[56px] lg:text-[72px] text-white leading-[1.0] tracking-tight">
+                            Nuestro<br />Propósito
+                        </h2>
+                    </div>
 
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 1 }}
-                  className="font-montserrat text-white/70 text-[16px] sm:text-[23px] lg:text-[25px] leading-relaxed max-w-4xl mx-auto mb-10 text-center"
-                >
-                  Existimos para impulsar el crecimiento de cualquier marca y de las personas detrás de ella, porque sabemos que un negocio que prospera hace prosperar a su gente y al mundo.
-                </motion.p>
+                    {/* Barra de colores vertical (desktop) */}
+                    <div
+                        className="hidden sm:block w-[4px] rounded-full flex-shrink-0 self-stretch"
+                        style={{ background: 'linear-gradient(to bottom, #facc15, #4ade80, #60a5fa, #ef4444)' }}
+                    />
 
-                {/* Cards con el componente interactivo */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                    {cards.map((card, index) => (
-                        <InteractiveCard key={card.id} card={card} index={index} />
-                    ))}
-                </div>
+                    {/* Barra de colores horizontal (mobile) */}
+                    <div
+                        className="flex sm:hidden w-full h-[4px] rounded-full"
+                        style={{ background: 'linear-gradient(to right, #facc15, #4ade80, #60a5fa, #ef4444)' }}
+                    />
+
+                    {/* Párrafo derecha */}
+                    <div className="flex items-center">
+                        <p className="font-montserrat text-white/70 text-[16px] sm:text-[20px] lg:text-[22px] leading-relaxed max-w-xl">
+                            Existimos para impulsar el crecimiento de cualquier marca y de las personas detrás de ella, porque sabemos que un negocio que prospera hace prosperar a su gente y al mundo.
+                        </p>
+                    </div>
+                </motion.div>
+
             </div>
         </section>
     );
