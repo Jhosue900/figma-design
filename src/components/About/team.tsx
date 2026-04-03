@@ -380,16 +380,15 @@ export default function TeamSection() {
         {/* Header */}
         <div className="text-center mb-14">
           <h2
-            className="text-[38px] sm:text-[54px] font-bold leading-tight"
-            style={{ fontFamily: 'Montserrat, sans-serif', color: '#fff' }}
+            className=" font-aston text-[38px] sm:text-[54px]  leading-tight"
+            style={{  color: '#fff' }}
           >
             Nuestro <span style={{ color: '#3B82F6' }}>Equipo</span>
           </h2>
           <p
-            className="mt-4 text-[15px] sm:text-[16px] max-w-xl mx-auto"
+            className=" font-aston mt-4 text-[15px] sm:text-[16px] max-w-xl mx-auto"
             style={{
               color: 'rgba(255,255,255,0.55)',
-              fontFamily: 'Montserrat, sans-serif',
               lineHeight: 1.7,
             }}
           >
@@ -401,7 +400,7 @@ export default function TeamSection() {
         {/* Carrusel — sin barra indicadora */}
         <div
           ref={trackRef}
-          className="flex gap-6 pb-2"
+          className="flex font-aston gap-6 pb-2"
           style={{
             overflowX: 'auto',
             cursor: isDragging.current ? 'grabbing' : 'grab',
@@ -415,7 +414,7 @@ export default function TeamSection() {
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
         >
-          <div className="flex-shrink-0" style={{ width: 24 }} />
+          <div className=" font-aston flex-shrink-0" style={{ width: 24 }} />
           {team.map((member) => (
             <TeamCard
               key={member.id}
