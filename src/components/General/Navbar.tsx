@@ -2,8 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import LogoWeProm from '../../images/OFICIALLOGO.png';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -13,6 +16,7 @@ function Navbar() {
     { label: "Nosotros", path: "/nosotros" },
     { label: "Servicios", path: "/servicios" },
     { label: "Blog", path: "/blog" },
+    
   ];
 
   const isActive = (path: string) =>
@@ -72,7 +76,11 @@ function Navbar() {
             </div>
 
             {/* CTA desktop */}
-            <button className="hidden md:block bg-white text-black px-5 py-1.5 rounded-lg font-montserrat font-semibold text-[13px] hover:bg-gray-200 transition-all flex-shrink-0">
+            <button 
+            onClick={() => {
+              navigate('/contact');
+            }}
+            className="hidden md:block bg-white text-black px-5 py-1.5 rounded-lg font-montserrat font-semibold text-[13px] hover:bg-gray-200 transition-all flex-shrink-0">
               Contáctanos
             </button>
 
