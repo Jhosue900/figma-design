@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const WorldPresence = () => {
   return (
-    <section className="w-full bg-black py-24 px-6 sm:px-12 border-t border-white/5">
+    <section className="w-full bg-transparent py-24 px-6 sm:px-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         
         {/* Encabezado de Sección */}
