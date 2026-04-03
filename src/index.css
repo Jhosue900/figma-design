@@ -159,54 +159,7 @@ body {
    CUSTOM SCROLLBAR BRAND-MATCH (Premium Thick)
    ============================================= */
 
-/* 1. Grosor total de la barra (Consistente y moderno) */
-::-webkit-scrollbar {
-  width: 16px !important;
-}
 
-/* 2. El canal (Track): Negro profundo para que resalte el gradiente */
-::-webkit-scrollbar-track {
-  background: #000000 !important; 
-}
-
-/* 3. El manejador (Thumb): Clonando el degradado de "Learn More" (Rojo, Azul, Verde, Amarillo) */
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    #ff4d4d 0%,    /* Rojo */
-    #4d79ff 33%,   /* Azul */
-    #4dff88 66%,   /* Verde */
-    #ffff4d 100%   /* Amarillo */
-  ) !important;
-  
-  /* Forma de píldora moderna */
-  border-radius: 100vh !important; 
-  
-  /* Grosor visual Premium: Borde de 3px para que el color se vea estilizado */
-  border: 3px solid #000000 !important;
-  background-clip: padding-box !important;
-}
-
-/* 4. Efecto Hover: Simula el brillo del botón en el Hero */
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    #ff6666 0%, 
-    #668cff 33%, 
-    #66ff99 66%, 
-    #ffff66 100%
-  ) !important;
-  /* El borde se reduce para que la barra de color "crezca" visualmente */
-  border: 2px solid #000000 !important;
-}
-
-/* 5. Consistencia para Firefox (Solo permite un color sólido) */
-@supports (-moz-appearance: none) {
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #4d79ff #000000;
-  }
-}
 
 /* Refuerzo de fondo para evitar saltos de color */
 html {
