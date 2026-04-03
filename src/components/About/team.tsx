@@ -374,7 +374,7 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="w-full py-20 sm:py-28 overflow-hidden" style={{ background: '#000' }}>
+    <section className="w-full py-20 sm:py-28 overflow-hidden bg-transparent">
       <div className="max-w-6xl mx-auto px-4">
 
         {/* Header */}
@@ -386,7 +386,7 @@ export default function TeamSection() {
             Nuestro <span style={{ color: '#3B82F6' }}>Equipo</span>
           </h2>
           <p
-            className=" font-aston mt-4 text-[15px] sm:text-[16px] max-w-xl mx-auto"
+            className=" font-aston mt-4 text-[20px] sm:text-[21px] max-w-xl mx-auto"
             style={{
               color: 'rgba(255,255,255,0.55)',
               lineHeight: 1.7,

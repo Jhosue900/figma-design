@@ -17,7 +17,7 @@ function SectionOne() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen overflow-hidden bg-black"
+      className="relative w-full h-screen overflow-hidden"
     >
       {/* Imagen de fondo con Parallax y Scale */}
       <motion.div

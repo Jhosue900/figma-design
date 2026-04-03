@@ -7,7 +7,7 @@ import Cypron from '../../images/About/groupSection/CYPRON_BCO.png';
 
 function GroupSection() {
     return (
-        <section className="w-full bg-black py-18 sm:py-20 px-4 sm:px-8 overflow-hidden">
+        <section className="w-full bg-transparent py-18 sm:py-20 px-4 sm:px-8 overflow-hidden">
             <div className="max-w-6xl mx-auto pl-0 sm:pl-16 lg:pl-24">
                 
                 {/* Header */}

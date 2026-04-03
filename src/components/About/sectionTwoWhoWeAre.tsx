@@ -46,7 +46,7 @@ function IconCard({ color, icon }: { color: string; icon: React.ReactNode }) {
 
 function SectionTwo() {
   return (
-    <section className="w-full bg-black py-4 sm:py-8 overflow-hidden">
+    <section className="w-full bg-transparent py-4 sm:py-8 overflow-hidden">
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-8 text-center mb-12 sm:mb-16">
         <motion.h1 
           className="font-aston text-[44px] sm:text-[68px] lg:text-[80px] text-white leading-[1.05] tracking-tight mb-4 sm:mb-6"
