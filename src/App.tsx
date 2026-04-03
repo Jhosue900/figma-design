@@ -3,6 +3,7 @@ import About from './pages/About';
 import Services from './pages/Services'; 
 import Loader from './components/General/Loader';
 import Blog from './pages/Blog'
+import Contact from './pages/Contact';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/nosotros" element={<About />} />
         <Route path="/servicios" element={<Services />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );
