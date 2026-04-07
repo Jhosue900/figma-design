@@ -34,7 +34,7 @@ function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="bg-transparent text-white w-full overflow-x-hidden selection:bg-blue-500/30">
+    <div className="bg-black text-white w-full selection:bg-blue-500/30">
       <Navbar />
       
       <motion.main
@@ -46,10 +46,8 @@ function About() {
         <SectionOne />
         
        
-
-        <ScrollReveal delay={0.1}>
           <SectionTwo />
-        </ScrollReveal>
+        
 
         <ScrollReveal direction="right">
           <WorldPresence />

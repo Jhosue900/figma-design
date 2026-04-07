@@ -16,19 +16,19 @@
    ============================================= */
 html {
   overflow-y: scroll;          /* Fuerza scrollbar visible siempre → no hay layout shift */
-  overflow-x: hidden;          /* Elimina scroll horizontal */
+  /*overflow-x: hidden;*/          /* Elimina scroll horizontal */
   scrollbar-gutter: stable;    /* Reserva el espacio del scrollbar aunque no haya scroll */
 }
 
 body {
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
   max-width: 100%;
 }
 
-#root {
+/*#root {
   overflow-x: hidden;
   
-}
+}*/
 
 /* =============================================
    Botón con borde degradado
