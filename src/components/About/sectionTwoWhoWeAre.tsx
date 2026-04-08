@@ -263,10 +263,10 @@ function SectionTwo() {
   };
 
   const endStylesMobile = {
-    expertos: { top: '0%', left: '0%', width: '100%', height: '23%' },
-    especialistas: { top: '25%', left: '0%', width: '100%', height: '23%' },
-    analistas: { top: '50%', left: '0%', width: '100%', height: '23%' },
-    aliados: { top: '75%', left: '0%', width: '100%', height: '23%' }
+    expertos: { top: '-30%', left: '0%', width: '100%', height: '30%' },
+    especialistas: { top: '3%', left: '0%', width: '100%', height: '30%' },
+    analistas: { top: '36%', left: '0%', width: '100%', height: '30%' },
+    aliados: { top: '69%', left: '0%', width: '100%', height: '30%' }
   };
 
   const currentStyles = isMobile ? endStylesMobile : endStylesDesktop;
@@ -313,7 +313,7 @@ function SectionTwo() {
   return (
     <section ref={wrapperRef} className="relative w-full h-[400vh] bg-transparent font-sans">
       
-      <div className="sticky top-0 min-h-screen w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-20">
+      <div className="sticky top-0 min-h-[120vh] w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-20">
         
         {/* Textos originales con Framer Motion intactos */}
         
@@ -346,7 +346,7 @@ function SectionTwo() {
         </div>
 
         {/* Contenedor de las tarjetas animadas por scroll */}
-        <div className="relative z-10 w-full max-w-6xl px-4 mt-[25vh] md:mt-[17vh]">
+        <div className="relative z-10 w-full max-w-6xl px-4 mt-[25vh] md:mt-12">
           <div className="relative w-full h-[65vh] md:h-[70vh] max-h-[800px] mx-auto">
 
             {cardsData.map((card) => (
@@ -360,7 +360,7 @@ function SectionTwo() {
           </div>
 
           <div 
-            className="absolute bottom-[-4rem] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 transition-opacity duration-300"
+            className="absolute bottom-[-9rem] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/90 transition-opacity duration-300"
             style={{ opacity: 1 - currentProgress }}
           >
             <span className="text-[10px] tracking-[0.3em] uppercase">Descubre más</span>
