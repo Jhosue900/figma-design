@@ -15,15 +15,14 @@
    causado por el scrollbar que aparece/desaparece
    ============================================= */
 html {
-  overflow-y: scroll;          /* Fuerza scrollbar visible siempre → no hay layout shift */
-  /*overflow-x: hidden;*/          /* Elimina scroll horizontal */
-  scrollbar-gutter: stable;    /* Reserva el espacio del scrollbar aunque no haya scroll */
+  overflow-y: scroll;         
+  scrollbar-gutter: stable; 
 }
 
 body {
-  /*overflow-x: hidden;*/
   max-width: 100%;
 }
+
 
 /*#root {
   overflow-x: hidden;

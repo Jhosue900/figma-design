@@ -241,8 +241,7 @@ function SectionTwo() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);*/
 
-  const endStylesDesktop = {
-    // Cambiamos de 48% a 49% de ancho y reducimos el desplazamiento de 52% a 51%
+  /*const endStylesDesktop = {
     expertos: { top: '0%', left: '0%', width: 'calc(49% - 6px)', height: 'calc(49% - 6px)' },
     especialistas: { top: '0%', left: 'calc(50% + 6px)', width: 'calc(49% - 6px)', height: 'calc(49% - 6px)' },
     analistas: { top: 'calc(50% + 6px)', left: '0%', width: 'calc(49% - 6px)', height: 'calc(49% - 6px)' },
@@ -254,6 +253,20 @@ function SectionTwo() {
     especialistas: { top: 'calc(25% + 4px)', left: '0%', width: '100%', height: 'calc(25% - 12px)' },
     analistas: { top: 'calc(50% + 8px)', left: '0%', width: '100%', height: 'calc(25% - 12px)' },
     aliados: { top: 'calc(75% + 12px)', left: '0%', width: '100%', height: 'calc(25% - 12px)' }
+  };*/
+
+  const endStylesDesktop = {
+    expertos: { top: '2%', left: '3%', width: '46%', height: '52%' },
+    especialistas: { top: '2%', left: '50%', width: '46%', height: '52%' },
+    analistas: { top: '57%', left: '3%', width: '46%', height: '52%' },
+    aliados: { top: '57%', left: '50%', width: '46%', height: '52%' }
+  };
+
+  const endStylesMobile = {
+    expertos: { top: '0%', left: '0%', width: '100%', height: '23%' },
+    especialistas: { top: '25%', left: '0%', width: '100%', height: '23%' },
+    analistas: { top: '50%', left: '0%', width: '100%', height: '23%' },
+    aliados: { top: '75%', left: '0%', width: '100%', height: '23%' }
   };
 
   const currentStyles = isMobile ? endStylesMobile : endStylesDesktop;
@@ -299,14 +312,16 @@ function SectionTwo() {
 
   return (
     <section ref={wrapperRef} className="relative w-full h-[400vh] bg-transparent font-sans">
-      <div className="sticky top-0 min-h-[140vh] w-full flex flex-col items-center justify-center overflow-hidden py-2 pb-20">
+      
+      <div className="sticky top-0 min-h-screen w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-20">
         
         {/* Textos originales con Framer Motion intactos */}
         
-        <div className="w-full max-w-4xl mx-auto px-6 text-center absolute top-10 md:top-20 z-30 pointer-events-none">
+        
+        <div className="w-full max-w-4xl mx-auto px-6 text-center absolute top-[5vh] md:top-[8vh] z-30 pointer-events-none">
 
           <motion.h1 
-            className="font-aston text-[40px] sm:text-[60px] lg:text-[75px] text-white leading-[1.1] tracking-tight mb-4"
+            className="font-aston text-[8vw] md:text-[60px] lg:text-[75px] text-white leading-[1.1] tracking-tight mb-2"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -331,8 +346,9 @@ function SectionTwo() {
         </div>
 
         {/* Contenedor de las tarjetas animadas por scroll */}
-        <div className="relative z-10 w-full max-w-6xl px-4 mt-12 md:mt-32 lg:mt-64">
-          <div className="relative w-full h-[70vh] md:h-[600px] mx-auto">
+        <div className="relative z-10 w-full max-w-6xl px-4 mt-[25vh] md:mt-[17vh]">
+          <div className="relative w-full h-[65vh] md:h-[70vh] max-h-[800px] mx-auto">
+
             {cardsData.map((card) => (
               <GlassCard 
                 key={card.id} 
