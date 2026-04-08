@@ -38,7 +38,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
   };
 
   const isImageIcon = typeof icon === 'string';
-  const Icon = isImageIcon ? null : (icon as LucideIcon);
+  const IconComponent = !isImageIcon ? (icon as any) : null;
 
   const blurStyles: Record<string, string> = {
     red:    '#ef4444',
@@ -52,7 +52,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative flex flex-col overflow-hidden transition-all duration-500 ease-out group w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30"
+      className="relative flex flex-col overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30"
       style={{
         backgroundColor: '#121212',
         borderRadius: '40px',
@@ -61,7 +61,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
     >
       {/* Borde dinámico spotlight */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"
         style={{
           background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.3), transparent 40%)`,
           margin: '-1px',
@@ -74,7 +74,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
 
       {/* Spotlight de color */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover:opacity-35 transition-opacity duration-300"
+        className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover/card:opacity-35 transition-opacity duration-300"
         style={{
           background: `radial-gradient(circle at var(--mouse-x) var(--mouse-y), ${blurStyles[blurColor] || 'white'} 0%, transparent 40%)`
         }}
@@ -102,8 +102,8 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
         <div className="flex items-center gap-4">
           {isImageIcon ? (
             <img src={icon as string} alt={title} className="w-9 h-9 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
-          ) : Icon && (
-            <Icon className="text-white opacity-100 flex-shrink-0" size={36} strokeWidth={1.5} />
+          ) : (
+            <IconComponent className="text-white opacity-100 flex-shrink-0" size={36} strokeWidth={1.5} />
           )}
           <h3
             className="font-montserrat font-semibold text-white text-[17px] sm:text-[19px]"
@@ -116,6 +116,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
         {/* Separador */}
         <div className="h-px bg-white/10" />
 
+        {/* Descripción expandible */}
         {/* Descripción expandible */}
         <AnimatePresence initial={false}>
           {isOpen && (
@@ -137,6 +138,18 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
               >
                 {description}
               </motion.p>
+              
+              {/* NUEVO BOTÓN CTA: Conoce más */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="pb-4"
+              >
+                <button className="px-5 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm font-montserrat font-bold uppercase tracking-wider">
+                  Conoce más
+                </button>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
