@@ -256,10 +256,10 @@ function SectionTwo() {
   };*/
 
   const endStylesDesktop = {
-    expertos: { top: '2%', left: '3%', width: '46%', height: '52%' },
-    especialistas: { top: '2%', left: '50%', width: '46%', height: '52%' },
-    analistas: { top: '57%', left: '3%', width: '46%', height: '52%' },
-    aliados: { top: '57%', left: '50%', width: '46%', height: '52%' }
+    expertos: { top: '8%', left: '2.5%', width: '46%', height: '50%' },
+    especialistas: { top: '8%', left: '50%', width: '46%', height: '50%' },
+    analistas: { top: '61%', left: '2.5%', width: '46%', height: '50%' },
+    aliados: { top: '61%', left: '50%', width: '46%', height: '50%' }
   };
 
   const endStylesMobile = {
@@ -277,8 +277,8 @@ function SectionTwo() {
       title: "Los Expertos",
       description: "Somos Expertos en Estrategias de Marketing, Promoción e Imagen Pública y de Marca. Cualquier tipo de Empresa o Grupo.",
       Icon: TrendingUp,
-      color: "#60a5fa", // Ajustado a los colores de tu UI original
-      LogoComponent: LogoBlue,
+      color: "#c5362e", // Rojo solicitado
+      LogoComponent: LogoRed,
       endStyle: currentStyles.expertos
     },
     {
@@ -286,8 +286,8 @@ function SectionTwo() {
       title: "Los Especialistas",
       description: "Creamos y Generamos grandes ideas para Promover Marcas, Empresas y Personas.",
       Icon: Lightbulb,
-      color: "#f87171", // Ajustado a los colores de tu UI original
-      LogoComponent: LogoRed,
+      color: "#599ddf", // Azul solicitado
+      LogoComponent: LogoBlue,
       endStyle: currentStyles.especialistas
     },
     {
@@ -295,8 +295,8 @@ function SectionTwo() {
       title: "Los Analistas",
       description: "Somos gente joven, entusiasta y dinámica, trabajando de la mano con la experiencia.",
       Icon: LineChart,
-      color: "#facc15", // Ajustado a los colores de tu UI original
-      LogoComponent: LogoYellow,
+      color: "#80b67d", // Verde solicitado
+      LogoComponent: LogoGreen,
       endStyle: currentStyles.analistas
     },
     {
@@ -304,8 +304,8 @@ function SectionTwo() {
       title: "Tus Aliados",
       description: "Nos involucramos en cada proyecto como si fuera nuestro, comprometiéndonos con los objetivos y el crecimiento de nuestros clientes.",
       Icon: Users,
-      color: "#60b87b",
-      LogoComponent: LogoGreen,
+      color: "#e6af41", // Amarillo solicitado
+      LogoComponent: LogoYellow,
       endStyle: currentStyles.aliados
     }
   ];
@@ -313,7 +313,7 @@ function SectionTwo() {
   return (
     <section ref={wrapperRef} className="relative w-full h-[400vh] bg-transparent font-sans">
       
-      <div className="sticky top-0 min-h-[120vh] w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-20">
+      <div className="sticky top-0 min-h-[130vh] w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-20">
         
         {/* Textos originales con Framer Motion intactos */}
         
@@ -346,8 +346,8 @@ function SectionTwo() {
         </div>
 
         {/* Contenedor de las tarjetas animadas por scroll */}
-        <div className="relative z-10 w-full max-w-6xl px-4 mt-[25vh] md:mt-12">
-          <div className="relative w-full h-[65vh] md:h-[70vh] max-h-[800px] mx-auto">
+        <div className="relative z-10 w-full max-w-5xl px-4 mt-[20vh] md:mt-2">
+          <div className="relative w-full h-[65vh] md:h-[80vh] max-h-[800px] mx-auto">
 
             {cardsData.map((card) => (
               <GlassCard 
@@ -360,7 +360,7 @@ function SectionTwo() {
           </div>
 
           <div 
-            className="absolute bottom-[-9rem] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/90 transition-opacity duration-300"
+            className="absolute bottom-[-12rem] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/90 transition-opacity duration-300"
             style={{ opacity: 1 - currentProgress }}
           >
             <span className="text-[10px] tracking-[0.3em] uppercase">Descubre más</span>
