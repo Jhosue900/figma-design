@@ -5,6 +5,8 @@ import FingerprintIcon from '../images/servicesImages/FINGERPRINT.png'
 import MegaphoneIcon from '../images/servicesImages/Megaphone.png'
 import PeopleTableIcon from '../images/servicesImages/PeopleTable.png'
 
+import { useNavigate } from 'react-router-dom';
+
 
 import { ChevronLeft, ChevronRight, Video } from 'lucide-react';
 
@@ -19,6 +21,8 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 
 function Services() {
+
+  const navigate = useNavigate();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const services = [
@@ -116,6 +120,7 @@ function Services() {
                 blurColor={colors[index]}
                 isOpen={openIndex === index}
                 onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                onLearnMore={() => navigate('/servicios')}
               />
             </SwiperSlide>
           ))}

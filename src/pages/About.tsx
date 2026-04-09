@@ -12,6 +12,8 @@ import WorldPresence from '../components/About/worldPresence';
 
 import ScrollReveal from '../components/General/ScrollReveal';
 
+import CompanySection from '../components/Home/CompanySection';
+
 
 // Los componentes auxiliares se quedan fuera de la función principal
 
@@ -44,9 +46,11 @@ function About() {
       >
         {/* El Hero suele ir sin ScrollReveal o con uno muy rápido para feedback inmediato */}
         <SectionOne />
+
+        <ScrollReveal>
+          <CompanySection />
+        </ScrollReveal>
         
-       
-          <SectionTwo />
         
 
         <ScrollReveal direction="right">

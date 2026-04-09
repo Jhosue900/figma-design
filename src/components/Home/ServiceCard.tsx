@@ -10,9 +10,10 @@ interface ServiceCardProps {
   blurColor?: 'red' | 'blue' | 'green' | 'yellow' | 'none';
   isOpen: boolean;
   onToggle: () => void;
+  onLearnMore: () => void;
 }
 
-function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onToggle }: ServiceCardProps) {
+function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onToggle, onLearnMore }: ServiceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -146,7 +147,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
                 transition={{ delay: 0.1 }}
                 className="pb-4"
               >
-                <button className="px-5 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm font-montserrat font-bold uppercase tracking-wider">
+                <button onClick={onLearnMore} className="px-5 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm font-montserrat font-bold uppercase tracking-wider">
                   Conoce más
                 </button>
               </motion.div>
