@@ -3,36 +3,82 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+// @ts-ignore
 import 'swiper/css';
+// @ts-ignore
 import 'swiper/css/navigation';
 
-import interceramic from '../../images/logoInterceramic.png';
-import driscolls from '../../images/LogoDriscolls.png';
-import KIA from '../../images/LogoKIA.webp';
-import kenworth from '../../images/LogoKenworth.svg';
+import Calaverandia from '../../images/Brands/Calaverandia.png'
+import Cinepolis from '../../images/Brands/Cinepolis.png'
+import GrupoCaliente from '../../images/Brands/Grupo_Caliente_Logo.png'
+import GrupoCollins from '../../images/Brands/GRUPOCOLLINS-min (1).png'
+import Heineken from '../../images/Brands/Heineken-Logo.png'
+import Driscols from '../../images/Brands/LogoDriscolls.png'
+import Ford from '../../images/Brands/LogoFord.png'
+import HospitalJoya from '../../images/Brands/LogoHospitalJoya.png'
+import HospitalSanJavier from '../../images/Brands/LogoHospitalSanJavier.webp'
+import Interceramic from '../../images/Brands/logoInterceramic.png'
+import Kenworth from '../../images/Brands/LogoKenworth.svg'
+import KIA from '../../images/Brands/LogoKIA.webp'
+import LogoSelloRojo from '../../images/Brands/logo-sello-rojo.png'
+import Macdonalds from '../../images/Brands/MACDONALDS-min.png'
+import Marisa from '../../images/Brands/Marisa.png'
+import MercedesBenz from '../../images/Brands/mercedes.png'
+import Nissan from '../../images/Brands/Nissan.png'
+import OReilly from '../../images/Brands/OReilly_Autopartes.png'
+import Pepsico from '../../images/Brands/PEPSICO-min.png'
+import Televisa from '../../images/Brands/TELEVISA-min.png'
+import UDG from '../../images/Brands/UDG-min.png'
+import Vitromex from '../../images/Brands/VITROMEX-min.png'
+import Volkswagen from '../../images/Brands/Volkswagen_logopng.png'
 
 const COLORS = {
-  red:    '#FF3B30',
-  blue:   '#007AFF',
-  green:  '#34C759',
+  red: '#FF3B30',
+  blue: '#007AFF',
+  green: '#34C759',
   yellow: '#FF9500',
 };
 
+interface Brand {
+  name: string;
+  src?: string;
+  alt?: string;
+  isText?: boolean;
+  className?: string;
+}
+
 function BackedBy() {
-  const brands = [
-    { name: 'INTERCERAMIC', src: interceramic, alt: 'Interceramic Logo' },
-    { name: 'MINISTERIAL', isText: true, className: 'text-base sm:text-xl md:text-2xl font-medium tracking-[0.2em] pt-1' },
-    { name: "Driscoll's", src: driscolls, alt: "Driscoll's Logo" },
-    { name: 'SWISSJUST', isText: true, className: 'text-base sm:text-xl md:text-2xl font-medium tracking-[0.2em] pt-1' },
+  const brands: Brand[] = [
+    { name: 'Cinepolis', src: Cinepolis, alt: 'Cinepolis Logo' },
+    { name: 'Calaverandia', src: Calaverandia, alt: 'Calaverandia Logo' },
+    { name: 'Grupo Caliente', src: GrupoCaliente, alt: 'Grupo Caliente Logo' },
+    { name: 'Grupo Collins', src: GrupoCollins, alt: 'Grupo Collins Logo' },
+    { name: 'Heineken', src: Heineken, alt: 'Heineken Logo' },
+    { name: "Driscoll's", src: Driscols, alt: "Driscoll's Logo" },
+    { name: 'Ford', src: Ford, alt: 'Ford Logo' },
+    { name: 'Hospital Joya', src: HospitalJoya, alt: 'Hospital Joya Logo' },
+    { name: 'Hospital San Javier', src: HospitalSanJavier, alt: 'Hospital San Javier Logo' },
+    { name: 'Interceramic', src: Interceramic, alt: 'Interceramic Logo' },
+    { name: 'Kenworth', src: Kenworth, alt: 'Kenworth Logo' },
     { name: 'KIA', src: KIA, alt: 'KIA Logo' },
-    { name: 'KENWORTH', src: kenworth, alt: 'Kenworth Logo' },
+    { name: 'Sello Rojo', src: LogoSelloRojo, alt: 'Sello Rojo Logo' },
+    { name: "McDonald's", src: Macdonalds, alt: "McDonald's Logo" },
+    { name: 'Marisa', src: Marisa, alt: 'Marisa Logo' },
+    { name: 'Mercedes-Benz', src: MercedesBenz, alt: 'Mercedes-Benz Logo' },
+    { name: 'Nissan', src: Nissan, alt: 'Nissan Logo' },
+    { name: "O'Reilly", src: OReilly, alt: "O'Reilly Autopartes Logo" },
+    { name: 'Pepsico', src: Pepsico, alt: 'Pepsico Logo' },
+    { name: 'Televisa', src: Televisa, alt: 'Televisa Logo' },
+    { name: 'UDG', src: UDG, alt: 'UDG Logo' },
+    { name: 'Vitromex', src: Vitromex, alt: 'Vitromex Logo' },
+    { name: 'Volkswagen', src: Volkswagen, alt: 'Volkswagen Logo' },
   ];
 
   const stats = [
-    { number: '35+',     label: 'Años de experiencia',   color: COLORS.red    },
-    { number: '1.000+',  label: 'Clientes satisfechos',  color: COLORS.blue   },
-    { number: '12.000+', label: 'Proyectos completados', color: COLORS.green  },
-    { number: '100%',    label: 'Tasa de satisfacción',  color: COLORS.yellow },
+    { number: '35+', label: 'Años de experiencia', color: COLORS.red },
+    { number: '1.000+', label: 'Clientes satisfechos', color: COLORS.blue },
+    { number: '12.000+', label: 'Proyectos completados', color: COLORS.green },
+    { number: '100%', label: 'Tasa de satisfacción', color: COLORS.yellow },
   ];
 
   const allBrands = [...brands, ...brands];
