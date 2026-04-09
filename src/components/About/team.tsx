@@ -380,8 +380,8 @@ export default function TeamSection() {
         {/* Header */}
         <div className="text-center mb-14">
           <h2
-            className=" font-aston text-[38px] sm:text-[54px]  leading-tight"
-            style={{  color: '#fff' }}
+            className="font-montserrat text-[38px] sm:text-[54px] font-bold leading-tight tracking-tight"
+            style={{ color: '#fff' }}
           >
             Nuestro <span style={{ color: '#3B82F6' }}>Equipo</span>
           </h2>
