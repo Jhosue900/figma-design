@@ -56,14 +56,14 @@ function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pb-10 sm:pb-12 border-b border-gray-800">
           {/* Company */}
           <div>
-            <h3 className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 uppercase tracking-wider">Company</h3>
+            <h3 className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 uppercase tracking-wider">Compañía</h3>
             <ul className="space-y-3 sm:space-y-4">
               {[
-                { label: 'About Us', to: '/nosotros' },
-                { label: 'Portfolio', to: '/portfolio' },
+                { label: 'Nosotros', to: '/nosotros' },
+                { label: 'Portafolio', to: '/portfolio' },
                 { label: 'Blog', to: '/blog' },
-                { label: 'Catalogs', to: '/catalogs' },
-                { label: 'Contact Us', to: '/contact' },
+/*                { label: 'Catalogs', to: '/catalogs' },*/
+                { label: 'Contacto', to: '/contact' },
               ].map(({ label, to }) => (
                 <li key={label}>
                   <Link to={to} className="text-white hover:text-gray-300 transition-colors text-sm">
@@ -76,13 +76,15 @@ function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 uppercase tracking-wider">Services</h3>
+            <h3 className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 uppercase tracking-wider">Servicios</h3>
             <ul className="space-y-3 sm:space-y-4">
               {[
-                { label: 'Market Research', to: '/servicios#market-research' },
-                { label: 'Digital Marketing', to: '/servicios#digital-marketing' },
+                { label: 'Investigación de Mercado', to: '/servicios#market-research' },
+                { label: 'Marketing Digital', to: '/servicios#digital-marketing' },
                 { label: 'Professional Branding', to: '/servicios#branding' },
-                { label: 'Audiovisual Production', to: '/servicios#audiovisual' },
+                { label: 'Producción Audiovisual', to: '/servicios#audiovisual' },
+                { label: 'Consultoría en Marketing.', to: '/servicios#audiovisual' },
+                
               ].map(({ label, to }) => (
                 <li key={label}>
                   <Link to={to} className="text-white hover:text-gray-300 transition-colors text-sm">
@@ -95,13 +97,11 @@ function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 uppercase tracking-wider">Resources</h3>
+            <h3 className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 uppercase tracking-wider">Recursos</h3>
             <ul className="space-y-3 sm:space-y-4">
               {[
-                { label: 'Documentation', to: '/documentation' },
-                { label: 'API Reference', to: '/api' },
-                { label: 'Community Forum', to: '/community' },
-                { label: 'FAQs', to: '/faqs' },
+                { label: 'Preguntas frecuentes', to: '/documentation' },
+                
               ].map(({ label, to }) => (
                 <li key={label}>
                   <Link to={to} className="text-white hover:text-gray-300 transition-colors text-sm">
@@ -140,7 +140,7 @@ function Footer() {
 
         {/* Bottom Footer */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 sm:pt-8 text-xs sm:text-sm text-gray-400">
-          <p>© 2025 All Rights Reserved</p>
+          <p>© 2026 WeProm Marketing Todos los Derechos Reservados</p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-white transition-colors">Terms & Condition</Link>
