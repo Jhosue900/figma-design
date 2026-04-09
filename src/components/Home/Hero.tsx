@@ -91,6 +91,53 @@ const css = `
 
   .logo-chip:hover img {
     transform: scale(1.35);
+
+
+
+  /* Animación de brillo para el botón principal */
+  @keyframes shine {
+    100% { left: 125%; }
+  }
+
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shimmer::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    transition: none;
+  }
+
+  .btn-shimmer:hover::after {
+    animation: shine 0.75s forwards;
+  }
+
+  /* Animación de gradiente giratorio para el segundo botón */
+  @keyframes rotate-grad {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-grad 3s linear infinite;
+  }
+
+
+
+
   }
 `;
 
@@ -236,23 +283,27 @@ export default function Hero() {
             Desarrollamos estrategias de marketing online y offline para elevar tu marca, producto o servicio, ayudándote a destacar por encima de la competencia.
           </p>
 
+
           <div className="flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
-            <button className="bg-white text-black hover:bg-gray-200 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-semibold text-[14px] sm:text-[16px] transition-all active:scale-95">
-              Get Started
+            {/* Botón Contáctanos: Efecto Shimmer + Elevación */}
+            <button className="btn-shimmer bg-white text-black hover:bg-gray-100 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-montserrat font-bold text-[14px] sm:text-[16px] transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_20px_rgba(255,255,255,0.15)] active:scale-95">
+              Contáctanos
             </button>
             
-            <button className="relative p-[1.5px] inline-flex items-center justify-center overflow-hidden rounded-full group active:scale-95 transition-transform">
-              {/* Capa del Gradiente (Fondo que actúa como borde) */}
-              <span className="absolute inset-0 bg-border-grad"></span>
+            {/* Botón Nosotros: Borde Dinámico + Glow */}
+            <button className="relative p-[1.5px] inline-flex items-center justify-center overflow-hidden rounded-full group active:scale-95 transition-all duration-300 hover:scale-105">
+              {/* Capa del Gradiente Giratorio (aparece en hover) */}
+              <span className="absolute inset-0 bg-border-grad opacity-90 group-hover:opacity-100 group-hover:animate-rotate-slow transition-opacity"></span>
               
-              {/* Cuerpo del botón (Negro) */}
-              <span className="relative px-6 sm:px-8 py-2.5 sm:py-3 transition-all duration-200 bg-black rounded-full group-hover:bg-opacity-80">
-                <span className="relative text-white font-montserrat font-medium text-[14px] sm:text-[16px]">
-                  Learn More
+              {/* Cuerpo del botón */}
+              <span className="relative px-6 sm:px-8 py-2.5 sm:py-3 transition-all duration-300 bg-black rounded-full group-hover:bg-[#0a0a0a]">
+                <span className="relative text-white font-montserrat font-medium text-[14px] sm:text-[16px] group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+                  Nosotros
                 </span>
               </span>
             </button>
           </div>
+
 
         </div>
 
