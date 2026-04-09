@@ -18,7 +18,7 @@ const InteractiveBackground = () => {
 
     let particles: Particle[] = [];
     const particleCount = 40; // Cantidad moderada para elegancia
-    const colors = ['#DA3731', '#1096D6', '#9EB35D', '#F7B033'];
+    const colors = ['#c5362e', '#599ddf', '#80b67d', '#e6af41'];
 
     class Particle {
       x: number; y: number; size: number; speedX: number; speedY: number; color: string;
@@ -101,26 +101,27 @@ const InteractiveBackground = () => {
       />
 
       {/* Orbe Rojo - Arriba Izquierda */}
-      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-agency-red/20 rounded-full blur-[120px] animate-blob" />
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#c5362e]/20 rounded-full blur-[120px] animate-blob" />
       
       {/* Orbe Azul - Derecha Centro */}
       <div 
-        className="absolute top-[20%] right-[-5%] w-[600px] h-[600px] bg-agency-blue/15 rounded-full blur-[130px] animate-blob"
+        className="absolute top-[20%] right-[-5%] w-[600px] h-[600px] bg-[#80b67d]/15 rounded-full blur-[130px] animate-blob"
         style={{ animationDelay: '2s' }}
       />
       
       {/* Orbe Verde - Abajo Izquierda */}
       <div 
-        className="absolute bottom-[-10%] left-[10%] w-[550px] h-[550px] bg-agency-green/15 rounded-full blur-[120px] animate-blob"
+        className="absolute bottom-[-10%] left-[10%] w-[550px] h-[550px]  bg-[#599ddf]/15 rounded-full blur-[120px] animate-blob"
         style={{ animationDelay: '4s' }}
       />
 
-      {/* Orbe Amarillo - Interactivo con Mouse */}
+      {/* Orbe Amarillo - Interactivo con Mouse (Optimizado y más visible) */}
       <div 
-        className="absolute w-[400px] h-[400px] bg-agency-yellow/10 rounded-full blur-[100px] pointer-events-none"
+        className="absolute w-[250px] h-[250px] bg-[#e6af41]/25 rounded-full blur-[80px] pointer-events-none z-0"
         style={{ 
-          transform: `translate(${mousePos.x - 200}px, ${mousePos.y - 200}px)`,
-          transition: 'transform 0.2s cubic-bezier(0.23, 1, 0.32, 1)' // Más suave
+          transform: `translate(${mousePos.x - 175}px, ${mousePos.y - 175}px)`,
+          // Reducimos de 0.2s a 0.1s para mayor respuesta, manteniendo el suavizado
+          transition: 'transform 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67)' 
         }}
       />
     </div>
