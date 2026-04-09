@@ -9,6 +9,10 @@ import CompanySection from '../components/Home/CompanySection';
 import BlogSection from '../components/Home/BlogSection';
 import Testimonials from '../components/Home/Testimonial';
 
+import WhoWeAre from '../components/Home/WhoWeAre';
+
+import AboutIntro from '../components/Home/AboutIntro';
+
 // Importa el nuevo wrapper
 import ScrollReveal from '../components/General/ScrollReveal';
 
@@ -34,8 +38,14 @@ function Home({ isLoading }: { isLoading: boolean }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <CompanySection />
+        <AboutIntro />
       </ScrollReveal>
+
+      <WhoWeAre />
+
+      {/*<ScrollReveal>
+        <CompanySection />
+      </ScrollReveal>*/}
       
       <ScrollReveal>
         <Testimonials />
