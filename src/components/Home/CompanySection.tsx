@@ -59,7 +59,7 @@ function CompanySection() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden py-16">
       
       {/* Columna Izquierda: Textos */}
       <div className="flex flex-col items-start lg:items-end order-last lg:order-first z-20">
