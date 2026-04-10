@@ -2,6 +2,11 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import image from '../../images/mapImage.jpg'
 
+import RocketIconNewProjects from '../../images/Contact/RocketIcon.jpg';
+import PersonIconClients from '../../images/Contact/PersonIcon.jpg';
+import MessageIconGeneral from '../../images/Contact/MessageIcon.jpg';
+import { Phone } from 'lucide-react';
+
 type ContactOption = {
   title: string;
   description: string;
@@ -13,10 +18,8 @@ type OfficeCard = {
   value: string;
 };
 
-// Gradiente completo: rojo → azul → amarillo
-const FULL_GRADIENT = 'linear-gradient(90deg, #ef4444, #3b82f6, #facc15)';
+const FULL_GRADIENT = 'linear-gradient(90deg, #973a32, #558aac, #72987f, #d39b44)';
 
-// Componente para texto con gradiente completo
 const GradientText = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
   <span
     className={className}
@@ -25,6 +28,7 @@ const GradientText = ({ children, className = '' }: { children: React.ReactNode;
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       backgroundClip: 'text',
+      display: 'inline',
     }}
   >
     {children}
@@ -56,100 +60,107 @@ const IconCalendar = () => (
 
 const contactOptions: ContactOption[] = [
   {
-    title: 'Support',
-    description: 'For technical issues or help with your account.',
-    link: 'support@weprom.com',
+    title: 'Nuevos Proyectos',
+    description: '¿Buscas escalar tus resultados?',
+    link: 'ventas@weprom.mx',
   },
   {
-    title: 'Sales Inquiries',
-    description: 'Interested in our enterprise solutions or custom integrations?',
-    link: 'sales@weprom.com',
+    title: 'Clientes',
+    description: 'Seguimiento de tus estrategias actuales.',
+    link: 'proyectos@weprom.mx',
   },
   {
-    title: 'General Inquiries',
-    description: 'For partnerships, press, or general questions.',
-    link: 'hello@weprom.com',
+    title: 'General',
+    description: 'Alianzas, dudas generales, otros.',
+    link: 'hola@weprom.mx',
   },
 ];
 
 const officeCards: OfficeCard[] = [
-  { label: 'Address', value: '123 N Your Street, Suite 1000 01285' },
-  { label: 'Office Hours', value: '9:00 - 18:00 PM (UTC)' },
-  { label: 'Operation Days', value: 'Monday - Friday' },
+  { label: 'Dirección', value: 'C. Corrientes 3071, Colomos Providencia, Gdl, Jalisco, Mex.' },
+  { label: 'Horario de oficina', value: '9:00 PM - 3:00 PM' },
+  { label: 'Días de atencion', value: 'Lunes a Viernes' },
 ];
 
 const officeIcons = [IconPin, IconClock, IconCalendar];
 
-// SVG con ícono y gradiente completo rojo→azul→verde→amarillo
-const GradientSupportIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+// Rocket icon para "Nuevos Proyectos" — trazo multicolor con gradiente rojo→azul→amarillo
+const RocketIcon = () => (
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
     <defs>
-      <linearGradient id="gs" x1="0%" y1="50%" x2="100%" y2="50%">
+      <linearGradient id="g-rocket" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%"   stopColor="#ef4444" />
         <stop offset="33%"  stopColor="#3b82f6" />
         <stop offset="66%"  stopColor="#22c55e" />
         <stop offset="100%" stopColor="#facc15" />
       </linearGradient>
     </defs>
-    <circle cx="12" cy="12" r="10" stroke="url(#gs)" />
-    <path d="M12 16v-4M12 8h.01" stroke="url(#gs)" />
+    <path
+      d="M12 2C12 2 6 6 6 13l3 1 1 3c3.5 1 7-2 7-7 0-4-5-8-5-8z"
+      stroke="url(#g-rocket)"
+    />
+    <path d="M9 14s-3 1-4 4c3-1 4-4 4-4z" stroke="url(#g-rocket)" />
+    <circle cx="13" cy="10" r="1.2" stroke="url(#g-rocket)" />
+    <path d="M6 13l-2 4 4-2" stroke="url(#g-rocket)" />
   </svg>
 );
 
-const GradientSalesIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+// Person icon para "Clientes"
+const PersonIcon = () => (
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
     <defs>
-      <linearGradient id="gsa" x1="0%" y1="50%" x2="100%" y2="50%">
+      <linearGradient id="g-person" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%"   stopColor="#ef4444" />
         <stop offset="33%"  stopColor="#3b82f6" />
         <stop offset="66%"  stopColor="#22c55e" />
         <stop offset="100%" stopColor="#facc15" />
       </linearGradient>
     </defs>
-    <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="url(#gsa)" />
-    <path d="M2 17l10 5 10-5"            stroke="url(#gsa)" />
-    <path d="M2 12l10 5 10-5"            stroke="url(#gsa)" />
+    <circle cx="12" cy="7" r="4" stroke="url(#g-person)" />
+    <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" stroke="url(#g-person)" />
   </svg>
 );
 
-const GradientGeneralIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+// Chat bubble icon para "General"
+const ChatIcon = () => (
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
     <defs>
-      <linearGradient id="gg" x1="0%" y1="50%" x2="100%" y2="50%">
+      <linearGradient id="g-chat" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%"   stopColor="#ef4444" />
         <stop offset="33%"  stopColor="#3b82f6" />
         <stop offset="66%"  stopColor="#22c55e" />
         <stop offset="100%" stopColor="#facc15" />
       </linearGradient>
     </defs>
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="url(#gg)" />
-    <circle cx="9" cy="7" r="4"                           stroke="url(#gg)" />
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87"                  stroke="url(#gg)" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75"                   stroke="url(#gg)" />
+    <path
+      d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+      stroke="url(#g-chat)"
+    />
   </svg>
 );
 
-// Flecha con gradiente
+// Flecha diagonal pequeña con gradiente
 const GradientArrow = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
     <defs>
-      <linearGradient id="garr" x1="0%" y1="50%" x2="100%" y2="50%">
+      <linearGradient id="g-arr" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%"   stopColor="#ef4444" />
         <stop offset="33%"  stopColor="#3b82f6" />
         <stop offset="66%"  stopColor="#22c55e" />
         <stop offset="100%" stopColor="#facc15" />
       </linearGradient>
     </defs>
-    <path d="M7 17L17 7M7 7h10v10" stroke="url(#garr)" />
+    <path d="M7 17L17 7M7 7h10v10" stroke="url(#g-arr)" />
   </svg>
 );
 
-const gradientIcons = [GradientSupportIcon, GradientSalesIcon, GradientGeneralIcon];
+const contactIcons = [RocketIconNewProjects, PersonIconClients, MessageIconGeneral];
 
 function ContactSection() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
+    phone: '',
     category: '',
     message: '',
   });
@@ -168,6 +179,7 @@ function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32">
 
+          {/* LEFT COLUMN */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -175,20 +187,20 @@ function ContactSection() {
             transition={{ duration: 0.8 }}
             className="flex flex-col justify-start pt-2"
           >
+            {/* Título principal — blanco, sin gradiente */}
             <h1 className="font-aston text-[42px] sm:text-[56px] lg:text-[64px] text-white leading-[1.05] tracking-tight mb-4">
-              We're Here to Help
+              Estamos para ti
             </h1>
             <p className="font-montserrat text-white/50 text-[15px] sm:text-[16px] leading-relaxed mb-6 max-w-sm">
-              Have a question, need support, or want to partner with us? We'd love to hear from you.
+              ¿Tienes un reto en mente, buscas una estrategia integral o quieres colaborar? Escríbenos y tracemos el plan.
             </p>
 
             <p className="font-montserrat font-semibold text-white text-[13px] mb-8">
-              Prefer to send us a message directly?
+              ¿Prefieres escribirnos directamente?
             </p>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-7">
               {contactOptions.map((item, i) => {
-                const GradIcon = gradientIcons[i];
                 return (
                   <motion.div
                     key={i}
@@ -196,28 +208,33 @@ function ContactSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.15, duration: 0.6 }}
-                    className="flex items-start gap-4"
+                    className="flex items-start gap-5"
                   >
-                    {/* Ícono con fondo sutil y gradiente completo en el trazo */}
-                    <div
-                      className="mt-1 p-2 rounded-lg flex-shrink-0"
-                      style={{ background: 'rgba(255,255,255,0.05)' }}
-                    >
-                      <GradIcon />
-                    </div>
+                    {/* Ícono como imagen importada, sin fondo */}
+                    <img
+                      src={contactIcons[i]}
+                      alt={item.title}
+                      className="mt-0.5 flex-shrink-0 w-15 h-15 object-contain"
+                    />
 
                     <div>
-                      {/* Título con gradiente completo */}
-                      <p className="font-montserrat font-semibold text-[15px] mb-1">
-                        <GradientText>{item.title}</GradientText>
+                      {/* Título en BLANCO, sin gradiente — igual a la imagen */}
+                      <p className="font-montserrat font-bold text-white text-[15px] mb-0.5">
+                        {item.title}
                       </p>
                       <p className="font-montserrat text-white/50 text-[13px] leading-relaxed mb-1">
                         {item.description}
                       </p>
-                      {/* Link con gradiente completo */}
+                      {/* Email con gradiente + flecha */}
                       <a
                         href={`mailto:${item.link}`}
-                        className="font-montserrat text-[13px] hover:opacity-80 transition-opacity inline-flex items-center gap-1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-montserrat font-semibold text-[13px] hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 cursor-pointer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.location.href = `mailto:${item.link}`;
+                        }}
                       >
                         <GradientText>{item.link}</GradientText>
                         <GradientArrow />
@@ -229,6 +246,7 @@ function ContactSection() {
             </div>
           </motion.div>
 
+          {/* RIGHT COLUMN — Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -237,12 +255,12 @@ function ContactSection() {
             className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 flex flex-col gap-5"
           >
             <div className="flex flex-col gap-2">
-              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Full Name</label>
+              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Nombre</label>
               <input
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
-                placeholder="Enter your full name"
+                placeholder="Escribe tu nombre completo"
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors"
               />
             </div>
@@ -253,34 +271,48 @@ function ContactSection() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Enter your email address"
+                placeholder="Escribe tu correo electrónico"
                 type="email"
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors"
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Subject</label>
+              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Teléfono</label>
+              <input
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+## ### ### ####"
+                type="tel"
+                className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Asunto</label>
               <select
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] focus:outline-none focus:border-white/30 transition-colors appearance-none"
               >
-                <option value="" disabled className="bg-black">Select a message class...</option>
-                <option value="support" className="bg-black">Support</option>
-                <option value="sales" className="bg-black">Sales Inquiries</option>
-                <option value="general" className="bg-black">General Inquiries</option>
+                <option value="" disabled className="bg-black">¿En qué podemos ayudarte?</option>
+                <option value="marketResearch" className="bg-black">Investigacion de mercados</option>
+                <option value="digitalMarketing" className="bg-black">Marketing digital</option>
+                <option value="audiovisualProduction" className="bg-black">Produccion audiovisual</option>
+                <option value="consulting" className="bg-black">Consultoría</option>
+                <option value="other" className="bg-black">Otro</option>
               </select>
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Message</label>
+              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Mensaje</label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="How can we help you?"
+                placeholder="Platiquemos como podemos ayudarte"
                 rows={5}
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors resize-none"
               />
@@ -298,6 +330,7 @@ function ContactSection() {
           </motion.div>
         </div>
 
+        {/* OFFICE SECTION */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -336,10 +369,11 @@ function ContactSection() {
               );
             })}
           </div>
-          <img src={image} alt="Office Location Map" className="w-full max-w-4xl rounded-2xl  mb-12 object-cover" />
+
+          <img src={image} alt="Office Location Map" className="w-full max-w-4xl rounded-2xl mb-12 object-cover" />
 
           <motion.a
-            href="https://maps.google.com"
+            href="https://maps.app.goo.gl/vhyJfQ9n5bd518nJ8"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
