@@ -53,7 +53,8 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative flex flex-col overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30"
+      onClick={() => onToggle()}
+      className="relative flex flex-col overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30 cursor-pointer"
       style={{
         backgroundColor: '#121212',
         borderRadius: '40px',
@@ -147,9 +148,13 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
                 transition={{ delay: 0.1 }}
                 className="pb-4"
               >
-                <button onClick={onLearnMore} className="px-5 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm font-montserrat font-bold uppercase tracking-wider">
+                <button 
+                  onClick={(e) => { e.stopPropagation(); onLearnMore(); }} 
+                  className="px-5 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm font-montserrat font-bold uppercase tracking-wider"
+                >
                   Conoce más
                 </button>
+
               </motion.div>
             </motion.div>
           )}
