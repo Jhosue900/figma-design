@@ -5,9 +5,9 @@ import BlogSection from '../components/Blog/BlogMainSection';
 
 function Blog() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-transparent text-white">
       <Navbar/>
-      <h1>Blog page</h1>
+      
       <BlogSection/>
       <Footer/>
     </div>

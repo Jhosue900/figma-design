@@ -333,7 +333,7 @@ export default function BlogPostPage({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
-      className="w-full bg-black min-h-screen py-12 px-4 sm:px-8"
+      className="w-full bg-transparent min-h-screen py-12 px-4 sm:px-8"
     >
       <div className="max-w-5xl mx-auto">
 

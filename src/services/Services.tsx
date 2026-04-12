@@ -23,7 +23,7 @@ import 'swiper/css/navigation';
 function Services() {
 
   const navigate = useNavigate();
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<string | null>(null);
 
   const services = [
     {
@@ -77,10 +77,10 @@ function Services() {
 
 
         {/* Sombra Izquierda */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-r from-[#000] to-transparent opacity-60" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-r from-[#000] to-transparent opacity-60 rounded-[40px]" />
         
         {/* Sombra Derecha */}
-        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-l from-[#000] to-transparent opacity-60" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-l from-[#000] to-transparent opacity-60 rounded-[40px]" />
 
         <Swiper
           // Agrega Navigation al array de modules
@@ -89,6 +89,11 @@ function Services() {
           slidesPerView={1}
           freeMode={true}
           loop={true}
+
+          observer={true}           // <--- AGREGA ESTO
+          observeParents={true}     // <--- AGREGA ESTO
+          preventClicksPropagation={true}
+
           // Configura la navegación
           navigation={{
             nextEl: '.swiper-button-next-custom',
@@ -118,8 +123,9 @@ function Services() {
                 title={service.title}
                 description={service.description}
                 blurColor={colors[index]}
-                isOpen={openIndex === index}
-                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+
+                isOpen={openIndex === service.title} 
+                onToggle={() => setOpenIndex(openIndex === service.title ? null : service.title)}
                 onLearnMore={() => navigate('/servicios')}
               />
             </SwiperSlide>

@@ -283,10 +283,10 @@ function TestimonialsSection() {
           </div>
 
           {/* LADO DERECHO: Carousel de Reseñas */}
-          <div className="w-full lg:w-[58%] flex flex-col gap-8 relative">
+          <div className="w-full lg:w-[58%] flex flex-col gap-8 relative py-[25px] px-[10px]">
              {/* Sombras laterales de desvanecimiento (Desktop & Mobile) */}
-             <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
-             <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
+             <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-black to-transparent z-20 pointer-events-none rounded-[30px]" />
+             <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-black to-transparent z-20 pointer-events-none rounded-[30px]" />
 
              {/* Fila 1 */}
              <div className="relative overflow-hidden group/row py-2">
@@ -310,11 +310,11 @@ function TestimonialsSection() {
              <div className="mx-4 mt-4 p-8 rounded-[32px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-sm">
                 <div className="flex items-center gap-5">
                    <div className="p-4 bg-white rounded-2xl shadow-xl">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" className="w-8 h-8" alt="Google" />
+                      <img src="https://images.seeklogo.com/logo-png/62/1/google-new-logo-png_seeklogo-622426.png" className="w-10 h-10" alt="Google" />
                    </div>
                    <div>
                       <p className="text-white font-bold text-xl tracking-tight">Puntuación de 4.9 estrellas</p>
-                      <p className="text-white/40 text-sm">Opiniones reales verificadas en Google Business</p>
+                      <p className="text-white/60 text-sm">Opiniones reales verificadas en Google Business</p>
                    </div>
                 </div>
                 <div className="flex flex-col items-end gap-1">
@@ -323,7 +323,7 @@ function TestimonialsSection() {
                         <svg key={i} className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                     ))}
                   </div>
-                  <span className="text-white/20 text-[10px] uppercase tracking-widest">Trust verified</span>
+                  <span className="text-white/50 text-[10px] uppercase tracking-widest">Trust verified</span>
                 </div>
              </div>
           </div>
