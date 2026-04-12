@@ -170,14 +170,16 @@ function ContactSection() {
   };
 
   const handleSubmit = () => {
-    console.log('Form submitted:', formData);
+    // Aquí podrías agregar la lógica de envío a un API
+    alert('¡Mensaje enviado con éxito!');
+    console.log('Form data:', formData);
   };
 
   return (
-    <section className="w-full bg-black py-60 px-4 sm:px-8 overflow-hidden">
+    <section className="w-full bg-transparent pt-[12rem] pb-[5rem] px-4 sm:px-8 overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-[6rem]">
 
           {/* LEFT COLUMN */}
           <motion.div
@@ -188,14 +190,14 @@ function ContactSection() {
             className="flex flex-col justify-start pt-2"
           >
             {/* Título principal — blanco, sin gradiente */}
-            <h1 className="font-aston text-[42px] sm:text-[56px] lg:text-[64px] text-white leading-[1.05] tracking-tight mb-4">
+            <h1 className="font-aston text-[45px] sm:text-[59px] lg:text-[67px] text-white leading-[1.05] tracking-tight mb-4">
               Estamos para ti
             </h1>
-            <p className="font-montserrat text-white/50 text-[15px] sm:text-[16px] leading-relaxed mb-6 max-w-sm">
+            <p className="font-montserrat text-white/80 text-[15px] sm:text-[16px] leading-relaxed mb-6 max-w-[90%]">
               ¿Tienes un reto en mente, buscas una estrategia integral o quieres colaborar? Escríbenos y tracemos el plan.
             </p>
 
-            <p className="font-montserrat font-semibold text-white text-[13px] mb-8">
+            <p className="font-montserrat font-semibold text-white text-[16px] mb-8">
               ¿Prefieres escribirnos directamente?
             </p>
 
@@ -215,14 +217,15 @@ function ContactSection() {
                       src={contactIcons[i]}
                       alt={item.title}
                       className="mt-0.5 flex-shrink-0 w-15 h-15 object-contain"
+                      style={{ filter: 'saturate(1.8) brightness(1.5)' }}
                     />
 
                     <div>
                       {/* Título en BLANCO, sin gradiente — igual a la imagen */}
-                      <p className="font-montserrat font-bold text-white text-[15px] mb-0.5">
+                      <p className="font-montserrat font-bold text-white text-[17px] mb-0.5">
                         {item.title}
                       </p>
-                      <p className="font-montserrat text-white/50 text-[13px] leading-relaxed mb-1">
+                      <p className="font-montserrat text-white/70 text-[15px] leading-relaxed mb-1">
                         {item.description}
                       </p>
                       {/* Email con gradiente + flecha */}
@@ -230,7 +233,8 @@ function ContactSection() {
                         href={`mailto:${item.link}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-montserrat font-semibold text-[13px] hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 cursor-pointer"
+                        className="font-montserrat font-bold text-[15px] hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 cursor-pointer"
+                        style={{ filter: 'saturate(1.8) brightness(1.2)' }}
                         onClick={(e) => {
                           e.preventDefault();
                           window.location.href = `mailto:${item.link}`;
@@ -247,33 +251,40 @@ function ContactSection() {
           </motion.div>
 
           {/* RIGHT COLUMN — Form */}
-          <motion.div
+          
+          <motion.form
+            onSubmit={(e) => {
+              e.preventDefault(); // Evita que recargue la página
+              handleSubmit();
+            }}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 flex flex-col gap-5"
-          >
+          >            
             <div className="flex flex-col gap-2">
-              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Nombre</label>
+              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Nombre *</label>
               <input
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
-                placeholder="Escribe tu nombre completo"
+                placeholder="Nombre completo"
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors"
+                required
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Email</label>
+              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Email *</label>
               <input
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Escribe tu correo electrónico"
+                placeholder="Correo electrónico"
                 type="email"
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors"
+                required
               />
             </div>
 
@@ -290,12 +301,13 @@ function ContactSection() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Asunto</label>
+              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Asunto *</label>
               <select
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] focus:outline-none focus:border-white/30 transition-colors appearance-none"
+                required
               >
                 <option value="" disabled className="bg-black">¿En qué podemos ayudarte?</option>
                 <option value="marketResearch" className="bg-black">Investigacion de mercados</option>
@@ -307,27 +319,31 @@ function ContactSection() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Mensaje</label>
+              <label className="font-montserrat text-white/60 text-[12px] uppercase tracking-widest">Mensaje *</label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Platiquemos como podemos ayudarte"
+                placeholder="Platiquemos"
                 rows={5}
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-montserrat text-white text-[14px] placeholder:text-white/20 focus:outline-none focus:border-white/30 transition-colors resize-none"
+                required
               />
             </div>
 
             <motion.button
+              type="submit" // Importante para que el 'required' funcione
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={handleSubmit}
               className="w-full py-3 rounded-xl font-montserrat font-semibold text-white text-[14px] tracking-wide transition-all"
               style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
             >
-              Send Message
+              Enviar mensaje
             </motion.button>
-          </motion.div>
+
+
+          </motion.form>
+
         </div>
 
         {/* OFFICE SECTION */}
@@ -344,10 +360,10 @@ function ContactSection() {
           </div>
 
           <h2 className="font-aston text-[32px] sm:text-[48px] lg:text-[56px] text-white leading-tight tracking-tight mb-4">
-            Drop by and Say Hello!
+            Ven a conocernos
           </h2>
-          <p className="font-montserrat text-white/50 text-[15px] leading-relaxed max-w-lg mb-12">
-            Whether you need to discuss partnerships, learn more about our platform, or just say hi, you're always welcome at our office.
+          <p className="font-montserrat text-white/70 text-[15px] leading-relaxed max-w-lg mb-12">
+            Ya sea para hablar de negocios, conocer nuestra metología o simplemente saludar, siempre eres bienvenido en nuestra oficina.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl mb-12">
@@ -363,7 +379,7 @@ function ContactSection() {
                   className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex flex-col items-center gap-3"
                 >
                   <div className="text-white/40"><Icon /></div>
-                  <p className="font-montserrat text-white/40 text-[11px] uppercase tracking-widest">{item.label}</p>
+                  <p className="font-montserrat text-white/50 text-[11px] uppercase tracking-widest">{item.label}</p>
                   <p className="font-montserrat text-white text-[14px] text-center leading-snug">{item.value}</p>
                 </motion.div>
               );
@@ -381,7 +397,7 @@ function ContactSection() {
             className="font-montserrat font-semibold text-[13px] text-white px-8 py-3 rounded-full tracking-wide"
             style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
           >
-            Get Directions
+            Obtener dirección
           </motion.a>
         </motion.div>
 
