@@ -192,7 +192,7 @@ function BlogSection() {
 
   // ── Render listing ──
   return (
-    <section className="w-full bg-black py-24 px-4 sm:px-8 overflow-hidden">
+    <section className="w-full bg-transparent py-24 px-4 sm:px-8 overflow-hidden">
       <div className="max-w-5xl mx-auto">
 
         <motion.div
