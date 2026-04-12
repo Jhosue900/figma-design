@@ -77,10 +77,10 @@ function Services() {
 
 
         {/* Sombra Izquierda */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-r from-[#000] to-transparent opacity-60" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-r from-[#000] to-transparent opacity-60 rounded-[40px]" />
         
         {/* Sombra Derecha */}
-        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-l from-[#000] to-transparent opacity-60" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-l from-[#000] to-transparent opacity-60 rounded-[40px]" />
 
         <Swiper
           // Agrega Navigation al array de modules

@@ -285,8 +285,8 @@ function TestimonialsSection() {
           {/* LADO DERECHO: Carousel de Reseñas */}
           <div className="w-full lg:w-[58%] flex flex-col gap-8 relative py-[25px] px-[10px]">
              {/* Sombras laterales de desvanecimiento (Desktop & Mobile) */}
-             <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
-             <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
+             <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-black to-transparent z-20 pointer-events-none rounded-[30px]" />
+             <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-black to-transparent z-20 pointer-events-none rounded-[30px]" />
 
              {/* Fila 1 */}
              <div className="relative overflow-hidden group/row py-2">
