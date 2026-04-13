@@ -42,17 +42,44 @@ function Navbar() {
   return (
     <>
       <header className="fixed top-0 left-0 w-full flex justify-center pt-6 px-4 sm:px-6 overflow-visible z-50">
-        {/* Efecto de luz - Ajustado para no causar desbordamiento */}
-        <div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[600px] -z-10">
-          <div className="absolute opacity-100 mix-blend-plus-lighter" style={{ width: 'min(935px, 90vw)', height: '795px', top: '-572px', left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0) 100%)', filter: 'blur(124px)' }} />
-          <div className="absolute opacity-100 mix-blend-plus-lighter" style={{ width: 'min(625px, 70vw)', height: '795px', top: '-572px', left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(180.76deg, #FFFFFF 0.66%, rgba(255,255,255,0) 79.63%)', filter: 'blur(124px)' }} />
+
+        
+        {/* Efecto de luz Premium */}
+        <div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[500px] -z-10">
+          <div 
+            className="absolute opacity-80 mix-blend-screen"
+            style={{ 
+              width: '1500px', 
+              height: '600px', 
+              top: '-250px', 
+              left: '50%', 
+              transform: 'translateX(-50%)', 
+              background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 80%)', 
+              filter: 'blur(50px)' 
+            }} 
+          />
+          <div 
+            className="absolute opacity-100 mix-blend-screen"
+            style={{ 
+              width: '1000px', 
+              height: '300px', 
+              top: '-180px', 
+              left: '50%', 
+              transform: 'translateX(-50%)', 
+              background: 'radial-gradient(circle at center, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%)', 
+              filter: 'blur(40px)' 
+            }} 
+          />
         </div>
+
 
         <div ref={menuRef} className="w-full max-w-[962px]">
           {/* Barra principal - Eliminado width: '962px' fijo */}
-          <nav className="flex items-center justify-between bg-white/10 border border-white/20 backdrop-blur-xl shadow-lg rounded-[16px] px-6 sm:px-8 h-[56px] w-full"
+          <nav className="flex items-center justify-between bg-white/[0.03] border border-white/[0.08] backdrop-blur-[20px] shadow-[0_8px_32px_-12px_rgba(0,0,0,0.5)] rounded-[20px] px-6 sm:px-8 h-[58px] w-full transition-all duration-300 hover:border-white/[0.15] hover:bg-white/[0.05]"
           >
-            
+            {/* Un sutil brillo interno en la parte superior para simular relieve */}
+            <div className="absolute inset-0 rounded-[20px] pointer-events-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]" />
+                      
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0">
               <img src={LogoWeProm} alt="WeProm Logo" className="h-[2.3rem] sm:h-[2.2rem] w-auto" />
