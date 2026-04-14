@@ -2,13 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 
 
 interface Testimonial {
-  id: number;
+  id: string | number; // Cambiado para aceptar IDs de Google
   name: string;
   role: string;
   company: string;
   image: string;
   text: string;
-  icon?: 'twitter' | 'linkedin' | 'other';
+  icon?: 'twitter' | 'linkedin' | 'other' | 'google'; // Añadido google
+  rating?: number; // Para las estrellas
+  timeDescription?: string; // Para "hace 2 meses", etc.
 }
 
 function TestimonialsSection() {
@@ -37,7 +39,7 @@ function TestimonialsSection() {
       role: 'IT Director',
       company: 'HealthCare',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
-      text: 'The real-time threat detection and automated response features have significantly reduced our risk exposure. We now feel more confident than ever about our data security posture.',
+      text: 'The real-time threat detection and automated response features have significantly reduced our risk exposure.',
       icon: 'twitter'
     },
     {
@@ -46,52 +48,96 @@ function TestimonialsSection() {
       role: 'IT Director',
       company: 'HealthCare',
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80',
-      text: 'The real-time threat detection and automated response features have significantly reduced our risk exposure. We now feel more confident than ever about our data security posture.',
+      text: 'The real-time threat detection and automated response features have significantly reduced our risk exposure.',
       icon: 'linkedin'
-    },
-    {
-      id: 3,
-      name: 'Jhon Brown',
-      role: 'Founder & CMO',
-      company: 'Roqus',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
-      text: 'The real-time threat detection and automated response features have significantly reduced our risk exposure. We now feel more confident than ever about our data security posture.',
-      icon: 'other'
-    },
-    {
-      id: 4,
-      name: 'Daywan Jhonson',
-      role: 'IT Director',
-      company: 'HealthCare',
-      image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&q=80',
-      text: 'The real-time threat detection and automated response features have significantly reduced our risk exposure. We now feel more confident than ever about our data security posture.',
-      icon: 'linkedin'
-    },
-    {
-      id: 5,
-      name: 'Daywan Jhonson',
-      role: 'IT Director',
-      company: 'HealthCare',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80',
-      text: 'The real-time threat detection and automated response features have significantly reduced our risk exposure. We now feel more confident than ever about our data security posture.',
-      icon: 'linkedin'
-    },
-    {
-      id: 6,
-      name: 'Michael Brown',
-      role: 'IT Director',
-      company: 'HealthCare',
-      image: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&q=80',
-      text: 'The real-time threat detection and automated response features have significantly reduced our risk exposure. We now feel more confident than ever about our data security posture.',
-      icon: 'other'
     }
   ];
 
-  const firstRow = testimonials.slice(0, 3);
-  const secondRow = testimonials.slice(3, 6);
 
-  const firstRowDuplicated = [...firstRow, ...firstRow, ...firstRow];
-  const secondRowDuplicated = [...secondRow, ...secondRow, ...secondRow];
+  // 1. Nuevos estados
+  const [googleReviews, setGoogleReviews] = useState<Testimonial[]>([]);
+  const [stats, setStats] = useState({ rating: 4.9, total: 100 });
+
+  
+  // 2. Carga de Google Maps API y Reseñas
+  useEffect(() => {
+    const scriptId = 'google-maps-script';
+    
+    const fetchGoogleReviews = () => {
+      // Verificación de seguridad: si 'google' no existe, no hace nada para evitar el crash
+      if (typeof google === 'undefined') return;
+
+      const placeId = 'ChIJ-17NUpquKIQRMGCoJQIJWgs';
+      const dummyDiv = document.createElement('div');
+      
+      // @ts-ignore
+      const service = new google.maps.places.PlacesService(dummyDiv);
+
+      service.getDetails({ placeId, fields: ['reviews', 'rating', 'user_ratings_total'] }, (place: any, status: any) => {
+        // @ts-ignore
+        if (status === google.maps.places.PlacesServiceStatus.OK && place?.reviews) {
+          setStats({ 
+            rating: place.rating || 4.9, 
+            total: place.user_ratings_total || 100 
+          });
+          
+          const mappedReviews: Testimonial[] = place.reviews
+            .filter((r: any) => r.rating >= 4)
+            .map((r: any, idx: number) => ({
+              id: `google-${idx}`,
+              name: r.author_name,
+              role: 'Cliente verificado',
+              company: 'Google',
+              image: r.profile_photo_url,
+              text: r.text,
+              icon: 'google',
+              rating: r.rating,
+              timeDescription: r.relative_time_description
+            }));
+          setGoogleReviews(mappedReviews);
+        }
+      });
+    };
+
+    // Lógica de carga del script corregida
+    const existingScript = document.getElementById(scriptId);
+
+    if (!existingScript) {
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBcXEBZHoAuDRFdHgp-2dm-OQ93qY3gYxw&libraries=places&callback=initMap`; 
+      script.async = true;
+      script.defer = true;
+      
+      // En lugar de onload, usamos un intervalo pequeño para asegurar que el objeto google existe
+      script.onload = () => {
+        const checkGoogle = setInterval(() => {
+          if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+            fetchGoogleReviews();
+            clearInterval(checkGoogle);
+          }
+        }, 100);
+      };
+      
+      document.head.appendChild(script);
+    } else {
+      // Si el script ya existe, esperamos a que el objeto google esté listo
+      const checkGoogle = setInterval(() => {
+        if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+          fetchGoogleReviews();
+          clearInterval(checkGoogle);
+        }
+      }, 100);
+    }
+  }, []);
+
+  
+  // 3. Duplicación para el scroll infinito (dentro del componente)
+  const displayReviews = googleReviews.length > 0 ? googleReviews : testimonials; // Fallback a tus datos manuales si falla
+  const rows = [
+    [...displayReviews, ...displayReviews, ...displayReviews],
+    [...[...displayReviews].reverse(), ...displayReviews, ...displayReviews]
+  ];
 
 
   const VIDEO_TESTIMONIALS = [
@@ -120,6 +166,16 @@ function TestimonialsSection() {
             </svg>
           </div>
         );
+
+      case 'google':
+        return (
+          <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-lg">
+            <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.662 3.269-5.445 3.269-3.369 0-6.106-2.737-6.106-6.106s2.737-6.106 6.106-6.106c1.483 0 2.805.506 3.832 1.348l2.766-2.766C17.472 2.062 15.176 1 12.545 1 6.551 1 1.688 5.864 1.688 11.857s4.863 10.857 10.857 10.857c5.994 0 10.857-4.864 10.857-10.857 0-.589-.063-1.161-.173-1.718h-10.684z"/>
+            </svg>
+          </div>
+        );
+
       default:
         return (
           <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-lg">
@@ -134,7 +190,7 @@ function TestimonialsSection() {
   const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
     <div className="flex-shrink-0 w-[280px] sm:w-[340px] lg:w-[380px] mx-2 sm:mx-3 group">
       <div
-        className="relative h-full rounded-[20px] sm:rounded-[28px] p-5 sm:p-8 transition-all duration-500 hover:scale-[1.02] cursor-pointer"
+        className="relative h-full rounded-[20px] sm:rounded-[28px] p-4 sm:p-5 transition-all duration-500 hover:scale-[1.02] cursor-pointer"
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.05)',
           border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -283,49 +339,53 @@ function TestimonialsSection() {
           </div>
 
           {/* LADO DERECHO: Carousel de Reseñas */}
-          <div className="w-full lg:w-[58%] flex flex-col gap-8 relative py-[25px] px-[10px]">
+          <div className="w-full lg:w-[58%] flex flex-col gap-[1rem] relative py-[25px] px-[10px]">
              {/* Sombras laterales de desvanecimiento (Desktop & Mobile) */}
              <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-black to-transparent z-20 pointer-events-none rounded-[30px]" />
              <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-black to-transparent z-20 pointer-events-none rounded-[30px]" />
 
              {/* Fila 1 */}
-             <div className="relative overflow-hidden group/row py-2">
-                <div className="flex animate-scroll-right group-hover/row:pause">
-                  {firstRowDuplicated.map((testimonial, index) => (
-                    <TestimonialCard key={`first-${testimonial.id}-${index}`} testimonial={testimonial} />
-                  ))}
-                </div>
-             </div>
-
-             {/* Fila 2 */}
-             <div className="relative overflow-hidden group/row py-2">
-                <div className="flex animate-scroll-left group-hover/row:pause">
-                  {secondRowDuplicated.map((testimonial, index) => (
-                    <TestimonialCard key={`second-${testimonial.id}-${index}`} testimonial={testimonial} />
-                  ))}
-                </div>
-             </div>
+            <div className="relative overflow-hidden group/row py-2">
+              <div className="flex animate-scroll-right group-hover/row:pause">
+                {rows[0].map((testimonial, index) => (
+                  <TestimonialCard key={`row1-${index}`} testimonial={testimonial} />
+                ))}
+              </div>
+            </div>
+            
+            {/* Fila 2 */}
+            <div className="relative overflow-hidden group/row py-2">
+              <div className="flex animate-scroll-left group-hover/row:pause">
+                {rows[1].map((testimonial, index) => (
+                  <TestimonialCard key={`row2-${index}`} testimonial={testimonial} />
+                ))}
+              </div>
+            </div>
 
              {/* Badge Google mejorado */}
              <div className="mx-4 mt-4 p-8 rounded-[32px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-sm">
-                <div className="flex items-center gap-5">
-                   <div className="p-4 bg-white rounded-2xl shadow-xl">
-                      <img src="https://images.seeklogo.com/logo-png/62/1/google-new-logo-png_seeklogo-622426.png" className="w-10 h-10" alt="Google" />
-                   </div>
-                   <div>
-                      <p className="text-white font-bold text-xl tracking-tight">Puntuación de 4.9 estrellas</p>
-                      <p className="text-white/60 text-sm">Opiniones reales verificadas en Google Business</p>
-                   </div>
+              <div className="flex items-center gap-5">
+                <div className="p-4 bg-white rounded-2xl shadow-xl">
+                  <img src="https://images.seeklogo.com/logo-png/62/1/google-new-logo-png_seeklogo-622426.png" className="w-10 h-10" alt="Google" />
                 </div>
-                <div className="flex flex-col items-end gap-1">
-                  <div className="flex gap-1 text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    ))}
-                  </div>
-                  <span className="text-white/50 text-[10px] uppercase tracking-widest">Trust verified</span>
+                <div>
+                  <p className="text-white font-bold text-xl tracking-tight">Puntuación de {stats.rating.toFixed(1)} estrellas</p>
+                  <p className="text-white/60 text-sm">Basado en {stats.total} opiniones verificadas</p>
                 </div>
-             </div>
+              </div>
+              <div className="flex flex-col items-end gap-1">
+                <div className="flex gap-1 text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className={`w-6 h-6 ${i < Math.round(stats.rating) ? 'text-yellow-400' : 'text-white/20'}`} fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-white/50 text-[10px] uppercase tracking-widest">Trust verified</span>
+              </div>
+            </div>
+
+
           </div>
 
         </div>
