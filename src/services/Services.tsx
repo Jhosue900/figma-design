@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import ServiceCard from '../components/Home/ServiceCard';
 import SearchIcon from '../images/servicesImages/Search.png'
 import FingerprintIcon from '../images/servicesImages/FINGERPRINT.png'
@@ -6,24 +6,19 @@ import MegaphoneIcon from '../images/servicesImages/Megaphone.png'
 import PeopleTableIcon from '../images/servicesImages/PeopleTable.png'
 
 import { useNavigate } from 'react-router-dom';
-
-
 import { ChevronLeft, ChevronRight, Video } from 'lucide-react';
 
-
-
-// 1. Importar componentes y estilos de Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, FreeMode, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
+import { Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css'
 
 function Services() {
-
   const navigate = useNavigate();
-  const [openIndex, setOpenIndex] = useState<string | null>(null);
+  const [openTitle, setOpenTitle] = useState<string | null>(null);
+
+  const handleToggle = useCallback((title: string) => {
+    setOpenTitle(prev => prev === title ? null : title);
+  }, []);
 
   const services = [
     {
@@ -58,8 +53,12 @@ function Services() {
     }
   ];
 
-  // Extendemos el array de colores para que cubra todos los servicios
   const colors: ('red' | 'blue' | 'green' | 'yellow')[] = ['red', 'blue', 'green', 'yellow', 'blue'];
+
+  // Cierra todas las cards cuando el swiper se mueve
+  const handleSlideChange = useCallback(() => {
+    setOpenTitle(null);
+  }, []);
 
   return (
     <section className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 overflow-hidden">
@@ -77,36 +76,23 @@ function Services() {
         </h3>
       </div>
 
-      {/* 2. Implementación del Carrusel Interactivo */}
       <div className="w-full max-w-[1400px] mx-auto px-4 relative group">
-
 
         {/* Sombra Izquierda */}
         <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-r from-[#000] to-transparent opacity-60 rounded-[40px]" />
-        
+
         {/* Sombra Derecha */}
         <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none bg-gradient-to-l from-[#000] to-transparent opacity-60 rounded-[40px]" />
 
         <Swiper
-          // Agrega Navigation al array de modules
-          modules={[Pagination, Autoplay, FreeMode, Navigation]} 
-          spaceBetween={12} // Te recomiendo 12 para que no estén pegadas
+          modules={[Pagination, Navigation]}
+          spaceBetween={12}
           slidesPerView={1}
-          freeMode={true}
-          loop={true}
-
-          observer={true}           // <--- AGREGA ESTO
-          observeParents={true}     // <--- AGREGA ESTO
-          preventClicksPropagation={true}
-
-          // Configura la navegación
+          observer={true}
+          observeParents={true}
           navigation={{
             nextEl: '.swiper-button-next-custom',
             prevEl: '.swiper-button-prev-custom',
-          }}
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: true,
           }}
           pagination={{
             clickable: true,
@@ -117,10 +103,8 @@ function Services() {
             1024: { slidesPerView: 3 },
             1280: { slidesPerView: 4 },
           }}
-          className="services-swiper !py-10" // Añadimos padding lateral para las flechas
+          className="services-swiper !py-10"
         >
-
-
           {services.map((service, index) => (
             <SwiperSlide key={service.title} className="!h-auto flex items-stretch">
               <ServiceCard
@@ -128,31 +112,24 @@ function Services() {
                 title={service.title}
                 description={service.description}
                 blurColor={colors[index]}
-
-                isOpen={openIndex === service.title} 
-                onToggle={() => setOpenIndex(openIndex === service.title ? null : service.title)}
+                isOpen={openTitle === service.title}
+                onToggle={() => handleToggle(service.title)}
                 onLearnMore={() => navigate(service.path)}
               />
             </SwiperSlide>
           ))}
         </Swiper>
 
-
-        {/* Botones de Navegación Personalizados */}
         <button className="swiper-button-prev-custom absolute left-2 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-[#121212]/80 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-black hover:scale-110 shadow-xl backdrop-blur-sm">
           <ChevronLeft size={28} />
         </button>
-        
+
         <button className="swiper-button-next-custom absolute right-2 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-[#121212]/80 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-black hover:scale-110 shadow-xl backdrop-blur-sm">
           <ChevronRight size={28} />
         </button>
-
-
       </div>
 
-      {/* 3. Estilos personalizados para los puntos del paginado (Dots) */}
       <style>{`
-        /* Forzamos que los botones personalizados no sean ocultados por Swiper */
         .swiper-button-disabled {
           opacity: 0 !important;
           pointer-events: none;
@@ -170,13 +147,11 @@ function Services() {
           transition: all 0.3s ease;
         }
       
-        /* Animación suave para las flechas al aparecer */
         .swiper-button-prev-custom, .swiper-button-next-custom {
           cursor: pointer;
         }
       
         @media (max-width: 768px) {
-          /* En móvil ocultamos sombras y flechas para un swipe limpio */
           .swiper-button-prev-custom, 
           .swiper-button-next-custom,
           .bg-gradient-to-r,
