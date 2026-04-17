@@ -9,6 +9,10 @@ import { useState, useEffect } from 'react';
 
 import InteractiveBackground from './components/General/InteractiveBackground';
 
+import Branding from './pages/services/Branding';
+import Audiovisual from './pages/services/Audiovisual';
+
+
 function App() {
 
   const [showLoader, setShowLoader] = useState(true);
@@ -42,6 +46,17 @@ function App() {
         <Route path="/" element={<Home isLoading={loading} />} />
         <Route path="/nosotros" element={<About />} />
         <Route path="/servicios" element={<Services />} />
+
+        {/* NUEVAS RUTAS DE SERVICIOS */}
+        <Route path="/servicios/branding" element={<Branding />} />
+        <Route path="/servicios/audiovisual" element={<Audiovisual />} />
+
+        {/*    <Route path="/servicios/marketing-digital" element={<MarketingDigital />} />
+            <Route path="/servicios/consultoria" element={<Consultoria />} />
+            <Route path="/servicios/investigacion" element={<Investigacion />} />*/}
+        
+
+
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
