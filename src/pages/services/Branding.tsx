@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../../components/General/Navbar';
 import Footer from '../../components/General/Footer';
 import Hero from '../../components/Services/Branding/Hero';
+import SectionTwo from '../../components/Services/Branding/SectionTwo';
 import ScrollReveal from '../../components/General/ScrollReveal';
 
 const Branding = () => {
@@ -11,6 +12,8 @@ const Branding = () => {
 
       {/* La sección Hero suele ir sin ScrollReveal para carga inmediata o con un delay suave */}
       <Hero />
+
+      <SectionTwo />
 
       {/* Contenedor para las siguientes secciones */}
       <div className="max-w-7xl mx-auto px-4 py-20">
