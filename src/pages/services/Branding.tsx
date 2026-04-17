@@ -1,21 +1,41 @@
 import React from 'react';
-// Aquí importarás los sub-componentes específicos cuando los crees
-// import BrandingHero from '../../components/Services/Branding/BrandingHero';
+import Navbar from '../../components/General/Navbar';
+import Footer from '../../components/General/Footer';
+import Hero from '../../components/Services/Branding/Hero';
+import SectionTwo from '../../components/Services/Branding/SectionTwo';
+import ScrollReveal from '../../components/General/ScrollReveal';
 
 const Branding = () => {
   return (
-    <div className="min-h-screen pt-24 pb-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-5xl font-montserrat font-bold text-white mb-6">
-          Professional Branding
-        </h1>
-        <p className="text-xl text-gray-400 max-w-2xl">
-          Construimos identidades visuales que trascienden. Esta es la base de tu nueva sección.
-        </p>
-        
-        {/* Aquí irán las secciones que desarrolles: Hero, Process, Portfolio, etc. */}
+    <main className="min-h-screen bg-black">
+      <Navbar />
+
+      {/* La sección Hero suele ir sin ScrollReveal para carga inmediata o con un delay suave */}
+      <Hero />
+
+      <SectionTwo />
+
+      {/* Contenedor para las siguientes secciones */}
+      <div className="max-w-7xl mx-auto px-4 py-20">
+        <ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+               <h2 className="text-4xl font-montserrat font-bold text-white mb-6">
+                 Identidades que trascienden
+               </h2>
+               <p className="text-xl text-gray-400 leading-relaxed">
+                 No solo diseñamos logotipos; creamos ecosistemas visuales completos que comunican 
+                 los valores y la esencia de tu negocio en cada punto de contacto.
+               </p>
+            </div>
+            {/* Aquí podrías poner una imagen estática o un video */}
+            <div className="aspect-video bg-white/5 rounded-[40px] border border-white/10" />
+          </div>
+        </ScrollReveal>
       </div>
-    </div>
+
+      <Footer />
+    </main>
   );
 };
 

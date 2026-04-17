@@ -13,7 +13,7 @@ import WhoWeAre from '../components/Home/WhoWeAre';
 
 import AboutIntro from '../components/Home/AboutIntro';
 
-import { useNavigate } from 'react-router-dom'; // <--- Añadir esto
+import { useNavigate } from 'react-router-dom';
 
 // Importa el nuevo wrapper
 import ScrollReveal from '../components/General/ScrollReveal';
