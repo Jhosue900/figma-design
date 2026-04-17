@@ -29,26 +29,31 @@ function Services() {
     {
       icon: MegaphoneIcon,
       title: 'Marketing digital',
+      path: '/servicios/marketing-digital',
       description: 'Diseñamos estrategias digitales enfocadas en resultados; integramos pauta, contenido y analítica para maximizar la inversión.',
     },
     {
       icon: FingerprintIcon,
       title: 'Professional Branding',
+      path: '/servicios/branding',
       description: 'Construimos marcas profesionales, coherentes y memorables, definiendo un posicionamiento, mensaje y presencia visual que conecte con el mercado meta.',
     },
     {
       icon: Video,
       title: 'Producción Audiovisual',
+      path: '/servicios/audiovisual',
       description: 'Potenciamos la narrativa de tu marca con estándares cinematográficos; conceptualizamos, filmamos y editamos piezas de alta fidelidad adaptadas a los objetivos comerciales de cualquier industria.',
     },
     {
       icon: PeopleTableIcon,
       title: 'Consultoría en Marketing',
+      path: '/servicios/consultoria',
       description: 'Acompañamos a tu empresa con una visión estratégica integral; diagnosticamos, optimizamos y estructuramos planes alineados a tus objetivos comerciales.',
     },
     {
       icon: SearchIcon,
       title: 'Investigación de Mercados',
+      path: '/servicios/investigacion',
       description: 'Tomamos decisiones con base en datos, consumidores, competencia y el entorno para identificar oportunidades reales y ventajas competitivas.',
     }
   ];
@@ -126,7 +131,7 @@ function Services() {
 
                 isOpen={openIndex === service.title} 
                 onToggle={() => setOpenIndex(openIndex === service.title ? null : service.title)}
-                onLearnMore={() => navigate('/servicios')}
+                onLearnMore={() => navigate(service.path)}
               />
             </SwiperSlide>
           ))}
