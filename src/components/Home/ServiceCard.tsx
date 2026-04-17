@@ -42,18 +42,18 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
   const IconComponent = !isImageIcon ? (icon as any) : null;
 
   const blurStyles: Record<string, string> = {
-    red:    '#ef4444',
-    blue:   '#3b82f6',
-    green:  '#22c55e',
+    red: '#ef4444',
+    blue: '#3b82f6',
+    green: '#22c55e',
     yellow: '#eab308',
   };
+  console.log('render:', title, '| isOpen:', isOpen);
 
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onClick={() => onToggle()}
       className="relative flex flex-col overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30 cursor-pointer"
       style={{
         backgroundColor: '#121212',
@@ -140,7 +140,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
               >
                 {description}
               </motion.p>
-              
+
               {/* NUEVO BOTÓN CTA: Conoce más */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -148,8 +148,8 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
                 transition={{ delay: 0.1 }}
                 className="pb-4"
               >
-                <button 
-                  onClick={(e) => { e.stopPropagation(); onLearnMore(); }} 
+                <button
+                  onClick={(e) => { e.stopPropagation(); onLearnMore(); }}
                   className="px-5 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm font-montserrat font-bold uppercase tracking-wider"
                 >
                   Conoce más
