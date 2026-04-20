@@ -9,8 +9,8 @@ import { useState, useEffect } from 'react';
 
 import InteractiveBackground from './components/General/InteractiveBackground';
 
-import Branding from './pages/services/Branding';
-import Audiovisual from './pages/services/Audiovisual';
+import Branding from './pages/servicesPages/Branding';
+import Audiovisual from './pages/servicesPages/audiovisual/mainAudiovisual';
 
 
 function App() {
