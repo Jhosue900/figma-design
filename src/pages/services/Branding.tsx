@@ -7,7 +7,7 @@ import ScrollReveal from '../../components/General/ScrollReveal';
 
 const Branding = () => {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-transparent">
       <Navbar />
 
       {/* La sección Hero suele ir sin ScrollReveal para carga inmediata o con un delay suave */}
