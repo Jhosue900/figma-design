@@ -75,7 +75,7 @@ const SocialMedia = () => {
             Social Media
           </span>
         </h2>
-        <p className="text-white/50 font-aston font-light text-base md:text-lg leading-relaxed">
+        <p className="text-white font-aston font-normal text-base md:text-lg leading-relaxed">
           Reels Publicitarios, Testimoniales y contenido UGC diseñados específicamente para el algoritmo, capturando la atención en los primeros segundos.
         </p>
       </div>

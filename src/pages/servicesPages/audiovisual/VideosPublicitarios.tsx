@@ -73,7 +73,7 @@ const VideosPublicitarios = () => {
             Publicitarios
           </span>
         </h2>
-        <p className="text-white/50 font-montserrat font-light text-base md:text-lg leading-relaxed">
+        <p className="text-white font-montserrat font-normal text-base md:text-lg leading-relaxed">
           Producción de spots persuasivos y de alto impacto, optimizados para maximizar el retorno de inversión en medios digitales o tradicionales.
         </p>
       </div>

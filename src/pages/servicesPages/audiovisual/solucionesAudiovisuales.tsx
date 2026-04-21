@@ -71,7 +71,7 @@ const SolucionesAudiovisuales = () => {
         <h2 className="text-3xl md:text-5xl font-aston tracking-tight mb-4 text-white">
           Soluciones Audiovisuales Integrales
         </h2>
-        <p className="text-white/50 font-aston font-light text-base md:text-lg">
+        <p className="text-white font-aston font-normal text-base md:text-lg">
           Desarrollamos proyectos escalables con un enfoque estratégico. Selecciona un servicio para conocer más.
         </p>
       </div>
