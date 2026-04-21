@@ -68,7 +68,7 @@ const NuestroProceso = () => {
             Nuestro Proceso Creativo{' '}
             
           </h2>
-          <p className="text-white/50 font-light text-base md:text-lg leading-relaxed">
+          <p className="text-white font-normal text-base md:text-lg leading-relaxed">
             Metodología paso a paso para asegurar que cada proyecto supere tus expectativas y cumpla sus objetivos.
           </p>
         </div>

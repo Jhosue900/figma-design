@@ -62,7 +62,7 @@ const ContactoSection = () => {
 
   return (
     <section className="w-full bg-black py-16 px-4 sm:px-6 lg:px-8 font-montserrat text-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
 
         {/* Layout principal */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
@@ -73,7 +73,7 @@ const ContactoSection = () => {
               <h2 className="text-3xl md:text-5xl font-aston tracking-tight mb-4 leading-tight">
                 Estamos para ti
               </h2>
-              <p className="text-white/100 font-light text-base leading-relaxed">
+              <p className="text-white/100 font-normal text-base leading-relaxed">
                 ¿Tienes alguna idea en mente?, no dudes en escribirnos o visitarnos.
               </p>
             </div>

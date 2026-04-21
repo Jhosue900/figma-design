@@ -38,7 +38,7 @@ const PorQueNosotros = () => {
             ¿Por qué producir con nosotros?
             
           </h2>
-          <p className="text-white/50 font-light text-base md:text-lg leading-relaxed">
+          <p className="text-white font-normal text-base md:text-lg leading-relaxed">
             Combinamos trayectoria, control interno y flexibilidad técnica para garantizar que tu inversión audiovisual sea rentable.
           </p>
         </div>

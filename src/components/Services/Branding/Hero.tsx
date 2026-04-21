@@ -55,7 +55,7 @@ const ScrollingRow = ({ images, direction = 1 }: { images: string[], direction?:
 
 const Hero = () => {
   return (
-    <section className="relative w-full pt-[9rem] pb-20 overflow-hidden bg-black">
+    <section className="relative w-full pt-[9rem] pb-20 overflow-hidden bg-transparent">
       {/* Texto Central */}
       <div className="relative z-20 text-center mb-16 px-4">
         <motion.p 

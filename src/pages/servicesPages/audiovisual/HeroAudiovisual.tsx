@@ -54,12 +54,12 @@ const AudiovisualHero = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/20" />
 
-                <div className="relative z-10 px-6 sm:px-12 md:px-20 max-w-3xl">
+                <div className="relative z-10 px-6 sm:px-12 md:px-20 max-w-5xl">
                     <motion.h1
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.7 }}
-                        className="font-aston font-extrabold tracking-tight leading-none text-white"
+                        className="font-aston font-extrabold tracking-wide leading-none text-white"
                         style={{ fontSize: 'clamp(2.8rem, 5.5vw, 5rem)' }}
                     >
                         Producciones
@@ -82,7 +82,7 @@ const AudiovisualHero = () => {
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.7, delay: 0.15 }}
-                        className="mt-4 text-white/60 font-montserrat font-light text-base sm:text-lg max-w-md leading-relaxed"
+                        className="mt-4 text-white font-montserrat font-normal text-base sm:text-2xl max-w-2xl leading-relaxed"
                     >
                         Quédate para siempre en la mente de tus clientes con proyectos que sí cumplen objetivos.
                     </motion.p>
@@ -91,7 +91,7 @@ const AudiovisualHero = () => {
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.7, delay: 0.28 }}
-                        className="mt-8 relative text-white font-montserrat font-medium text-sm px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300"
+                        className="mt-8 relative text-white font-montserrat font-medium text-xl px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300"
                         style={{
                             background: 'linear-gradient(#000, #000) padding-box, linear-gradient(90deg, #ba3f35, #5fa1cf, #7eb387, #e5ad43 ) border-box',
                             border: '4px solid transparent',

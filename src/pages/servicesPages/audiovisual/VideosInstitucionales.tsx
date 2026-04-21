@@ -88,7 +88,7 @@ const VideosInstitucionales = () => {
                         Institucionales
                     </span>
                 </h2>
-                <p className="text-white/50 font-aston font-light text-base md:text-lg leading-relaxed">
+                <p className="text-white font-aston font-normal text-base md:text-lg leading-relaxed">
                     Narrativa audiovisual de alta calidad para proyectar la solidez, cultura y visión de tu corporativo ante el mundo.
                 </p>
             </div>
