@@ -42,7 +42,7 @@ function Services() {
     {
       icon: PeopleTableIcon,
       title: 'Consultoría en Marketing',
-      path: '/servicios/consultoria',
+      path: '/servicios/consultoriademarketing',
       description: 'Acompañamos a tu empresa con una visión estratégica integral; diagnosticamos, optimizamos y estructuramos planes alineados a tus objetivos comerciales.',
     },
     {

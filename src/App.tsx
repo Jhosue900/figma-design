@@ -11,6 +11,7 @@ import InteractiveBackground from './components/General/InteractiveBackground';
 
 import Branding from './pages/servicesPages/Branding';
 import Audiovisual from './pages/servicesPages/audiovisual/mainAudiovisual';
+import ConsultoriaDeMarketing from './pages/servicesPages/consultoria/mainConsultoria';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         {/* NUEVAS RUTAS DE SERVICIOS */}
         <Route path="/servicios/branding" element={<Branding />} />
         <Route path="/servicios/audiovisual" element={<Audiovisual />} />
+        <Route path="/servicios/consultoriademarketing" element={<ConsultoriaDeMarketing />} />
 
         {/*    <Route path="/servicios/marketing-digital" element={<MarketingDigital />} />
             <Route path="/servicios/consultoria" element={<Consultoria />} />

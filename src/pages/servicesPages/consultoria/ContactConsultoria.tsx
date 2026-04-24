@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { MessageCircle, Phone, Mail, Send } from 'lucide-react';
 
-const ContactoSection = () => {
+const ContactConsultoria = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -30,7 +30,7 @@ const ContactoSection = () => {
       icon: <MessageCircle size={20} />,
       label: 'Whatsapp',
       value: '+52 1 33 1385 7143',
-      href: 'https://wa.me/5213313857143?text=Hola,%20quiero%20más%20información%20acerca%20de%20los%20servicios%20de%20producción%20audiovisual.',
+      href: 'https://wa.me/5213313857143?text=Hola,%20quiero%20más%20información%20acerca%20de%20los%20servicios%20de%20consultoría%20en%20marketing.',
       color: '#25D366',
     },
     {
@@ -70,11 +70,11 @@ const ContactoSection = () => {
           {/* Columna izquierda */}
           <div className="w-full lg:w-2/5 flex flex-col gap-8">
             <div>
-              <h2 className="text-3xl md:text-5xl font-aston tracking-tight mb-4 leading-tight">
-                Estamos para ti
+              <h2 className="text-xl md:text-3xl font-aston tracking-tight mb-4 leading-tight">
+                Será un gusto saber de ti.
               </h2>
               <p className="text-white/100 font-normal text-base leading-relaxed">
-                ¿Tienes alguna idea en mente?, no dudes en escribirnos o visitarnos.
+                ¿Te gustaría saber más? <br/> No dudes en escribirnos o llamarnos.
               </p>
             </div>
 
@@ -265,4 +265,4 @@ const ContactoSection = () => {
   );
 };
 
-export default ContactoSection;
+export default ContactConsultoria;
