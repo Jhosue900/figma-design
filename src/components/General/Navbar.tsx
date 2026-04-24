@@ -25,7 +25,7 @@ function Navbar() {
         { label: "Marketing Digital", path: "/servicios/marketing-digital" },
         { label: "Professional Branding", path: "/servicios/branding" },
         { label: "Producción Audiovisual", path: "/servicios/audiovisual" },
-        { label: "Consultoria en Marketing", path: "/servicios/consultoria" },
+        { label: "Consultoria en Marketing", path: "/servicios/consultoriademarketing" },
         { label: "Investigación de Mercados", path: "/servicios/investigacion" },
       ]
     },
