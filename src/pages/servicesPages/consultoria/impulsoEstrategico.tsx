@@ -93,7 +93,7 @@ const ServiciosSection = () => {
   const s = services[active];
 
   return (
-    <section className="w-full py-20 px-6 sm:px-12 md:px-20 bg-black">
+    <section className="w-full py-20 px-6 sm:px-12 md:px-20 bg-transparent">
       {/* Encabezado */}
       <div className="text-center mb-12">
         <h2 className="font-aston text-white text-4xl sm:text-5xl leading-tight">
@@ -114,7 +114,7 @@ const ServiciosSection = () => {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className="flex items-center gap-3 px-4 py-4 rounded-xl text-left transition-all duration-300 font-montserrat text-sm"
+              className="flex items-center gap-3 px-4 py-4 rounded-xl text-left transition-all duration-300 font-montserrat text-sm !font-extrabold tracking-wide"
               style={{
                 background: active === i ? `${srv.color}20` : 'rgba(255,255,255,0.04)',
                 border: active === i ? `1.5px solid ${srv.color}` : '0.5px solid rgba(255,255,255,0.1)',
@@ -135,8 +135,12 @@ const ServiciosSection = () => {
 
         {/* Panel */}
         <div
-          className="flex-1 rounded-2xl p-7 flex flex-col gap-5"
-          style={{ background: `${s.color}40`, border: '0.5px solid rgba(255,255,255,0.08)' }}
+          className="flex-1 rounded-2xl py-12 px-14 flex flex-col gap-5"
+          style={{ 
+            background: `radial-gradient(circle at top right, ${s.color}40 0%, rgba(0,0,0,0) 70%), rgba(255,255,255,0.02)`, 
+            border: '0.5px solid rgba(255,255,255,0.1)',
+            boxShadow: `0 20px 40px -15px rgba(0,0,0,0.5)` 
+          }}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -150,7 +154,7 @@ const ServiciosSection = () => {
               <h3 className="font-aston text-white text-2xl sm:text-3xl font-bold">
                 {s.title}
               </h3>
-              <p className="font-montserrat text-white/60 text-sm leading-relaxed">
+              <p className="font-montserrat text-white/70 text-sm leading-relaxed font-normal">
                 {s.desc}
               </p>
               <div className="grid grid-cols-2 gap-3 mt-2">
@@ -159,14 +163,18 @@ const ServiciosSection = () => {
                     key={j}
                     className="flex items-start gap-2 rounded-xl p-3 text-xs font-montserrat"
                     style={{
-                      background: 'rgba(255,255,255,0.05)',
-                      border: '0.5px solid rgba(255,255,255,0.1)',
-                      color: 'rgba(255,255,255,0.75)',
+                      background: 'rgba(255,255,255,0.03)',
+                      backdropFilter: 'blur(4px)',
+                      border: '0.5px solid rgba(255,255,255,0.08)',
+                      color: 'rgba(255,255,255,0.85)',
                     }}
                   >
                     <div
                       className="w-2 h-2 rounded-full flex-shrink-0 mt-0.5"
-                      style={{ background: s.color }}
+                      style={{ 
+                        background: s.color,
+                        boxShadow: `0 0 10px ${s.color}aa` 
+                      }}
                     />
                     {item}
                   </div>

@@ -58,7 +58,7 @@ function Navbar() {
 
         
         {/* Efecto de luz Premium */}
-        <div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[500px] -z-10">
+        {/*<div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[500px] -z-10">
           <div 
             className="absolute opacity-80 mix-blend-screen"
             style={{ 
@@ -83,7 +83,7 @@ function Navbar() {
               filter: 'blur(40px)' 
             }} 
           />
-        </div>
+        </div>*/}
 
 
         <div ref={menuRef} className="w-full max-w-[962px]">

@@ -8,7 +8,7 @@ import ContactConsultoria from './ContactConsultoria';
 
 const ConsultoriaDeMarketing = () => {
   return (
-    <div className="min-h-screen bg-black overflow-x-hidden">
+    <div className="min-h-screen bg-transparent overflow-x-hidden">
       <Navbar />
         <ConsultoriaHero />
         <ServiciosSection />

@@ -88,6 +88,7 @@ const AnimatedWord = () => {
             <span
                 style={{
                     display: 'inline-block',
+                    paddingLeft: '1.5rem',
                     color,
                     transition: animState === 'exit'
                         ? 'transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease'
@@ -122,12 +123,12 @@ const ConsultoriaHero = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/20" />
 
-                <div className="relative z-10 px-6 sm:px-12 md:px-20 max-w-5xl">
+                <div className="relative z-10 px-6 sm:px-12 md:px-20 max-w-4xl">
                     <motion.h1
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.7 }}
-                        className="font-aston text-6xl py-2 font-extrabold tracking-wide leading-none text-white"
+                        className="font-aston text-6xl py-2 font-medium tracking-normal leading-snug text-white"
                        
                     >
                         Consultoría de Estratégica para 
@@ -141,7 +142,7 @@ const ConsultoriaHero = () => {
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.7, delay: 0.15 }}
-                        className="mt-4 text-white font-montserrat font-normal text-base sm:text-2xl max-w-2xl leading-relaxed"
+                        className="mt-4 text-white font-montserrat font-normal text-base sm:text-2xl max-w-xl leading-relaxed"
                     >
                         Trabajamos con tu equipo directivo y comercial para convertir esfuerzos en crecimiento real y sostenido.
                     </motion.p>
