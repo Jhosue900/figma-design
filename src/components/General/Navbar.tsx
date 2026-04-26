@@ -58,21 +58,21 @@ function Navbar() {
 
         
         {/* Efecto de luz Premium */}
-        {/*<div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[500px] -z-10">
+        <div className="absolute top-0 inset-x-0 flex justify-center pointer-events-none overflow-hidden h-[500px] -z-10">
           <div 
-            className="absolute opacity-80 mix-blend-screen"
+            className="absolute opacity-30 mix-blend-screen"
             style={{ 
               width: '1500px', 
               height: '600px', 
               top: '-250px', 
               left: '50%', 
               transform: 'translateX(-50%)', 
-              background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 80%)', 
-              filter: 'blur(50px)' 
+              background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%)', 
+              filter: 'blur(70px)' 
             }} 
           />
           <div 
-            className="absolute opacity-100 mix-blend-screen"
+            className="absolute opacity-30 mix-blend-screen"
             style={{ 
               width: '1000px', 
               height: '300px', 
@@ -83,7 +83,7 @@ function Navbar() {
               filter: 'blur(40px)' 
             }} 
           />
-        </div>*/}
+        </div>
 
 
         <div ref={menuRef} className="w-full max-w-[962px]">
