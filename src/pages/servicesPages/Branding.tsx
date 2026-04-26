@@ -5,7 +5,11 @@ import Hero from '../../components/Services/Branding/Hero';
 import SectionTwo from '../../components/Services/Branding/SectionTwo';
 import CampaignDesign from '../../components/Services/Branding/CampaignDesign';
 import OurProcess from '../../components/Services/Branding/OurProcess';
+import WeCreateBrands from '../../components/Services/Branding/WeCreateBrands';
+import WhyChooseUs from '../../components/Services/Branding/WhyChooseUs';
+import Newsletter from '../../components/Services/Branding/Newsletter';
 import ScrollReveal from '../../components/General/ScrollReveal';
+
 
 const Branding = () => {
   return (
@@ -26,6 +30,18 @@ const Branding = () => {
 
       <ScrollReveal>
         <OurProcess />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <WeCreateBrands />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <WhyChooseUs />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Newsletter />
       </ScrollReveal>
 
       
