@@ -3,6 +3,7 @@ import Navbar from '../../../components/General/Navbar';
 import Footer from '../../../components/General/Footer';
 import ConsultoriaHero from './HeroConsultoria';
 import ServiciosSection from './impulsoEstrategico';
+import WhyUs from './WhyUs';
 import ContactConsultoria from './ContactConsultoria';
 
 
@@ -12,6 +13,7 @@ const ConsultoriaDeMarketing = () => {
       <Navbar />
         <ConsultoriaHero />
         <ServiciosSection />
+        <WhyUs />
         <ContactConsultoria />
       <Footer />
     </div>
