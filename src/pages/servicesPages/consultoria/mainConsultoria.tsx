@@ -4,6 +4,7 @@ import Footer from '../../../components/General/Footer';
 import ConsultoriaHero from './HeroConsultoria';
 import ServiciosSection from './impulsoEstrategico';
 import WhyUs from './WhyUs';
+import SuccessStories from './SuccessStories';
 import ContactConsultoria from './ContactConsultoria';
 
 
@@ -14,6 +15,7 @@ const ConsultoriaDeMarketing = () => {
         <ConsultoriaHero />
         <ServiciosSection />
         <WhyUs />
+        <SuccessStories />
         <ContactConsultoria />
       <Footer />
     </div>
