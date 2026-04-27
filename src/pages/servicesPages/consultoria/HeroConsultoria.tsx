@@ -131,7 +131,7 @@ const ConsultoriaHero = () => {
                         className="font-aston text-6xl py-2 font-medium tracking-normal leading-snug text-white"
                        
                     >
-                        Consultoría de Estratégica para 
+                        Consultoría Estratégica para 
                         
                         <AnimatedWord />
                         <br />
@@ -151,7 +151,7 @@ const ConsultoriaHero = () => {
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.7, delay: 0.28 }}
-                        className="mt-8 relative text-white font-montserrat font-medium text-xl px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300"
+                        className="mt-8 relative text-white font-montserrat font-bold text-xl px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300"
                         style={{
                             border: '3px solid grey',
                         }}
