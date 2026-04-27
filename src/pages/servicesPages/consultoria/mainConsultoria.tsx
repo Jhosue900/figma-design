@@ -5,6 +5,7 @@ import ConsultoriaHero from './HeroConsultoria';
 import ServiciosSection from './impulsoEstrategico';
 import WhyUs from './WhyUs';
 import SuccessStories from './SuccessStories';
+import PublicoObjetivo from './PublicoObjetivo';
 import ContactConsultoria from './ContactConsultoria';
 
 
@@ -16,6 +17,7 @@ const ConsultoriaDeMarketing = () => {
         <ServiciosSection />
         <WhyUs />
         <SuccessStories />
+        <PublicoObjetivo />
         <ContactConsultoria />
       <Footer />
     </div>
