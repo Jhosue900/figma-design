@@ -7,6 +7,7 @@ import WhyUs from './WhyUs';
 import SuccessStories from './SuccessStories';
 import PublicoObjetivo from './PublicoObjetivo';
 import ContactConsultoria from './ContactConsultoria';
+import FrameworkIntervention from './FrameworkIntervention';
 
 
 const ConsultoriaDeMarketing = () => {
@@ -18,6 +19,7 @@ const ConsultoriaDeMarketing = () => {
         <WhyUs />
         <SuccessStories />
         <PublicoObjetivo />
+        <FrameworkIntervention/>
         <ContactConsultoria />
       <Footer />
     </div>
