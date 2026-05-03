@@ -3,8 +3,10 @@ import Navbar from '../../../components/General/Navbar';
 import Footer from '../../../components/General/Footer';
 import ScrollReveal from '../../../components/General/ScrollReveal';
 
-// Componentes internos que crearás a continuación
+// Componentes internos
 import HeroMkt from './HeroMkt';
+import SectionTwo from './sectionTwo';
+
 
 
 const MainMktDigital = () => {
@@ -14,6 +16,10 @@ const MainMktDigital = () => {
       
 
       <HeroMkt />
+
+      <ScrollReveal>
+        <SectionTwo />
+      </ScrollReveal>
 
 
       <Footer />
