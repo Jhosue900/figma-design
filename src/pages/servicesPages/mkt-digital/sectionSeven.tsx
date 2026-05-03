@@ -25,7 +25,7 @@ const SectionSeven = () => {
           <img 
             src={sectionSevenImg} 
             alt="Newsletter Marketing Experts" 
-            className="w-full h-auto object-contain rounded-lg shadow-2xl transition-transform duration-700 group-hover:scale-[1.01] rounded-full"
+            className="w-full h-auto object-contain rounded-[1.5rem] shadow-2xl transition-transform duration-700 group-hover:scale-[1.01]"
           />
         </motion.div>
       </div>
