@@ -6,7 +6,9 @@ import ScrollReveal from '../../../components/General/ScrollReveal';
 // Componentes internos
 import HeroMkt from './HeroMkt';
 import SectionTwo from './sectionTwo';
-
+import SectionTres from './sectionTres';
+import SectionFour from './sectionFour';
+import SectionFive from './sectionFive';
 
 
 const MainMktDigital = () => {
@@ -19,6 +21,18 @@ const MainMktDigital = () => {
 
       <ScrollReveal>
         <SectionTwo />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <SectionTres />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <SectionFour />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <SectionFive />
       </ScrollReveal>
 
 
