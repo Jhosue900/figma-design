@@ -43,7 +43,7 @@ const SectionTwo = () => {
       <div className="container mx-auto px-4">
         
         {/* Header de la sección */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-2">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-2 max-[749px]:text-center">
           <h2 className="text-5xl md:text-6xl font-aston !font-light !leading-snug max-w-sm tracking-normal">
             Servicios estratégicos
           </h2>

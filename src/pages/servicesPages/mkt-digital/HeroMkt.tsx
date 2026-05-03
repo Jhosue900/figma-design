@@ -6,7 +6,7 @@ import digitalMktArc from '../../../images/MKT Digital/digitalmktsection1.png';
 
 const HeroMkt = () => {
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-start items-center bg-transparent overflow-hidden pt-32 md:pt-40">
+    <section className="relative w-full flex flex-col justify-start items-center bg-transparent overflow-hidden pt-32 md:pt-40">
       
       {/* Spotlight superior - Reflejo blanquecino sutil */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[500px] bg-white/10 blur-[150px] rounded-full z-0 pointer-events-none" />
@@ -20,7 +20,7 @@ const HeroMkt = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-white text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-4 !font-aston"
+            className="text-white text-5xl font-normal leading-tight mb-4 !font-aston max-[1285px]:text-[2.8rem] max-[1021px]:text-[2.4rem]"
             style={{ fontFamily: 'var(--font-aston), sans-serif' }}
           >
             Acelere el crecimiento de su negocio transformando su estrategia digital
@@ -30,7 +30,7 @@ const HeroMkt = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-zinc-300 text-lg md:text-xl lg:text-xl font-light max-w-4xl mx-auto leading-relaxed !font-montserrat"
+            className="text-zinc-300 text-lg md:text-xl lg:text-xl font-light max-w-4xl mx-auto leading-relaxed !font-montserrat max-[1285px]:!max-w-3xl max-[900px]:text-[1.1rem] max-[900px]:!max-w-2xl"
             style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
           >
             Somos tu socio estratégico en marketing digital, generando resultados medibles e impulsando un crecimiento sostenible. Nos encantaría llevar a tu empresa al siguiente nivel.
@@ -50,7 +50,7 @@ const HeroMkt = () => {
           ease: [0.16, 1, 0.3, 1] // Curva suave tipo "expo out"
         }}
         // w-[120vw] hace que sobresalga de la pantalla, el -mt-8 o -mt-12 es el "tuck" premium
-        className="relative w-[130vw] md:w-[115vw] lg:w-[105vw] flex justify-center -mt-[15rem] md:-mt-[20rem] lg:-mt-[25rem] z-0 pointer-events-none"
+        className="relative w-[110vw] flex justify-center -mt-[15rem] md:-mt-[20rem] lg:-mt-[25rem] z-0 pointer-events-none max-[1249px]:!w-[105vw] max-[1249px]:!mt-[-21rem] max-[1080px]:!w-[120vw] max-[895px]:!mt-[-16rem] max-[725px]:!mt-[-10rem] pb-[4rem]"
       >
         <img 
           src={digitalMktArc} 
