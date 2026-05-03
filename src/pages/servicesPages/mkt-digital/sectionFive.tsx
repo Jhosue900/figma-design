@@ -6,7 +6,7 @@ import plataformasImg from '../../../images/MKT Digital/redes-sociales.png';
 
 const SectionFive = () => {
   return (
-    <section className="relative w-full py-32 bg-transparent overflow-hidden flex flex-col items-center">
+    <section className="relative w-full py-12 bg-transparent overflow-hidden flex flex-col items-center">
       
       {/* Contenedor de Texto de Encabezado */}
       <div className="container mx-auto px-6 relative z-10 text-center mb-16">

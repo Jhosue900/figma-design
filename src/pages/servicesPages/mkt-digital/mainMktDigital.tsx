@@ -9,6 +9,8 @@ import SectionTwo from './sectionTwo';
 import SectionTres from './sectionTres';
 import SectionFour from './sectionFour';
 import SectionFive from './sectionFive';
+import SectionSix from './sectionSix';
+import SectionSeven from './sectionSeven';
 
 
 const MainMktDigital = () => {
@@ -33,6 +35,14 @@ const MainMktDigital = () => {
 
       <ScrollReveal>
         <SectionFive />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <SectionSix />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <SectionSeven />
       </ScrollReveal>
 
 
