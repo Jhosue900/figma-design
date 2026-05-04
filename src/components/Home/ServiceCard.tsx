@@ -39,7 +39,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
   };
 
   const isImageIcon = typeof icon === 'string';
-  const IconComponent = !isImageIcon ? (icon as any) : null;
+  const IconComponent = icon;
 
   const blurStyles: Record<string, string> = {
     red: '#ef4444',
@@ -47,14 +47,14 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
     green: '#22c55e',
     yellow: '#eab308',
   };
-  console.log('render:', title, '| isOpen:', isOpen);
 
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative flex flex-col overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30 cursor-pointer"
+      // h-fit evita que la tarjeta se estire para igualar la altura de sus compañeras de fila
+      className="relative flex flex-col h-fit overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30 cursor-pointer"
       style={{
         backgroundColor: '#121212',
         borderRadius: '40px',
@@ -99,13 +99,13 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
 
       {/* Contenido */}
       <div className="relative z-10 flex flex-col gap-5">
-
-        {/* Icono + Título */}
         <div className="flex items-center gap-4">
           {isImageIcon ? (
             <img src={icon as string} alt={title} className="w-9 h-9 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
           ) : (
-            <IconComponent className="text-white opacity-100 flex-shrink-0" size={36} strokeWidth={1.5} />
+            typeof IconComponent === 'function' && (
+              <IconComponent className="text-white opacity-100 flex-shrink-0" size={36} strokeWidth={1.5} />
+            )
           )}
           <h3
             className="font-montserrat font-semibold text-white text-[17px] sm:text-[19px]"
@@ -115,11 +115,8 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
           </h3>
         </div>
 
-        {/* Separador */}
         <div className="h-px bg-white/10" />
 
-        {/* Descripción expandible */}
-        {/* Descripción expandible */}
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
@@ -141,7 +138,6 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
                 {description}
               </motion.p>
 
-              {/* NUEVO BOTÓN CTA: Conoce más */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -154,15 +150,13 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
                 >
                   Conoce más
                 </button>
-
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Botón Ver más / Ver menos */}
         <button
-          onClick={onToggle}
+          onClick={(e) => { e.stopPropagation(); onToggle(); }}
           className="flex items-center gap-1.5 text-white/50 hover:text-white transition-colors duration-200 text-sm font-montserrat font-medium w-fit"
         >
           <span>{isOpen ? 'Ver menos' : 'Ver más'}</span>
@@ -173,7 +167,6 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
             <ChevronDown size={16} strokeWidth={2} />
           </motion.div>
         </button>
-
       </div>
     </div>
   );
