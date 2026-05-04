@@ -50,7 +50,8 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative flex flex-col min-h-[180px] h-fit overflow-hidden transition-all duration-500 ease-out group/card w-full border border-white/10 hover:border-white/30 cursor-pointer"
+      onClick={onToggle} // Ahora toda la tarjeta activa el toggle
+      className="relative flex flex-col min-h-[180px] h-fit overflow-hidden transition-all duration-500 ease-out group/card w-full border border-white/10 hover:border-white/30 cursor-pointer select-none"
       style={{
         backgroundColor: '#121212',
         borderRadius: '32px',
@@ -64,7 +65,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
         }}
       />
 
-      <div className="relative z-10 flex flex-col h-full justify-between gap-4">
+      <div className="relative z-10 flex flex-col h-full justify-between gap-4 pointer-events-none">
         <div className="flex flex-col items-start gap-4">
           <div className="w-10 h-10 flex items-center justify-center">
             {isImageIcon ? (
@@ -92,8 +93,11 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
                 {description}
               </p>
               <button
-                onClick={(e) => { e.stopPropagation(); onLearnMore(); }}
-                className="px-4 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-[10px] font-bold uppercase tracking-widest mb-2"
+                onClick={(e) => { 
+                  e.stopPropagation(); // Evita que se cierre la tarjeta al querer navegar
+                  onLearnMore(); 
+                }}
+                className="pointer-events-auto px-4 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-[10px] font-bold uppercase tracking-widest mb-2"
               >
                 Conoce más
               </button>
@@ -101,15 +105,12 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
           )}
         </AnimatePresence>
 
-        <button
-          onClick={(e) => { e.stopPropagation(); onToggle(); }}
-          className="flex items-center gap-1.5 text-white/50 hover:text-white transition-colors text-xs font-medium mt-auto"
-        >
+        <div className="flex items-center gap-1.5 text-white/50 group-hover/card:text-white transition-colors text-xs font-medium mt-auto">
           <span>{isOpen ? 'Cerrar' : 'Detalles'}</span>
           <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
             <ChevronDown size={14} />
           </motion.div>
-        </button>
+        </div>
       </div>
     </div>
   );
