@@ -3,7 +3,7 @@ import ServiceCard from '../components/Home/ServiceCard';
 import { useNavigate } from 'react-router-dom';
 import { Video } from 'lucide-react';
 
-// Asegúrate de que estas rutas sean correctas según tu estructura
+// Assets
 import SearchIcon from '../images/servicesImages/Search.png';
 import FingerprintIcon from '../images/servicesImages/FINGERPRINT.png';
 import MegaphoneIcon from '../images/servicesImages/Megaphone.png';
@@ -63,7 +63,6 @@ function Services() {
         </p>
       </div>
 
-      {/* Grid Interactivo: 5 columnas en Desktop, 1 en Mobile */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-start">
         {services.map((service, index) => (
           <ServiceCard
