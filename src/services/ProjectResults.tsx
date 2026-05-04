@@ -177,7 +177,7 @@ function ProjectResults() {
                   <div className="h-12 md:h-20 flex items-center">
                     <img src={project.logo} alt={project.name} className="h-full w-auto object-contain brightness-0 invert" />
                   </div>
-                  <img src="https://pngimg.com/d/meta_PNG7.png" alt="Meta" className="h-6 md:h-8 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Meta-Logo.png/960px-Meta-Logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20211104123859" alt="Meta" className="h-6 md:h-8 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all" />
                 </div>
             
                 <div className="mb-4">
