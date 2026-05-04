@@ -239,6 +239,16 @@ export default function FrameworkIntervention() {
           </div>
         </div>
       </div>
+
+
+      {/* ── Botón CTA ── */}
+      <div className="mt-16 flex justify-center">
+        <button className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg transition-all hover:bg-zinc-200 hover:scale-105 active:scale-95 shadow-lg">
+          Programar sesión informativa
+        </button>
+      </div>
+
+
     </section>
   );
 }
