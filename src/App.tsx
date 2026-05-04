@@ -14,6 +14,7 @@ import Audiovisual from './pages/servicesPages/audiovisual/mainAudiovisual';
 import ConsultoriaDeMarketing from './pages/servicesPages/consultoria/mainConsultoria';
 
 import MainMktDigital from './pages/servicesPages/mkt-digital/mainMktDigital';
+import MarketResearch from './pages/servicesPages/market-research/mainMR';
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Route path="/servicios/consultoriademarketing" element={<ConsultoriaDeMarketing />} />
 
         <Route path="/servicios/marketing-digital" element={<MainMktDigital />} />
+        <Route path="/servicios/investigacion-de-mercados" element={<MarketResearch />} />
 
         {/*    <Route path="/servicios/marketing-digital" element={<MarketingDigital />} />
             <Route path="/servicios/consultoria" element={<Consultoria />} />

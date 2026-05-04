@@ -26,7 +26,7 @@ function Navbar() {
         { label: "Professional Branding", path: "/servicios/branding" },
         { label: "Producción Audiovisual", path: "/servicios/audiovisual" },
         { label: "Consultoria en Marketing", path: "/servicios/consultoriademarketing" },
-        { label: "Investigación de Mercados", path: "/servicios/investigacion" },
+        { label: "Investigación de Mercados", path: "/servicios/investigacion-de-mercados" },
       ]
     },
     { label: "Blog", path: "/blog" },
