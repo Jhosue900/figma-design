@@ -1,10 +1,9 @@
 import { LucideIcon, ChevronDown } from 'lucide-react';
 import { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import greenBlur from '../../images/green.png';
 
 interface ServiceCardProps {
-  icon: any; // Cambiado a any para aceptar tanto string como componentes
+  icon: any; 
   title: string;
   description: string;
   blurColor?: 'red' | 'blue' | 'green' | 'yellow' | 'none';
@@ -17,20 +16,18 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isOpen) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     cardRef.current.style.setProperty('--mouse-x', `${x}px`);
     cardRef.current.style.setProperty('--mouse-y', `${y}px`);
 
-    if (!isOpen) {
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = (y - centerY) / 20;
-      const rotateY = (centerX - x) / 20;
-      cardRef.current.style.transform = `perspective(1000px) translateY(-5px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    }
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    cardRef.current.style.transform = `perspective(1000px) translateY(-5px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
   const handleMouseLeave = () => {
@@ -39,7 +36,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
   };
 
   const isImageIcon = typeof icon === 'string';
-  const Icon = icon; // Referencia directa para renderizar como componente
+  const Icon = icon;
 
   const blurStyles: Record<string, string> = {
     red: '#ef4444',
@@ -53,26 +50,13 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      // Se añade min-h-[160px] para uniformidad y h-fit para cuando se expande
-      className="relative flex flex-col min-h-[160px] h-fit overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30 cursor-pointer"
+      className="relative flex flex-col min-h-[180px] h-fit overflow-hidden transition-all duration-500 ease-out group/card w-full border border-white/10 hover:border-white/30 cursor-pointer"
       style={{
         backgroundColor: '#121212',
-        borderRadius: '40px',
-        padding: '28px 32px',
+        borderRadius: '32px',
+        padding: '24px',
       }}
     >
-      <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.3), transparent 40%)`,
-          margin: '-1px',
-          padding: '1px',
-          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-          WebkitMaskComposite: 'xor',
-          maskComposite: 'exclude',
-        }}
-      />
-
       <div
         className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover/card:opacity-35 transition-opacity duration-300"
         style={{
@@ -80,86 +64,50 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
         }}
       />
 
-      {blurColor === 'green' && (
-        <img
-          src={greenBlur}
-          alt=""
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[400px] opacity-5 blur-[40px] pointer-events-none z-0 mix-blend-screen"
-        />
-      )}
-      
-      {blurColor !== 'green' && blurColor !== 'none' && (
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] blur-[10px] pointer-events-none z-0 opacity-5"
-          style={{ background: `radial-gradient(circle, ${blurStyles[blurColor]} 0%, transparent 70%)` }}
-        />
-      )}
-
-      <div className="relative z-10 flex flex-col h-full justify-between gap-5">
-        <div className="flex items-center gap-4">
-          {isImageIcon ? (
-            <img src={icon} alt={title} className="w-9 h-9 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
-          ) : (
-            <Icon className="text-white flex-shrink-0" size={36} strokeWidth={1.5} />
-          )}
-          <h3
-            className="font-montserrat font-semibold text-white text-[17px] sm:text-[19px]"
-            style={{ lineHeight: '26px', letterSpacing: '-0.02em' }}
-          >
+      <div className="relative z-10 flex flex-col h-full justify-between gap-4">
+        <div className="flex flex-col items-start gap-4">
+          <div className="w-10 h-10 flex items-center justify-center">
+            {isImageIcon ? (
+              <img src={icon} alt={title} className="w-full h-full object-contain" />
+            ) : (
+              Icon && <Icon className="text-white" size={32} strokeWidth={1.5} />
+            )}
+          </div>
+          <h3 className="font-montserrat font-semibold text-white text-[16px] leading-tight tracking-tight">
             {title}
           </h3>
         </div>
 
         <div className="h-px bg-white/10" />
 
-        <AnimatePresence initial={false}>
+        <AnimatePresence>
           {isOpen && (
             <motion.div
-              key="description"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-              style={{ overflow: 'hidden' }}
+              className="overflow-hidden"
             >
-              <motion.p
-                initial={{ y: -8 }}
-                animate={{ y: 0 }}
-                exit={{ y: -8 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="font-montserrat font-normal text-[16px] sm:text-[18px] pb-4"
-                style={{ lineHeight: '28px', letterSpacing: '-0.02em', color: '#CACFD8' }}
-              >
+              <p className="text-[#CACFD8] text-[14px] leading-relaxed pb-4 font-montserrat font-light">
                 {description}
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="pb-4"
+              </p>
+              <button
+                onClick={(e) => { e.stopPropagation(); onLearnMore(); }}
+                className="px-4 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-[10px] font-bold uppercase tracking-widest mb-2"
               >
-                <button
-                  onClick={(e) => { e.stopPropagation(); onLearnMore(); }}
-                  className="px-5 py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black transition-all duration-300 text-sm font-montserrat font-bold uppercase tracking-wider"
-                >
-                  Conoce más
-                </button>
-              </motion.div>
+                Conoce más
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
 
         <button
           onClick={(e) => { e.stopPropagation(); onToggle(); }}
-          className="flex items-center gap-1.5 text-white/50 hover:text-white transition-colors duration-200 text-sm font-montserrat font-medium w-fit mt-auto"
+          className="flex items-center gap-1.5 text-white/50 hover:text-white transition-colors text-xs font-medium mt-auto"
         >
-          <span>{isOpen ? 'Ver menos' : 'Ver más'}</span>
-          <motion.div
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-          >
-            <ChevronDown size={16} strokeWidth={2} />
+          <span>{isOpen ? 'Cerrar' : 'Detalles'}</span>
+          <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
+            <ChevronDown size={14} />
           </motion.div>
         </button>
       </div>
