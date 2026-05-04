@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
+import metaLogo from '../images/Meta-Logo.png';
 // Array de datos completo (SEO Friendly)
 const PROJECTS = [
   {
@@ -170,23 +170,31 @@ function ProjectResults() {
                 '--brand-color': project.color,
                 '--brand-glow': project.glow 
               }}
-            >
-              {/* LADO IZQUIERDO: Métricas */}
+            >{/* LADO IZQUIERDO: Métricas */}
               <div className="w-full sm:w-3/5 p-6 md:p-10 flex flex-col justify-between z-10">
                 <div className="flex items-center justify-between mb-4">
                   <div className="h-12 md:h-20 flex items-center">
-                    <img src={project.logo} alt={project.name} className="h-full w-auto object-contain brightness-0 invert" />
+                    <img 
+                      src={project.logo} 
+                      alt={project.name} 
+                      className="h-full w-auto object-contain brightness-0 invert" 
+                    />
                   </div>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Meta-Logo.png/960px-Meta-Logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20211104123859" alt="Meta" className="h-6 md:h-8 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all" />
+                  {/* Corrección: Uso de variable importada y clases de Tailwind para diseño responsivo y efectos */}
+                  <img 
+                    src={metaLogo} 
+                    alt="Meta Business" 
+                    className="h-6 md:h-8 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
+                  />
                 </div>
-            
+              
                 <div className="mb-4">
                   <p className="text-[12px] font-bold tracking-[0.3em] uppercase mb-1 text-zinc-500">Tráfico Total</p>
                   <h3 className="text-5xl md:text-7xl font-black tracking-tighter" style={{ color: project.color }}>
                     {project.traffic}
                   </h3>
                 </div>
-            
+              
                 <div className="grid grid-cols-3 gap-2 md:gap-4">
                   <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3 md:p-4 transition-all group-hover:bg-white/[0.05]">
                     <p className="text-[10px] tracking-widest text-zinc-500 font-bold uppercase mb-1">Alcance</p>
@@ -196,13 +204,17 @@ function ProjectResults() {
                     <p className="text-[10px] tracking-widest text-zinc-500 font-bold uppercase mb-1">Convers.</p>
                     <span className="text-lg md:text-2xl font-bold text-white">{project.conversations}</span>
                   </div>
-                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-3 md:p-4 transition-all group-hover:bg-white/[0.05]" style={{ borderColor: `${project.color}44` }}>
+                  <div 
+                    className="bg-white/[0.02] border border-white/5 rounded-xl p-3 md:p-4 transition-all group-hover:bg-white/[0.05]" 
+                    style={{ borderColor: `${project.color}44` }}
+                  >
                     <p className="text-[10px] tracking-widest text-zinc-500 font-bold uppercase mb-1">Interacc.</p>
-                    <span className="text-lg md:text-2xl font-bold" style={{ color: project.color }}>{project.interactions}</span>
+                    <span className="text-lg md:text-2xl font-bold" style={{ color: project.color }}>
+                      {project.interactions}
+                    </span>
                   </div>
                 </div>
               </div>
-
               {/* LADO DERECHO: Imagen Visual */}
               <div className="hidden sm:block sm:w-2/5 relative overflow-hidden bg-zinc-900 border-l border-white/5">
                 <img 
