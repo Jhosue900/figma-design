@@ -106,7 +106,7 @@ function Services() {
           className="services-swiper !py-10"
         >
           {services.map((service, index) => (
-            <SwiperSlide key={service.title} className="!h-auto flex items-stretch">
+            <SwiperSlide key={service.title} className="!h-auto flex items-start">
               <ServiceCard
                 icon={service.icon}
                 title={service.title}
