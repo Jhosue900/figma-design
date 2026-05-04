@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import greenBlur from '../../images/green.png';
 
 interface ServiceCardProps {
-  icon: LucideIcon | string;
+  icon: any; // Cambiado a any para aceptar tanto string como componentes
   title: string;
   description: string;
   blurColor?: 'red' | 'blue' | 'green' | 'yellow' | 'none';
@@ -39,7 +39,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
   };
 
   const isImageIcon = typeof icon === 'string';
-  const IconComponent = icon;
+  const Icon = icon; // Referencia directa para renderizar como componente
 
   const blurStyles: Record<string, string> = {
     red: '#ef4444',
@@ -53,15 +53,14 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      // h-fit evita que la tarjeta se estire para igualar la altura de sus compañeras de fila
-      className="relative flex flex-col h-fit overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30 cursor-pointer"
+      // Se añade min-h-[160px] para uniformidad y h-fit para cuando se expande
+      className="relative flex flex-col min-h-[160px] h-fit overflow-hidden transition-all duration-500 ease-out group/card w-full max-w-[320px] mx-auto border border-white/10 hover:border-white/30 cursor-pointer"
       style={{
         backgroundColor: '#121212',
         borderRadius: '40px',
         padding: '28px 32px',
       }}
     >
-      {/* Borde dinámico spotlight */}
       <div
         className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"
         style={{
@@ -74,7 +73,6 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
         }}
       />
 
-      {/* Spotlight de color */}
       <div
         className="absolute inset-0 z-0 pointer-events-none opacity-0 group-hover/card:opacity-35 transition-opacity duration-300"
         style={{
@@ -82,7 +80,6 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
         }}
       />
 
-      {/* Mancha de color de fondo */}
       {blurColor === 'green' && (
         <img
           src={greenBlur}
@@ -90,6 +87,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[400px] opacity-5 blur-[40px] pointer-events-none z-0 mix-blend-screen"
         />
       )}
+      
       {blurColor !== 'green' && blurColor !== 'none' && (
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] blur-[10px] pointer-events-none z-0 opacity-5"
@@ -97,15 +95,12 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
         />
       )}
 
-      {/* Contenido */}
-      <div className="relative z-10 flex flex-col gap-5">
+      <div className="relative z-10 flex flex-col h-full justify-between gap-5">
         <div className="flex items-center gap-4">
           {isImageIcon ? (
-            <img src={icon as string} alt={title} className="w-9 h-9 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
+            <img src={icon} alt={title} className="w-9 h-9 sm:w-10 sm:h-10 object-contain flex-shrink-0" />
           ) : (
-            typeof IconComponent === 'function' && (
-              <IconComponent className="text-white opacity-100 flex-shrink-0" size={36} strokeWidth={1.5} />
-            )
+            <Icon className="text-white flex-shrink-0" size={36} strokeWidth={1.5} />
           )}
           <h3
             className="font-montserrat font-semibold text-white text-[17px] sm:text-[19px]"
@@ -157,7 +152,7 @@ function ServiceCard({ icon, title, description, blurColor = 'none', isOpen, onT
 
         <button
           onClick={(e) => { e.stopPropagation(); onToggle(); }}
-          className="flex items-center gap-1.5 text-white/50 hover:text-white transition-colors duration-200 text-sm font-montserrat font-medium w-fit"
+          className="flex items-center gap-1.5 text-white/50 hover:text-white transition-colors duration-200 text-sm font-montserrat font-medium w-fit mt-auto"
         >
           <span>{isOpen ? 'Ver menos' : 'Ver más'}</span>
           <motion.div
