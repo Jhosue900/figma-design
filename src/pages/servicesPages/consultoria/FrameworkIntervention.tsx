@@ -54,8 +54,21 @@ export default function FrameworkIntervention() {
   }, [activeStep]);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/5 bg-[#050505]">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/5 bg-transparent">
+
+      {/* ── Cabecera de la sección ── */}
+      <div className="mb-16 text-center lg:text-left flex flex-col justify-center">
+        <h2 className="font-aston text-4xl sm:text-5xl text-white mb-6 tracking-tight text-center">
+          Framework de Intervención
+        </h2>
+        <p className="text-zinc-200 text-lg sm:text-xl leading-relaxed text-center">
+          Nuestra metodología está diseñada para escuchar, acompañar y llevar a tu empresa al siguiente nivel.
+        </p>
+      </div>
+
       <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+
 
         {/* ── Logo SVG interactivo ── */}
         <div className="w-full lg:w-1/2 flex justify-center relative">
