@@ -61,7 +61,7 @@ const ContactoSection = () => {
   ];
 
   return (
-    <section className="w-full bg-black py-16 px-4 sm:px-6 lg:px-8 font-montserrat text-white">
+    <section className="w-full bg-transparent py-16 px-4 sm:px-6 lg:px-8 font-montserrat text-white">
       <div className="max-w-5xl mx-auto">
 
         {/* Layout principal */}

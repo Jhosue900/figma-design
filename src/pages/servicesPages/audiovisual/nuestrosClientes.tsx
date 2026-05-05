@@ -116,7 +116,7 @@ const NuestrosClientes = () => {
   };
 
   return (
-    <section ref={sectionRef} className="w-full bg-black py-16 px-4 sm:px-6 lg:px-8 font-montserrat text-white overflow-hidden">
+    <section ref={sectionRef} className="w-full bg-transparent py-16 px-4 sm:px-6 lg:px-8 font-montserrat text-white overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
         {/* Encabezado */}

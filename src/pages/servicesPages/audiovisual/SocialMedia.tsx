@@ -60,7 +60,7 @@ const VideoCard = ({ src }: { src: string }) => {
 
 const SocialMedia = () => {
   return (
-    <section className="w-full bg-black py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-white">
+    <section className="w-full bg-transparent py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-white">
 
       {/* Encabezado */}
       <div className="text-center mb-12 max-w-2xl">
@@ -93,7 +93,7 @@ const SocialMedia = () => {
           className="px-8 py-4 font-montserrat font-bold text-base rounded-full text-white flex items-center gap-2 group transition-all duration-300"
           style={{
             background: 'linear-gradient(#000, #000) padding-box, linear-gradient(90deg, #FF3B30, #FF9500, #34C759, #007AFF) border-box',
-            border: '4px solid transparent',
+            border: '2px solid transparent',
           }}
         >
           Cotizar Proyecto
