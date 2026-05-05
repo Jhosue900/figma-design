@@ -4,6 +4,9 @@ import HeroMR from './heroMR';
 import WhyMR from './whyMR';
 import ExperienciaMR from './experienciaMR';
 import ContactoMR from './contactMR';
+import TestimonialMR from './TestimonialMR';
+import ElPoderDeLaInformacion from './QuestionsMR';
+import TiposDeEstudios from './Studies';
 
 export default function MarketResearch() {
     return (
@@ -12,6 +15,9 @@ export default function MarketResearch() {
             <HeroMR />
             <WhyMR />
             <ExperienciaMR />
+            <TestimonialMR />
+            <ElPoderDeLaInformacion />
+            <TiposDeEstudios />
             <ContactoMR />
             <Footer />
         </div>
