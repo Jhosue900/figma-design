@@ -6,22 +6,18 @@ import campaignImg from '../../../images/branding/section2_1.png';
 const CampaignDesign = () => {
   return (
     <section className="w-full bg-transparent py-20 px-4 sm:px-10">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1200px] mx-auto">
         
         {/* Cabecera de la sección */}
-        <div className="flex flex-col md:flex-row justify-around items-center md:items-center mb-10 gap-6">
+        <div className="flex flex-col md:flex-row justify-around items-center md:items-center mb-20 gap-6">
           <div className="text-center md:text-left">
-            <p className="font-montserrat text-white text-3xl sm:text-4xl font-light mb-4 tracking-wide">
-              Servicios que incluye el
-            </p>
+            
             <h2 className="font-aston text-white text-3xl sm:text-4xl lg:text-5xl font-normal">
-              Marca profesional
+              Servicios que Ofrecemos
             </h2>
           </div>
           
-          <button className="px-9 py-4 bg-[#333333] hover:bg-white hover:text-black text-white font-montserrat font-bold rounded-full transition-all duration-300 text-sm tracking-wider">
-            Hablar con un asesor
-          </button>
+          
         </div>
 
         {/* Contenedor Principal con Borde Degradado - CARD */}
@@ -43,7 +39,7 @@ const CampaignDesign = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
                 
                 {/* Texto */}
-                <div className="px-10 py-28 sm:px-16 lg:pl-16 lg:pr-2 order-2 lg:order-1 leading-loose">
+                <div className="px-10 py-28 sm:px-16 lg:pl-16 lg:pr-2 order-2 lg:order-1 leading-loose z-20">
                   <motion.h3 
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -74,12 +70,30 @@ const CampaignDesign = () => {
                   </div>
                 </div>
 
+
+
               </div>
+
+
             </div>
+
+
+
           </div>
+
+          
+
+        </div>
+
+        <div className="flex items-center justify-center">
+          <button className="px-9 py-4 bg-white hover:bg-gray-300 text-black font-montserrat font-bold rounded-full transition-all duration-300 text-sm tracking-wider mt-20">
+            Hablar con un asesor
+          </button>
         </div>
 
       </div>
+
+
     </section>
   );
 };
