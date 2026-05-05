@@ -23,9 +23,9 @@ const Branding = () => {
       {/* La sección Hero suele ir sin ScrollReveal para carga inmediata o con un delay suave */}
       <Hero />
 
-      <ScrollReveal>
+      {/*<ScrollReveal>
         <SectionTwo />
-      </ScrollReveal>
+      </ScrollReveal>*/}
 
       {/* Nueva Sección */}
       <ScrollReveal>
