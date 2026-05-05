@@ -45,7 +45,7 @@ function Services() {
     {
       icon: SearchIcon,
       title: 'Investigación de Mercados',
-      path: '/servicios/investigacion',
+      path: '/servicios/investigacion-de-mercados',
       description: 'Tomamos decisiones con base en datos, consumidores y competencia para identificar oportunidades reales y ventajas.',
     }
   ];
