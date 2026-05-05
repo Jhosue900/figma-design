@@ -13,7 +13,7 @@ import ContactSection from './contactSection';
 
 const Audiovisual = () => {
   return (
-    <div className="min-h-screen bg-black overflow-x-hidden">
+    <div className="min-h-screen bg-transparent overflow-x-hidden">
       <Navbar />
       <AudiovisualHero />
       <SolucionesAudiovisuales />

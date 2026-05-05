@@ -57,28 +57,34 @@ const Hero = () => {
   return (
     <section className="relative w-full pt-[9rem] pb-20 overflow-hidden bg-transparent">
       {/* Texto Central */}
-      <div className="relative z-20 text-center mb-16 px-4">
+      <div className="relative z-20 text-center mb-16 mx-auto max-w-3xl">
+
+        <h2 className="font-aston font-medium text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] mb-6 tracking-tight text-center">
+          “La primera impresión nunca se olvida”
+        </h2>
+
         <motion.p 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-montserrat text-white/60 text-base sm:text-lg lg:text-xl mb-3 tracking-[0.1em] uppercase"
+          className="font-montserrat text-white text-base sm:text-md lg:text-base mb-3 tracking-[0.1em]"
         >
-          Que te recuerden siempre
+          La identidad de tu marca será la manera en que tus clientes te percibirán y recordarán, por ello, es importante desarrollar un concepto creativo único que transmita los objetivos y diferenciadores de tu empresa, producto o servicio.
+
         </motion.p>
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="font-aston font-medium text-5xl sm:text-7xl lg:text-6xl text-white tracking-normal"
-        >
-          Professional <span className="text-white/90">Branding</span>
-        </motion.h1>
+        
       </div>
 
       {/* Grid de Imágenes Animado */}
       <div className="flex flex-col gap-4 sm:gap-6">
         <ScrollingRow images={imagesRow1} direction={1} />
         <ScrollingRow images={imagesRow2} direction={-1} />
+      </div>
+
+      <div className="flex mt-12 justify-center w-full">
+        <button className="px-10 py-4 bg-white hover:bg-gray-400 text-black font-montserrat font-bold rounded-full transition-all duration-300 text-sm sm:text-base min-w-[220px]">
+          Ver Portafolio
+        </button>
+        
       </div>
 
       {/* Degradados laterales Pro (más anchos para mejor efecto) */}

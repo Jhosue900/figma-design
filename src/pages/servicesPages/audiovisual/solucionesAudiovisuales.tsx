@@ -64,7 +64,7 @@ const SolucionesAudiovisuales = () => {
   ];
 
   return (
-    <section className="w-full bg-black py-12 lg:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-white">
+    <section className="w-full bg-transparent py-12 lg:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center text-white">
 
       {/* Encabezado */}
       <div className="text-center mb-10 max-w-3xl">

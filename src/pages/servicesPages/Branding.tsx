@@ -11,17 +11,21 @@ import Newsletter from '../../components/Services/Branding/Newsletter';
 import ScrollReveal from '../../components/General/ScrollReveal';
 
 
+import Hero1 from '../../components/Services/Branding/HeroConsultoria';
+
 const Branding = () => {
   return (
     <main className="min-h-screen bg-transparent">
       <Navbar />
 
+      <Hero1 />
+
       {/* La sección Hero suele ir sin ScrollReveal para carga inmediata o con un delay suave */}
       <Hero />
 
-      <ScrollReveal>
+      {/*<ScrollReveal>
         <SectionTwo />
-      </ScrollReveal>
+      </ScrollReveal>*/}
 
       {/* Nueva Sección */}
       <ScrollReveal>
