@@ -13,6 +13,8 @@ import ScrollReveal from '../../components/General/ScrollReveal';
 
 import Hero1 from '../../components/Services/Branding/HeroConsultoria';
 
+import ContactConsultoria from '../../components/Services/Branding/ContactConsultoria';
+
 const Branding = () => {
   return (
     <main className="min-h-screen bg-transparent">
@@ -44,10 +46,14 @@ const Branding = () => {
         <WhyChooseUs />
       </ScrollReveal>
 
-      <ScrollReveal>
+{/*      <ScrollReveal>
         <Newsletter />
-      </ScrollReveal>
+      </ScrollReveal>*/}
 
+      
+      <ScrollReveal>
+        <ContactConsultoria />
+      </ScrollReveal>
       
 
       <Footer />

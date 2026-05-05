@@ -45,22 +45,10 @@ const WeCreateBrands = () => {
   };
 
   return (
-    <section className="w-full bg-transparent py-24 px-6 md:px-20 overflow-hidden">
+    <section className="w-full bg-transparent py-14 px-6 md:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header de la Sección */}
-        <div className="flex flex-col md:flex-row justify-evenly items-end mb-2 gap-8">
-          <div>
-            <h2 className="font-aston text-white text-5xl md:text-6xl font-light leading-tight">
-              Creamos marcas <br />
-              <span className="font-normal">que no se olvidan</span>
-            </h2>
-          </div>
-          <div className="flex-1 md:max-w-lg">
-            <p className="font-montserrat text-white text-lg leading-relaxed font-light text-left md:text-left">
-              Marcas profesionales, corporativas e institucionales que han confiado en nuestra visión.
-            </p>
-          </div>
-        </div>
+        
 
         {/* Contenedor del Carrusel */}
         <div className="relative group">
@@ -99,7 +87,7 @@ const WeCreateBrands = () => {
 
         {/* Botón Inferior */}
         <div className="mt-2 flex justify-center">
-          <button className="px-20 py-4 rounded-full bg-white/5 border border-white/10 text-white font-montserrat text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-500">
+          <button className="px-10 py-4 rounded-full bg-white border border-white/10 text-black font-montserrat text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all duration-500 font-bold">
             Portafolio
           </button>
         </div>
