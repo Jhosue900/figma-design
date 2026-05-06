@@ -7,6 +7,7 @@ import ContactoMR from './contactMR';
 import TestimonialMR from './TestimonialMR';
 import ElPoderDeLaInformacion from './QuestionsMR';
 import TiposDeEstudios from './Studies';
+import OurClients from './OurClients';
 
 export default function MarketResearch() {
     return (
@@ -16,6 +17,7 @@ export default function MarketResearch() {
             <WhyMR />
             <ExperienciaMR />
             <TestimonialMR />
+            <OurClients/>
             <ElPoderDeLaInformacion />
             <TiposDeEstudios />
             <ContactoMR />
