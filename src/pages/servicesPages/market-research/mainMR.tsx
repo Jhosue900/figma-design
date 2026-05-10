@@ -1,6 +1,6 @@
 import Navbar from '../../../components/General/Navbar';
 import Footer from '../../../components/General/Footer';
-import HeroMR from './heroMR';
+import HeroMR from './Hero';
 import WhyMR from './whyMR';
 import ExperienciaMR from './experienciaMR';
 import ContactoMR from './contactMR';
