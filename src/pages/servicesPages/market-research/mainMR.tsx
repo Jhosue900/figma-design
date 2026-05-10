@@ -1,10 +1,7 @@
 import React from 'react';
 import Navbar from '../../../components/General/Navbar';
 import Footer from '../../../components/General/Footer';
-import ScrollReveal from '../../../components/General/ScrollReveal';
-
-// Componentes internos
-import HeroMR from './heroMR';
+import HeroMR from './Hero';
 import WhyMR from './whyMR';
 import ExperienciaMR from './experienciaMR';
 import ContactoMR from './contactMR';
