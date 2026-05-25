@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
-
-// 👇 Cambia estas rutas por tus videos reales
-
+import portada1 from '../../../images/portadaVideosInst/video1.png'
+import portada2 from '../../../images/portadaVideosInst/video2.png'
+import portada4 from '../../../images/portadaVideosInst/video4.png'
 
 const video1 = 'https://res.cloudinary.com/dexcrnwcu/video/upload/v1776655985/Inst_1_yf6aip.mp4'
 const video2 = 'https://res.cloudinary.com/dexcrnwcu/video/upload/v1776657701/Inst_2_pjtdfe.mp4'
 const video3 = 'https://res.cloudinary.com/dexcrnwcu/video/upload/v1776655980/Inst_3_xcp3so.mp4'
 const video4 = 'https://res.cloudinary.com/dexcrnwcu/video/upload/v1776655946/Inst_4_qemsok.mp4'
+
+
 
 const videos = [
     { src: video1, large: true },

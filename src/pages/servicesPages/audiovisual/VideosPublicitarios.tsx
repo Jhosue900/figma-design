@@ -1,6 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+import portada1 from '../../../images/portadaVideosPubl/video1.png'
+import portada2 from '../../../images/portadaVideosPubl/video2.png'
+import portada3 from '../../../images/portadaVideosPubl/video3.png'
+import portada4 from '../../../images/portadaVideosPubl/video4.png'
+import portada5 from '../../../images/portadaVideosPubl/video5.png'
+
 // 👇 Cambia estas rutas por tus videos reales
 
 const video1 = 'https://res.cloudinary.com/dexcrnwcu/video/upload/v1776655936/one_ineaen.mp4'

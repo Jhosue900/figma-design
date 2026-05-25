@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 
-// 👇 Cambia estas rutas por tus videos reales
+import portada1 from '../../../images/portadaVideosVerticales/video1.png'
+import portada2 from '../../../images/portadaVideosVerticales/video2.png'
+import portada3 from '../../../images/portadaVideosVerticales/video3.png'
 
 const video1 = 'https://res.cloudinary.com/dexcrnwcu/video/upload/v1776655940/socialmedia1_cnkqxl.mp4'
 const video2 = 'https://res.cloudinary.com/dexcrnwcu/video/upload/v1776655929/socialmedia2_zpab9s.mp4'
