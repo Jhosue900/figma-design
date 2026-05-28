@@ -349,10 +349,10 @@ export default function HeroMR() {
             {/* Métrica 3 */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left px-2 border-l-0 md:border-l border-white/5 md:pl-6">
               <span className="font-aston text-3xl sm:text-4xl lg:text-5xl tracking-wide text-[#80b67d] drop-shadow-[0_4px_12px_rgba(128,182,125,0.15)]">
-                +35 Años
+                +35
               </span>
               <span className="mt-2 text-[10px] sm:text-xs text-[#CACFD8]/80 font-bold tracking-[0.15em] uppercase leading-snug">
-                De Experiencia
+               Años De Experiencia
               </span>
             </div>
 
