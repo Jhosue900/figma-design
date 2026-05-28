@@ -11,6 +11,7 @@ import TestimonialMR from './TestimonialMR';
 import ElPoderDeLaInformacion from './QuestionsMR';
 
 import StrategicSolutions from './StrategicSolutions';
+import OurEdge from './OurEdge';
 
 import TiposDeEstudios from './Studies';
 import DatesSection from './4dates';
@@ -56,12 +57,12 @@ export default function MarketResearch() {
             <ScrollReveal><WhyMR /></ScrollReveal>
             <ScrollReveal><ElPoderDeLaInformacion /></ScrollReveal>
             <ScrollReveal><StrategicSolutions /></ScrollReveal>
+
+            <ScrollReveal><OurEdge /></ScrollReveal>
+
             <ScrollReveal><ExperienciaMR /></ScrollReveal>
             <ScrollReveal><TestimonialMR /></ScrollReveal>
             <ScrollReveal><OurClients /></ScrollReveal>
-
-            <ScrollReveal><StrategicSolutions /></ScrollReveal>
-            
             <ScrollReveal><TiposDeEstudios /></ScrollReveal>
             <ScrollReveal><DatesSection /></ScrollReveal>
             <ScrollReveal><CompanySection /></ScrollReveal>
