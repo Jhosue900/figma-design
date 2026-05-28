@@ -126,7 +126,7 @@ export default function ElPoderDeLaInformacion() {
                   
                   {/* Texto destacado (Astonpoliz / Negrita) */}
                   <span 
-                    className="text-sm sm:text-lg md:text-2xl font-aston tracking-widest font-bold leading-relaxec transition-all duration-500"
+                    className="text-sm sm:text-lg md:text-2xl font-aston tracking-widest font-bold leading-none transition-all duration-500"
                     style={{ 
                       color: hoveredId === q.id ? '#white' : '#e2e8f0',
                       textShadow: hoveredId === q.id ? `0 0 20px ${q.color}40` : 'none'

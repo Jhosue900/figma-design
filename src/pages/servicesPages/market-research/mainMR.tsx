@@ -4,10 +4,15 @@ import Footer from '../../../components/General/Footer';
 import HeroMR from './Hero';
 import TwoSectionBrands from './TwoSectionBrands';
 import WhyMR from './whyMR';
+
 import ExperienciaMR from './experienciaMR';
 import ContactoMR from './contactMR';
 import TestimonialMR from './TestimonialMR';
 import ElPoderDeLaInformacion from './QuestionsMR';
+
+import StrategicSolutions from './StrategicSolutions';
+import OurEdge from './OurEdge';
+import ResearchTools from './ResearchTools';
 import TiposDeEstudios from './Studies';
 import DatesSection from './4dates';
 import CompanySection from '../../../components/Home/CompanySection';
@@ -51,10 +56,13 @@ export default function MarketResearch() {
             <ScrollReveal><TwoSectionBrands /></ScrollReveal>
             <ScrollReveal><WhyMR /></ScrollReveal>
             <ScrollReveal><ElPoderDeLaInformacion /></ScrollReveal>
+            <ScrollReveal><StrategicSolutions /></ScrollReveal>
+
+            <ScrollReveal><OurEdge /></ScrollReveal>
+            <ScrollReveal><ResearchTools /></ScrollReveal>
             <ScrollReveal><ExperienciaMR /></ScrollReveal>
             <ScrollReveal><TestimonialMR /></ScrollReveal>
             <ScrollReveal><OurClients /></ScrollReveal>
-            
             <ScrollReveal><TiposDeEstudios /></ScrollReveal>
             <ScrollReveal><DatesSection /></ScrollReveal>
             <ScrollReveal><CompanySection /></ScrollReveal>
