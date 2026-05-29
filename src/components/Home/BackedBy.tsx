@@ -76,10 +76,10 @@ function BackedBy() {
   ];
 
   const stats = [
-    { number: '35+', label: 'Años de experiencia', color: COLORS.red },
-    { number: '1.000+', label: 'Clientes satisfechos', color: COLORS.blue },
-    { number: '12.000+', label: 'Proyectos completados', color: COLORS.green },
-    { number: '100%', label: 'Tasa de satisfacción', color: COLORS.yellow },
+    { number: '+35', label: 'Años de experiencia', color: COLORS.red },
+    { number: '+10,000', label: 'Proyectos Realizados', color: COLORS.blue },
+    { number: '+1,000', label: 'Clientes Globales', color: COLORS.green },
+    { number: '+3', label: 'Sedes Internacionales', color: COLORS.yellow },
   ];
 
   const allBrands = [...brands, ...brands];
