@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import portada1 from '../../../images/portadaVideosInst/video1.png';
 import portada2 from '../../../images/portadaVideosInst/video2.png';
