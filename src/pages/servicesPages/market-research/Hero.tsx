@@ -173,13 +173,6 @@ export default function HeroMR() {
               }
           `}} />
 
-          {/* Vignette de profundidad premium */}
-          <div
-              className="absolute inset-0 pointer-events-none z-10"
-              style={{
-                  background: 'radial-gradient(ellipse 70% 60% at 50% 50%, transparent 20%, rgba(0,0,0,0.7) 100%)',
-              }}
-          />
 
           {/* Layout Contenedor Superior (Texto + Planeta) */}
           <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
@@ -330,7 +323,7 @@ export default function HeroMR() {
           className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 border-t border-white/10 pt-16 mt-4"
         >
           {/* Métrica 1 */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left px-2">
+          <div className="flex flex-col items-center text-center px-2">
             <span className="font-aston text-3xl sm:text-4xl lg:text-5xl tracking-wide text-[#c5362e] drop-shadow-[0_4px_12px_rgba(197,54,46,0.15)]">
               +35
             </span>
@@ -338,9 +331,9 @@ export default function HeroMR() {
               Años de Experiencia
             </span>
           </div>
-
+          
           {/* Métrica 2 */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left px-2 border-l-0 sm:border-l md:border-l border-white/5 md:pl-6">
+          <div className="flex flex-col items-center text-center px-2 border-l-0 sm:border-l md:border-l border-white/5 md:pl-0">
             <span className="font-aston text-3xl sm:text-4xl lg:text-5xl tracking-wide text-[#599ddf] drop-shadow-[0_4px_12px_rgba(89,157,223,0.15)]">
               +10,000
             </span>
@@ -348,9 +341,9 @@ export default function HeroMR() {
               Proyectos Realizados
             </span>
           </div>
-
+          
           {/* Métrica 3 */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left px-2 border-l-0 md:border-l border-white/5 md:pl-6">
+          <div className="flex flex-col items-center text-center px-2 border-l-0 md:border-l border-white/5 md:pl-0">
             <span className="font-aston text-3xl sm:text-4xl lg:text-5xl tracking-wide text-[#80b67d] drop-shadow-[0_4px_12px_rgba(128,182,125,0.15)]">
               +1000
             </span>
@@ -358,9 +351,9 @@ export default function HeroMR() {
              Clientes Globales
             </span>
           </div>
-
+          
           {/* Métrica 4 */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left px-2 border-l-0 sm:border-l md:border-l border-white/5 md:pl-6">
+          <div className="flex flex-col items-center text-center px-2 border-l-0 sm:border-l md:border-l border-white/5 md:pl-0">
             <span className="font-aston text-3xl sm:text-4xl lg:text-5xl tracking-wide text-[#e6af41] drop-shadow-[0_4px_12px_rgba(230,175,65,0.15)]">
               +3
             </span>
