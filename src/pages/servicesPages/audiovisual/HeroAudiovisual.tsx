@@ -1,13 +1,13 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Calendar } from 'lucide-react';
 
 // @ts-ignore
 import 'swiper/css';
 // @ts-ignore
 import 'swiper/css/navigation';
-
 
 import Cinepolis from '../../../images/Brands/Cinepolis.png';
 import GrupoCaliente from '../../../images/Brands/Grupo_Caliente_Logo.png';
@@ -88,18 +88,29 @@ const AudiovisualHero = () => {
                         Quédate para siempre en la mente de tus clientes con proyectos que sí cumplen objetivos.
                     </motion.p>
 
-                    <motion.button
+                    {/* Acciones de Conversión Duplicadas de Hero Investigación */}
+                    <motion.div 
                         initial={{ y: 40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.7, delay: 0.28 }}
-                        className="mt-8 relative text-white font-montserrat font-medium text-xl px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300"
-                        style={{
-                            background: 'linear-gradient(#000, #000) padding-box, linear-gradient(90deg, #ba3f35, #5fa1cf, #7eb387, #e5ad43 ) border-box',
-                            border: '4px solid transparent',
-                        }}
+                        className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto mt-10"
                     >
-                        Cotizar Proyecto 
-                    </motion.button>
+                        <button className="group relative w-full sm:w-auto px-8 py-4 bg-[#ba3f35] text-white rounded-xl font-bold text-[13px] uppercase tracking-widest overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+                            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+                            <span className="relative z-10 flex items-center justify-center gap-3 group-hover:text-[#ba3f35] transition-colors duration-300">
+                                Cotizar Proyecto
+                                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                            </span>
+                        </button>
+                        
+                        <button className="group relative w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white/80 text-white rounded-xl font-bold text-[13px] uppercase tracking-widest overflow-hidden transition-transform duration-300 hover:scale-[1.02] hover:border-white">
+                            <div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out" />
+                            <span className="relative z-10 flex items-center justify-center gap-3 group-hover:text-black transition-colors duration-300">
+                                <Calendar size={18} className="transition-colors duration-300" />
+                                Agendar Videollamada
+                            </span>
+                        </button>
+                    </motion.div>
                 </div>
             </section>
 
@@ -135,7 +146,6 @@ const AudiovisualHero = () => {
                             {allBrands.map((brand, index) => (
                                 <SwiperSlide key={index} className="flex items-center justify-center py-4">
                                     <div className="flex items-center justify-center h-24 sm:h-28 w-full px-4 py-4 rounded-2xl bg-white border border-white/20 shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-white/10">
-
                                         <img
                                             src={brand.src}
                                             alt={brand.alt}
@@ -143,7 +153,6 @@ const AudiovisualHero = () => {
                                                 brand.sizeClass ? brand.sizeClass : 'h-7 sm:h-9 md:h-11'
                                             }`}
                                         />
-
                                     </div>
                                 </SwiperSlide>
                             ))}
