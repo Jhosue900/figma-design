@@ -36,7 +36,7 @@ const SectionFive = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Encabezado */}
-      <div className="container mx-auto px-6 text-center mb-16 relative z-10">
+      <div className="container mx-auto px-6 text-center mb-24 relative z-10">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ const SectionFive = () => {
         transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         viewport={{ once: true }}
         className="relative flex justify-center items-end w-full"
-        style={{ height: '340px' }}
+        style={{ height: '380px' }}
       >
         {clients.map((client, i) => {
           const cfg = fanConfig[i];
@@ -111,7 +111,7 @@ const SectionFive = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
         viewport={{ once: true }}
-        className="flex flex-col items-center gap-5 mt-14 relative z-10"
+        className="flex flex-col items-center gap-5 mt-24 relative z-10"
       >
         <h2
           className="text-white text-4xl md:text-5xl font-normal text-center !font-aston"
