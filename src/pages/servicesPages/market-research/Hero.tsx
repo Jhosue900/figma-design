@@ -112,8 +112,7 @@ const OrbitSatellite: React.FC<SatelliteProps> = ({
                   borderColor: color, 
                   boxShadow: `0 0 20px ${color}40` 
                 }}
-                className="group relative bg-[#0a0a0a]/95 backdrop-blur-md border w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center pointer-events-auto cursor-pointer hover:scale-110 transition-transform"
-              >
+                className="group relative bg-[#0a0a0a]/95 backdrop-blur-md border w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center pointer-events-auto cursor-default hover:scale-110 transition-transform"              >
                 {icon}
                 <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 pointer-events-none">
                   <div 
