@@ -327,7 +327,7 @@ export default function HeroMR() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 border-t border-white/10 pt-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 border-t border-white/10 pt-16 mt-4"
         >
           {/* Métrica 1 */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left px-2">
