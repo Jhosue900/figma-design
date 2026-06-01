@@ -38,10 +38,10 @@ const allBrands = [...brands, ...brands];
 
 export default function TwoSectionBrands() {
     return (
-        <section className="relative w-full py-12 flex flex-col items-center justify-center overflow-hidden bg-transparent group font-montserrat select-none">
+        <section className="relative w-full py-24 md:py-32 flex flex-col items-center justify-center overflow-hidden bg-transparent group font-montserrat select-none">
             
             {/* Texto superior */}
-            <div className="text-center mb-6">
+            <div className="text-center mb-16">
                 
 
                 <h1 className="font-aston text-5xl sm:text-4xl font-medium text-white mt-2">
@@ -96,7 +96,7 @@ export default function TwoSectionBrands() {
             </div>
 
             {/* Botón CTA Gris Inferior */}
-            <div className="mt-8 z-20">
+            <div className="mt-16 z-20">
                 <button className="group relative px-8 py-3.5 bg-[#22252a] hover:bg-[#2d3138] text-white/90 hover:text-white border border-white/10 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02]">
                     Casos de éxito
                 </button>
