@@ -69,7 +69,7 @@ export default function Hero() {
 
   return (
     /* Forzamos h-screen/min-h-screen de forma estricta y aumentamos drásticamente el padding superior */
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden py-28 md:py-36 px-6 md:px-12 lg:px-24 bg-black">      <style>{`
+    <section className="relative w-full min-h-screen flex flex-col justify-center items-center py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-black overflow-visible">      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap');
         
         @font-face {
