@@ -69,7 +69,7 @@ export default function Hero() {
 
   return (
     {/* Cambiamos h-screen por min-h-screen estricto y eliminamos flex-col/justify-center en el contenedor padre para evitar colapsos */}
-<section className="relative w-full min-h-screen bg-black overflow-visible pt-32 pb-20 px-6 md:px-12 lg:px-24 flex items-center justify-center">      
+<section className="relative w-full flex flex-col justify-center items-center px-6 md:px-12 lg:px-24 bg-black overflow-visible" style={{ minHeight: 'calc(100vh - 80px)', paddingTop: '80px', paddingBottom: '80px' }}>      
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap');
         
