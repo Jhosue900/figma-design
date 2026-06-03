@@ -31,7 +31,7 @@ const servicesData = [
     colorAlpha: 'rgba(89, 157, 223, 0.15)',
     colorAlphaMuted: 'rgba(89, 157, 223, 0.04)',
     IconComponent: MapPin,
-    ctaText: 'Solicitar Evaluación de Expansión',
+    ctaText: 'Más información',
     ctaLink: `https://wa.me/${numWA}?text=Hola%20WeProm!%20Me%20interesa%20evaluar%20estrategias%20de%20expansi%C3%B3n.`,
     features: [
       { title: 'Validación del mercado', desc: 'Confirmación de viabilidad y aceptación antes de la inversión.', IconComponent: CheckCircle },
@@ -47,7 +47,7 @@ const servicesData = [
     colorAlpha: 'rgba(197, 54, 46, 0.15)',
     colorAlphaMuted: 'rgba(197, 54, 46, 0.04)',
     IconComponent: Search,
-    ctaText: 'Agendar Diagnóstico Comercial',
+    ctaText: 'Agendar Diagnóstico',
     ctaLink: `https://wa.me/${numWA}?text=Hola%20WeProm!%20Me%20interesa%20un%20diagn%C3%B3stico%20comercial.`,
     features: [
       { title: 'Percepción de marca', desc: 'Cómo te ven realmente tus clientes frente a la competencia.', IconComponent: Users },
