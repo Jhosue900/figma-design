@@ -27,11 +27,11 @@ const Branding = () => {
       </ScrollReveal>
 
 
-      <div id="nuestros-servicios">
-        <ScrollReveal>
+      <ScrollReveal>
+        <div id="nuestros-servicios" className="scroll-mt-24">
           <OurServices />
-        </ScrollReveal>
-      </div>
+        </div>
+      </ScrollReveal>
 
 
       <ScrollReveal>
