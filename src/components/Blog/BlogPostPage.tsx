@@ -129,16 +129,19 @@ export default function BlogPostPage({
     : '';
 
   // Configuración de renderizado personalizado para PortableText de Sanity
+  // Configuración de renderizado personalizado para PortableText de Sanity
   const portableTextComponents = {
     block: {
       h2: ({ children }: any) => {
         const text = children?.[0] || '';
         const id = slugify(text);
-        return <h2 id={id} className="font-montserrat font-bold text-white text-[20px] mt-8 mb-4 scroll-mt-6">{children}</h2>;
+        return <h2 id={id} className="font-montserrat font-bold text-white text-[20px] mt-8 mb-4 scroll-mt-6 break-words whitespace-pre-wrap">{children}</h2>;
       },
-      h3: ({ children }: any) => <h3 className="font-montserrat font-semibold text-white/80 text-[16px] mt-6 mb-3">{children}</h3>,
-      normal: ({ children }: any) => <p className="font-montserrat text-white/60 text-[14px] leading-relaxed mb-4">{children}</p>,
+      h3: ({ children }: any) => <h3 className="font-montserrat font-semibold text-white/80 text-[16px] mt-6 mb-3 break-words whitespace-pre-wrap">{children}</h3>,
+      normal: ({ children }: any) => <p className="font-montserrat text-white/60 text-[14px] leading-relaxed mb-4 break-words overflow-wrap-anywhere whitespace-pre-wrap">{children}</p>,
     },
+
+    
     list: {
       bullet: ({ children }: any) => <ul className="mb-4 list-disc pl-6 text-white/60 text-[14px] flex flex-col gap-1">{children}</ul>,
       number: ({ children }: any) => <ol className="mb-4 list-decimal pl-6 text-white/60 text-[14px] flex flex-col gap-1">{children}</ol>,
@@ -147,13 +150,15 @@ export default function BlogPostPage({
       bullet: ({ children }: any) => <li className="font-montserrat leading-relaxed">{children}</li>,
       number: ({ children }: any) => <li className="font-montserrat leading-relaxed">{children}</li>,
     },
+
     types: {
       image: ({ value }: any) => (
-        <div className="my-2 rounded-xl overflow-hidden flex justify-center items-center">
-          <img src={value.url} alt={value.alt || 'Blog Image'} className="w-[50%] h-auto object-cover rounded-lg" />
+        <div className="my-6 rounded-xl overflow-hidden flex justify-center items-center w-full">
+          <img src={value.url} alt={value.alt || 'Blog Image'} className="w-full sm:w-[70%] h-auto object-cover rounded-lg" />
         </div>
       ),
     },
+    
   };
 
   return (
@@ -231,14 +236,15 @@ export default function BlogPostPage({
         
 
         {/* Two-column layout */}
-        <div className="flex flex-col gap-10">
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10 w-full overflow-hidden">
 
           {/* Article body */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="flex-1 min-w-0"
+            className="w-full min-w-0 break-words"
           >
             {post.content ? (
               <PortableText value={post.content} components={portableTextComponents} />
