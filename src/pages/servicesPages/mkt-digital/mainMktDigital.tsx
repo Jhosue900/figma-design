@@ -3,54 +3,63 @@ import Navbar from '../../../components/General/Navbar';
 import Footer from '../../../components/General/Footer';
 import ScrollReveal from '../../../components/General/ScrollReveal';
 
-// Componentes internos
-import HeroMkt from './HeroMkt';
-import SectionTwo from './sectionTwo';
-import SectionTres from './sectionTres';
-import SectionFour from './sectionFour';
-import SectionFive from './sectionFive';
-import SectionSix from './sectionSix';
-import SectionSeven from './sectionSeven';
-
+import HeroWeprom from './weprom/HERO';
+import TwoSectionBrands from '../market-research/TwoSectionBrands';
+import MetaSection from './weprom/MetaSection';
+import GoogleSection from './weprom/GoogleSection';
+import InfluencerSection from './weprom/InfluencerSection';
+import AudiovisualSection from './weprom/AudiovisualSection';
 import ProjectResults from '../../../services/ProjectResults';
-
+import SectionFour from './sectionFour';
+import ContactMktDigital from './weprom/ContactMktDigital';
 
 const MainMktDigital = () => {
   return (
     <div className="min-h-screen bg-transparent overflow-x-hidden">
       <Navbar />
-      
 
-      <HeroMkt />
+      {/* Hero con logo orbital de WeProm */}
+      <HeroWeprom />
 
+      {/* Carrusel de clientes */}
       <ScrollReveal>
-        <SectionTwo />
+        <TwoSectionBrands />
       </ScrollReveal>
 
+      {/* Servicios: Meta Ads */}
+      <ScrollReveal>
+        <MetaSection />
+      </ScrollReveal>
+
+      {/* Servicios: Google Ads */}
+      <ScrollReveal>
+        <GoogleSection />
+      </ScrollReveal>
+
+      {/* Servicios: Influencer / UGC */}
+      <ScrollReveal>
+        <InfluencerSection />
+      </ScrollReveal>
+
+      {/* Servicios: Producción Audiovisual */}
+      <ScrollReveal>
+        <AudiovisualSection />
+      </ScrollReveal>
+
+      {/* Casos de éxito */}
       <ScrollReveal>
         <ProjectResults />
       </ScrollReveal>
 
-      {/* <ScrollReveal>
-        <SectionTres />
-      </ScrollReveal> */}
-
+      {/* Nuestra metodología */}
       <ScrollReveal>
         <SectionFour />
       </ScrollReveal>
 
+      {/* Formulario de contacto */}
       <ScrollReveal>
-        <SectionFive />
+        <ContactMktDigital />
       </ScrollReveal>
-
-      <ScrollReveal>
-        <SectionSix />
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <SectionSeven />
-      </ScrollReveal>
-
 
       <Footer />
     </div>
