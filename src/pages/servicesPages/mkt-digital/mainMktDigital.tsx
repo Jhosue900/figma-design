@@ -3,54 +3,53 @@ import Navbar from '../../../components/General/Navbar';
 import Footer from '../../../components/General/Footer';
 import ScrollReveal from '../../../components/General/ScrollReveal';
 
-// Componentes internos
-import HeroMkt from './HeroMkt';
-import SectionTwo from './sectionTwo';
-import SectionTres from './sectionTres';
-import SectionFour from './sectionFour';
-import SectionFive from './sectionFive';
-import SectionSix from './sectionSix';
-import SectionSeven from './sectionSeven';
-
+import HeroWeprom from './weprom/HERO';
+import BrandsCarouselHero from './weprom/BrandsCarouselHero';
+import MetaSection from './weprom/MetaSection';
+import GoogleSection from './weprom/GoogleSection';
+import InfluencerSection from './weprom/InfluencerSection';
+import AudiovisualSection from './weprom/AudiovisualSection';
 import ProjectResults from '../../../services/ProjectResults';
-
+import WePromMethodology from './weprom/WePromMethodology';
+import ContactMktDigital from './weprom/ContactMktDigital';
 
 const MainMktDigital = () => {
   return (
     <div className="min-h-screen bg-transparent overflow-x-hidden">
       <Navbar />
-      
 
-      <HeroMkt />
+      <HeroWeprom />
+
+      {/* Carrusel de marcas sin encabezado — continúa visualmente desde el hero */}
+      <BrandsCarouselHero />
 
       <ScrollReveal>
-        <SectionTwo />
+        <MetaSection />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <GoogleSection />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <InfluencerSection />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <AudiovisualSection />
       </ScrollReveal>
 
       <ScrollReveal>
         <ProjectResults />
       </ScrollReveal>
 
-      {/* <ScrollReveal>
-        <SectionTres />
-      </ScrollReveal> */}
-
       <ScrollReveal>
-        <SectionFour />
+        <WePromMethodology />
       </ScrollReveal>
 
       <ScrollReveal>
-        <SectionFive />
+        <ContactMktDigital />
       </ScrollReveal>
-
-      <ScrollReveal>
-        <SectionSix />
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <SectionSeven />
-      </ScrollReveal>
-
 
       <Footer />
     </div>
