@@ -1,27 +1,27 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 // Fondos de casos de éxito
-import fondoCoca from '../../../images/Logos_Clientes/fondo_coca.png';
-import fondoMercedes from '../../../images/Logos_Clientes/fondo_mercedes.png';
-import fondoOreilly from '../../../images/Logos_Clientes/fondo_oreilly.png';
-import fondoIteso from '../../../images/Logos_Clientes/fondo_iteso.png';
-import fondoJaver from '../../../images/Logos_Clientes/fondo_javer.jpg';
-import fondoPromexico from '../../../images/Logos_Clientes/fondo_promexico.png';
-import fondoCpt from '../../../images/Logos_Clientes/fondo_cpt.png';
-import fondoLizmuebles from '../../../images/Logos_Clientes/fondo_lizmuebles.png';
-import fondoHuizache from '../../../images/Logos_Clientes/fondo_tequilahuizache.png';
-import fondoChizychiz from '../../../images/Logos_Clientes/fondo_chizychiz.png';
+import fondoCoca from '../../../images/fondos_casos-de-exito/fondo_coca.png';
+import fondoMercedes from '../../../images/fondos_casos-de-exito/fondo_mercedes.png';
+import fondoOreilly from '../../../images/fondos_casos-de-exito/fondo_oreilly.png';
+import fondoIteso from '../../../images/fondos_casos-de-exito/fondo_iteso.png';
+import fondoJaver from '../../../images/fondos_casos-de-exito/fondo_javer.jpg';
+import fondoPromexico from '../../../images/fondos_casos-de-exito/fondo_promexico.png';
+import fondoCpt from '../../../images/fondos_casos-de-exito/fondo_cpt.png';
+import fondoLizmuebles from '../../../images/fondos_casos-de-exito/fondo_lizmuebles.png';
+import fondoHuizache from '../../../images/fondos_casos-de-exito/fondo_tequilahuizache.png';
+import fondoChizychiz from '../../../images/fondos_casos-de-exito/fondo_chizychiz.png';
 
 // Logos de clientes
-import logoCocaCola from '../../../images/marketResearch/Projects/COCACOLA.png';
+import logoCocaCola from '../../../images/fondos_casos-de-exito/fondo_coca.png';
 import logoMercedes from '../../../images/Logos_Clientes/logo_mercedes.png';
 import logoOreilly from '../../../images/Logos_Clientes/logo_oreilly.png';
 import logoIteso from '../../../images/Logos_Clientes/logo_iteso.png';
 import logoJaver from '../../../images/Logos_Clientes/logo_javer.png';
 import logoPromexico from '../../../images/Logos_Clientes/logo_promexico.png';
 import logoCpt from '../../../images/Logos_Clientes/logo_cpt.png';
-import logoLizmuebles from '../../../images/marketResearch/Projects/LIZMUEBLES.png';
-import logoHuizache from '../../../images/marketResearch/Projects/HUIZACHE.png';
+import logoLizmuebles from '../../../images/fondos_casos-de-exito/fondo_lizmuebles.png';
+import logoHuizache from '../../../images/fondos_casos-de-exito/fondo_tequilahuizache.png';
 import logoChizychiz from '../../../images/Logos_Clientes/logo_chizychiz.png';
 // Íconos SVG nativos con coordenadas estándar y limpias de Lucide
 const ChevronLeft = ({ size = 24 }) => (

@@ -14,9 +14,9 @@ interface LocationPin {
 }
 
 const locations: LocationPin[] = [
-  { id: 1, city: 'Austin', country: 'USA', top: '38%', left: '32%', color: 'bg-blue-500' },
-  { id: 2, city: 'Guadalajara', country: 'MX', top: '46%', left: '27%', color: 'bg-emerald-500' },
-  { id: 3, city: 'Paris', country: 'FR', top: '34%', left: '49%', color: 'bg-indigo-500' },
+  { id: 1, city: 'Austin', country: 'USA', top: '40%', left: '25%', color: 'bg-blue-500' },
+  { id: 2, city: 'Guadalajara', country: 'MX', top: '46%', left: '21%', color: 'bg-emerald-500' },
+  { id: 3, city: 'Paris', country: 'FR', top: '35%', left: '49%', color: 'bg-indigo-500' },
 ];
 
 const ContactoMR = () => {
