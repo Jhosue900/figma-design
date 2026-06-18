@@ -8,11 +8,20 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import metaLogo from '../../images/Meta-Logo.png';
 
+import logoSenties from '../../images/Logos_Clientes/Logo_Senties.png';
+import logoFortuna from '../../images/Logos_Clientes/Logo_Fortuna.png';
+import logoCAB from '../../images/Logos_Clientes/Logo_cab.png';
+import logoMayorkCard from '../../images/Logos_Clientes/Logo_-k.png';
+import logoSistemik from '../../images/Logos_Clientes/Logo_sistemik.png';
+import logoAlteso from '../../images/Logos_Clientes/Logo_alteso.png';
+import logoDeyun from '../../images/Logos_Clientes/Logo_deyun-ctro-de-especialidades.png';
+import logoVagual from '../../images/Logos_Clientes/Logo_vagual.png';
+
 const PROJECTS = [
   {
     id: 1,
     name: "Senties",
-    logo: "https://weprommexico.com/logos_tarjetas/Logo_Senties.png",
+    logo: logoSenties,
     cardImg: "https://weprommexico.com/mktcards/Senties.png",
     traffic: "+50,000",
     accounts: "+230%",
@@ -24,7 +33,7 @@ const PROJECTS = [
   {
     id: 2,
     name: "Fortuna",
-    logo: "https://weprommexico.com/logos_tarjetas/Logo_Fortuna.png",
+    logo: logoFortuna,
     cardImg: "https://weprommexico.com/mktcards/Fortuna.png",
     traffic: "+38,000",
     accounts: "+180%",
@@ -36,7 +45,7 @@ const PROJECTS = [
   {
     id: 3,
     name: "CAB",
-    logo: "https://weprommexico.com/logos_tarjetas/Logo_cab.png",
+    logo: logoCAB,
     cardImg: "https://weprommexico.com/mktcards/CAB.png",
     traffic: "+45,000",
     accounts: "+120%",
@@ -48,7 +57,7 @@ const PROJECTS = [
   {
     id: 4,
     name: "Mayork",
-    logo: "https://weprommexico.com/logos_tarjetas/Logo_-k.png",
+    logo: logoMayorkCard,
     cardImg: "https://weprommexico.com/mktcards/Mayork.png",
     traffic: "+180,000",
     accounts: "+350%",
@@ -60,7 +69,7 @@ const PROJECTS = [
   {
     id: 5,
     name: "Sistemik",
-    logo: "https://weprommexico.com/logos_tarjetas/Logo_sistemik.png",
+    logo: logoSistemik,
     cardImg: "https://weprommexico.com/mktcards/Sistemik.png",
     traffic: "+62,000",
     accounts: "+230%",
@@ -72,7 +81,7 @@ const PROJECTS = [
   {
     id: 6,
     name: "Alteso",
-    logo: "https://weprommexico.com/logos_tarjetas/Logo_alteso.png",
+    logo: logoAlteso,
     cardImg: "https://weprommexico.com/mktcards/Alteso.png",
     traffic: "+70,000",
     accounts: "+380%",
@@ -84,7 +93,7 @@ const PROJECTS = [
   {
     id: 7,
     name: "Deyun",
-    logo: "https://weprommexico.com/logos_tarjetas/Logo_dayun.png",
+    logo: logoDeyun,
     cardImg: "https://weprommexico.com/mktcards/Centro%20de%20Espacialidades.png",
     traffic: "+38,000",
     accounts: "+240%",
@@ -96,7 +105,7 @@ const PROJECTS = [
   {
     id: 8,
     name: "Vagual",
-    logo: "https://weprommexico.com/logos_tarjetas/Logo_vagual.png",
+    logo: logoVagual,
     cardImg: "https://weprommexico.com/mktcards/Vagual.png",
     traffic: "+62,000",
     accounts: "+315%",
