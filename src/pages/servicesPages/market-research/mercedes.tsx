@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Importa tu imagen aquí — reemplaza el path según tu estructura
 import mercedesImg from '../../../images/mercedesPhoto.png';
+import mercedesLogo from '../../../images/marketResearch/mercedes-logo.svg';
 
 interface CaseStudy {
     id: number;
@@ -17,7 +16,7 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
     {
         id: 1,
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg',
+        logo: mercedesLogo,
         brand: 'Mercedes-Benz',
         image: mercedesImg,
         accentColor: '#c5362e',

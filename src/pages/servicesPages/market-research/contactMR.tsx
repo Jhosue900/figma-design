@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import worldMap from '../../../images/world-map.svg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send } from 'lucide-react';
 
@@ -85,12 +86,12 @@ const ContactoMR = () => {
               className="relative h-[320px] sm:h-[380px] bg-[#0c0c0e]/60 rounded-3xl border border-zinc-800/80 overflow-hidden shadow-2xl group flex items-center justify-center"
             >
               {/* Fondo de Textura Fina */}
-              <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+              <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none bg-[url('/textures/stardust.png')]" />
               
               {/* SVG del Mapa Mundial Proporcional */}
               <div className="absolute inset-0 p-6 flex items-center justify-center">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" 
+                  src={worldMap}
                   alt="World Map" 
                   className="w-full h-full object-contain opacity-[0.07] grayscale invert brightness-150 transition-opacity duration-500 group-hover:opacity-[0.1]"
                 />

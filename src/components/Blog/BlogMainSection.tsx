@@ -138,7 +138,7 @@ function BlogCard({ post, index, onClick }: { post: BlogPost; index: number; onC
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
         )}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("/textures/noise.svg")' }} />
         <span className="absolute top-3 left-3 font-montserrat text-[10px] font-semibold uppercase tracking-widest text-white px-2.5 py-1 rounded-full z-10" style={{ background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.12)' }}>
           {post.category}
         </span>

@@ -1,13 +1,12 @@
 import { useState, useCallback } from 'react';
-import ServiceCard from '../components/Home/ServiceCard';
+import ServiceCard from './ServiceCard';
 import { useNavigate } from 'react-router-dom';
 import { Video } from 'lucide-react';
 
-// Assets
-import SearchIcon from '../images/servicesImages/Search.png';
-import FingerprintIcon from '../images/servicesImages/FINGERPRINT.png';
-import MegaphoneIcon from '../images/servicesImages/Megaphone.png';
-import PeopleTableIcon from '../images/servicesImages/PeopleTable.png';
+import SearchIcon from '../../images/servicesImages/Search.png';
+import FingerprintIcon from '../../images/servicesImages/FINGERPRINT.png';
+import MegaphoneIcon from '../../images/servicesImages/Megaphone.png';
+import PeopleTableIcon from '../../images/servicesImages/PeopleTable.png';
 
 function Services() {
   const navigate = useNavigate();

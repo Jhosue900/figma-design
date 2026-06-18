@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 // Importación del fondo (la imagen del foco/bombilla)
-import fondoBombilla from '../../../images/section3.png';
+import fondoBombilla from '../../../images/marketResearch/section3.png';
 
 const ExperienciaMR = () => {
   return (
