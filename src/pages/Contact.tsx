@@ -15,10 +15,10 @@ type ContactOption = { title: string; description: string; link: string };
 type OfficeCard    = { label: string; value: string };
 interface LocationPin { id: number; city: string; country: string; lat: number; lon: number; color: string }
 
-// Equirectangular projection: converts lat/lon to SVG coords (viewBox 0 0 1000 500)
+// Equirectangular projection — calibrated to world-map.svg viewBox (0 0 950 620)
 const geoToSvg = (lat: number, lon: number) => ({
-  x: (lon + 180) / 360 * 1000,
-  y: (90 - lat) / 180 * 500,
+  x: (lon + 180) / 360 * 950,
+  y: (90 - lat) / 180 * 620,
 });
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -98,16 +98,17 @@ function WorldMap() {
     >
       <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none bg-[url('/textures/stardust.png')]" />
 
-      {/* Mapa + pines en un único sistema de coordenadas SVG */}
+      {/* Mapa + pines en un único sistema de coordenadas SVG (950×620) */}
       <svg
-        viewBox="0 0 1000 500"
-        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 950 620"
+        preserveAspectRatio="xMidYMid slice"
         className="absolute inset-0 w-full h-full"
       >
         <image
           href={worldMap}
-          x="0" y="0" width="1000" height="500"
-          style={{ opacity: 0.07, filter: 'grayscale(1) invert(1) brightness(1.5)' }}
+          x="0" y="0" width="950" height="620"
+          preserveAspectRatio="none"
+          style={{ opacity: 0.1, filter: 'grayscale(1) invert(1) brightness(1.5)' }}
         />
 
         {locations.map((loc) => {
@@ -121,21 +122,21 @@ function WorldMap() {
               onMouseLeave={() => setHoveredLoc(null)}
               style={{ cursor: 'pointer' }}
             >
-              {/* Anillo de pulso */}
-              <circle r="4" fill={loc.color} opacity="0.25">
-                <animate attributeName="r"       values="4;14;4"      dur="2s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.25;0;0.25"  dur="2s" repeatCount="indefinite" />
+              {/* Anillo de pulso animado */}
+              <circle r="11" fill={loc.color} opacity="0.5">
+                <animate attributeName="r"       from="11" to="38" dur="1.8s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.5" to="0"  dur="1.8s" repeatCount="indefinite" />
               </circle>
               {/* Punto central */}
-              <circle r="4" fill={loc.color} stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+              <circle r="11" fill={loc.color} stroke="rgba(255,255,255,0.5)" strokeWidth="2" />
 
-              {/* Tooltip */}
+              {/* Tooltip al hacer hover */}
               {hovered && (
-                <g transform="translate(0, -22)">
-                  <rect x="-38" y="-14" width="76" height="18" rx="4"
-                    fill="#18181b" stroke="#3f3f46" strokeWidth="0.8" />
-                  <text x="0" y="-2" textAnchor="middle" fill="white"
-                    fontSize="8" fontWeight="bold" letterSpacing="1"
+                <g transform="translate(0, -52)">
+                  <rect x="-100" y="-22" width="200" height="34" rx="6"
+                    fill="#18181b" stroke="#3f3f46" strokeWidth="1.5" />
+                  <text x="0" y="-1" textAnchor="middle" fill="white"
+                    fontSize="21" fontWeight="bold" letterSpacing="1.5"
                     style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     {loc.city.toUpperCase()}, {loc.country}
                   </text>
