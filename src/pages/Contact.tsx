@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/General/Navbar';
 import Footer from '../components/General/Footer';
 import ScrollReveal from '../components/General/ScrollReveal';
-import worldMap from '../images/world-map.svg';
+import WorldMap from '../components/General/WorldMap';
 
 import RocketIconNewProjects from '../images/Contact/RocketIcon.jpg';
 import PersonIconClients from '../images/Contact/PersonIcon.jpg';
@@ -13,13 +13,6 @@ import MessageIconGeneral from '../images/Contact/MessageIcon.jpg';
 
 type ContactOption = { title: string; description: string; link: string };
 type OfficeCard    = { label: string; value: string };
-interface LocationPin { id: number; city: string; country: string; lat: number; lon: number; color: string }
-
-// Equirectangular projection — calibrated to world-map.svg viewBox (0 0 950 620)
-const geoToSvg = (lat: number, lon: number) => ({
-  x: (lon + 180) / 360 * 950,
-  y: (90 - lat) / 180 * 620,
-});
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -35,12 +28,6 @@ const officeCards: OfficeCard[] = [
   { label: 'Dirección',          value: 'C. Corrientes 3071, Colomos Providencia, Gdl, Jalisco, Mex.' },
   { label: 'Horario de oficina', value: '9:00 AM - 3:00 PM' },
   { label: 'Días de atención',   value: 'Lunes a Viernes' },
-];
-
-const locations: LocationPin[] = [
-  { id: 1, city: 'Austin',      country: 'USA', lat: 30.27, lon: -97.74,  color: '#3b82f6' },
-  { id: 2, city: 'Guadalajara', country: 'MX',  lat: 20.66, lon: -103.35, color: '#10b981' },
-  { id: 3, city: 'Paris',       country: 'FR',  lat: 48.86, lon:   2.35,  color: '#6366f1' },
 ];
 
 const contactIcons = [RocketIconNewProjects, PersonIconClients, MessageIconGeneral];
@@ -82,77 +69,6 @@ const GradientArrow = () => (
     <path d="M7 17L17 7M7 7h10v10" stroke="url(#g-arr)" />
   </svg>
 );
-
-// ─── Interactive World Map ─────────────────────────────────────────────────────
-
-function WorldMap() {
-  const [hoveredLoc, setHoveredLoc] = useState<number | null>(null);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.98 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      viewport={{ once: true }}
-      className="relative h-[320px] sm:h-[380px] bg-[#0c0c0e]/60 rounded-3xl border border-zinc-800/80 overflow-hidden shadow-2xl group"
-    >
-      <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none bg-[url('/textures/stardust.png')]" />
-
-      {/* Mapa + pines en un único sistema de coordenadas SVG (950×620) */}
-      <svg
-        viewBox="0 0 950 620"
-        preserveAspectRatio="xMidYMid slice"
-        className="absolute inset-0 w-full h-full"
-      >
-        <image
-          href={worldMap}
-          x="0" y="0" width="950" height="620"
-          preserveAspectRatio="none"
-          style={{ opacity: 0.1, filter: 'grayscale(1) invert(1) brightness(1.5)' }}
-        />
-
-        {locations.map((loc) => {
-          const { x, y } = geoToSvg(loc.lat, loc.lon);
-          const hovered = hoveredLoc === loc.id;
-          return (
-            <g
-              key={loc.id}
-              transform={`translate(${x}, ${y})`}
-              onMouseEnter={() => setHoveredLoc(loc.id)}
-              onMouseLeave={() => setHoveredLoc(null)}
-              style={{ cursor: 'pointer' }}
-            >
-              {/* Anillo de pulso animado */}
-              <circle r="11" fill={loc.color} opacity="0.5">
-                <animate attributeName="r"       from="11" to="38" dur="1.8s" repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.5" to="0"  dur="1.8s" repeatCount="indefinite" />
-              </circle>
-              {/* Punto central */}
-              <circle r="11" fill={loc.color} stroke="rgba(255,255,255,0.5)" strokeWidth="2" />
-
-              {/* Tooltip al hacer hover */}
-              {hovered && (
-                <g transform="translate(0, -52)">
-                  <rect x="-100" y="-22" width="200" height="34" rx="6"
-                    fill="#18181b" stroke="#3f3f46" strokeWidth="1.5" />
-                  <text x="0" y="-1" textAnchor="middle" fill="white"
-                    fontSize="21" fontWeight="bold" letterSpacing="1.5"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    {loc.city.toUpperCase()}, {loc.country}
-                  </text>
-                </g>
-              )}
-            </g>
-          );
-        })}
-      </svg>
-
-      <div className="absolute bottom-6 left-6 select-none pointer-events-none">
-        <h3 className="text-white/[0.03] text-4xl font-bold tracking-widest font-serif">WEPROM</h3>
-      </div>
-    </motion.div>
-  );
-}
 
 // ─── Page ──────────────────────────────────────────────────────────────────────
 
