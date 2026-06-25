@@ -29,16 +29,7 @@ function Navbar() {
         { label: "Investigación de Mercados", path: "/servicios/investigacion-de-mercados" },
       ]
     },
-    {
-      label: "Portafolio",
-      path: "/portafolio",
-      isDropdown: true,
-      subServices: [
-        { label: "Investigación de Mercados", path: "/portafolio/investigacion-de-mercado" },
-        { label: "Marketing Digital", path: "/portafolio/marketing-digital" },
-        { label: "Branding", path: "/portafolio/branding" },
-      ]
-    },
+    { label: "Portafolio", path: "/portafolio" },
     { label: "Blog", path: "/blog" },
   ];
 
