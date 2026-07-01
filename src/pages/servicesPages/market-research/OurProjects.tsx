@@ -235,7 +235,7 @@ export default function OurProjects() {
 
                   {isActive && (
                     <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-6 lg:p-8 animate-fade-in">
-                      <div className="w-full bg-black/45 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col gap-4 sm:gap-5 shadow-2xl max-h-[85%] overflow-y-auto no-scrollbar">
+                      <div className="w-full bg-black/45 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-5 md:p-6 flex flex-col gap-3 sm:gap-5 shadow-2xl max-h-[90%] md:overflow-y-auto no-scrollbar">
                         
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 md:gap-8 items-center">
                           
@@ -267,13 +267,14 @@ export default function OurProjects() {
 
                         </div>
 
-                        <div className="w-full h-px bg-white/10"></div>
+                        <div className="hidden md:block w-full h-px bg-white/10"></div>
 
-                        <div className="w-full">
+
+                        <div className="hidden md:block w-full">
                           <h4 className="text-[#e6af41] font-astonpoliz text-xs sm:text-sm mb-2 uppercase tracking-wider font-semibold">
                             Resultados Obtenidos
                           </h4>
-                          
+                                          
                           <ul className="text-zinc-300 font-light text-[11px] sm:text-xs lg:text-[13px] leading-relaxed space-y-1.5 sm:space-y-2 font-montserrat pl-1">
                             {item.resultados.map((res, i) => (
                               <li key={i} className="flex items-start gap-2 sm:gap-3">

@@ -142,11 +142,12 @@ function ProjectResults() {
                 </div>
 
                 <div className="mb-3 sm:mb-4">
-                  <p className="text-[10px] sm:text-[11px] md:text-[12px] font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-0.5 sm:mb-1 text-zinc-500">Tráfico Total</p>
+                  <p className="text-[10px] sm:text-[11px] md:text-[12px] font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-0.5 sm:mb-1 text-zinc-500">Conversiones Totales</p>
                   <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter" style={{ color: project.color }}>
-                    {project.traffic}
+                    {project.conversations}
                   </h3>
                 </div>
+
 
                 <div className="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-3 lg:gap-4">
                   <div className="bg-white/[0.02] border border-white/5 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 transition-all group-hover:bg-white/[0.05]">
@@ -154,19 +155,22 @@ function ProjectResults() {
                     <span className="text-sm sm:text-base md:text-lg lg:text-2xl font-bold text-white">{project.accounts}</span>
                   </div>
                   <div className="bg-white/[0.02] border border-white/5 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 transition-all group-hover:bg-white/[0.05]">
-                    <p className="text-[8px] sm:text-[9px] md:text-[10px] tracking-widest text-zinc-500 font-bold uppercase mb-0.5 sm:mb-1">Convers.</p>
-                    <span className="text-sm sm:text-base md:text-lg lg:text-2xl font-bold text-white">{project.conversations}</span>
+                    <p className="text-[8px] sm:text-[9px] md:text-[10px] tracking-widest text-zinc-500 font-bold uppercase mb-0.5 sm:mb-1">Tráfico</p>
+                    <span className="text-sm sm:text-base md:text-lg lg:text-2xl font-bold text-white">{project.traffic}</span>
                   </div>
                   <div
                     className="bg-white/[0.02] border border-white/5 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 transition-all group-hover:bg-white/[0.05]"
                     style={{ borderColor: `${project.color}44` }}
                   >
-                    <p className="text-[8px] sm:text-[9px] md:text-[10px] tracking-widest text-zinc-500 font-bold uppercase mb-0.5 sm:mb-1">Interacc.</p>
+                    <p className="text-[8px] sm:text-[9px] md:text-[10px] tracking-widest text-zinc-500 font-bold uppercase mb-0.5 sm:mb-1">Interacciones</p>
                     <span className="text-sm sm:text-base md:text-lg lg:text-2xl font-bold" style={{ color: project.color }}>
                       {project.interactions}
                     </span>
                   </div>
                 </div>
+
+
+                
               </div>
               <div className="order-1 sm:order-2 w-full h-40 sm:h-auto sm:w-2/5 relative overflow-hidden bg-zinc-900 border-b sm:border-b-0 sm:border-l border-white/5 sm:min-h-[280px] md:min-h-[380px]">
                 <img

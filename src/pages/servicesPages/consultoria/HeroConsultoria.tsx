@@ -121,17 +121,19 @@ const ConsultoriaHero = () => {
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20 flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
 
                     {/* ── Logo construyéndose (móvil: arriba, desktop: derecha) ── */}
+                    {/* ── Logo construyéndose (móvil: centro y destacado, desktop: derecha) ── */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.92 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.15 }}
-                        className="flex items-center justify-center order-first md:order-last w-full max-w-[260px] sm:max-w-sm md:max-w-md lg:max-w-lg"
+                        className="flex items-center justify-center order-first md:order-last w-full max-w-[320px] sm:max-w-[30rem] md:max-w-md lg:max-w-lg mx-auto md:mx-0"
                     >
                         <LogoBuilder />
                     </motion.div>
 
                     {/* ── Texto ── */}
-                    <div className="flex flex-col items-center text-center md:items-start md:text-left">
+                    {/* ── Texto ── (Oculto en móvil por petición de Notion, visible desde md) */}
+                    <div className="hidden md:flex flex-col items-center text-center md:items-start md:text-left">
                         <motion.h1
                             initial={{ y: 40, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
